@@ -7,4 +7,13 @@ public class Person
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
+
+    public string FullName => $"{FirstName} {LastName}";
+
+    public DateTime DOB { get; set; }
+
+
+    public int DepartmentId { get; set; }  // Foreign key
+    public Department Department { get; set; }
+
 }
