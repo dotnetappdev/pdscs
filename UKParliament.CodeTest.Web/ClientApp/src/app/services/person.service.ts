@@ -13,4 +13,9 @@ export class PersonService {
   getById(id: number): Observable<PersonViewModel> {
     return this.http.get<PersonViewModel>(this.baseUrl + `api/person/${id}`)
   }
+
+  getAll(): Observable<PersonViewModel[]> {
+    return this.http.get<PersonViewModel[]>(this.baseUrl + 'api/person');
+  }
+
 }

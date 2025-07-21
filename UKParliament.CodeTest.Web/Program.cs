@@ -29,7 +29,6 @@ public class Program
         builder.Services.AddScoped<PersonReadService>();
         builder.Services.AddScoped<PersonWriteService>();
 
-        builder.Services.AddScoped<IPersonService, PersonService>();
 
         var app = builder.Build();
 
@@ -38,7 +37,10 @@ public class Program
         {
             using var context = serviceScope.ServiceProvider.GetRequiredService<PersonManagerContext>();
             context.Database.EnsureCreated();
+            DbSeeder.SeedInMemoryData(context);
+
         }
+
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())

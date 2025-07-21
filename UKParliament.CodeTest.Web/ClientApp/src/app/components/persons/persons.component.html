@@ -1,0 +1,32 @@
+<h2 id="persons-list-heading">Persons List</h2>
+
+<!-- Error Message -->
+<div *ngIf="errorMessage" class="error" role="alert" aria-live="assertive">
+  {{ errorMessage }}
+</div>
+
+<!-- Persons Table -->
+<section aria-labelledby="persons-list-heading">
+  <table *ngIf="persons.length > 0; else noData" class="table" aria-describedby="persons-list-heading">
+    <caption class="sr-only">List of persons with first name, last name, and date of birth</caption>
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Date of Birth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons">
+        <td>{{ person.firstName }}</td>
+        <td>{{ person.lastName }}</td>
+        <td>{{ person.DOB | date: 'longDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No Data Template -->
+  <ng-template #noData>
+    <p role="note">No persons available.</p>
+  </ng-template>
+</section>

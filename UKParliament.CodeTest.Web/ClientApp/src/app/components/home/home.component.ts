@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';   // Import Router
+
 import { PersonService } from '../../services/person.service';
 
 @Component({
@@ -7,7 +9,7 @@ import { PersonService } from '../../services/person.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private personService: PersonService) {
+  constructor(private router: Router, private personService: PersonService) { 
     this.getPersonById(1);
   }
 
@@ -16,5 +18,9 @@ export class HomeComponent {
       next: (result) => console.info(`User returned: ${JSON.stringify(result)}`),
       error: (e) => console.error(`Error: ${e}`)
     });
+  }
+
+  goToPersons(): void {
+    this.router.navigate(['/persons']);
   }
 }

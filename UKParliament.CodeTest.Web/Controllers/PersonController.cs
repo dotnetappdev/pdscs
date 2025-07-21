@@ -16,7 +16,7 @@ public class PersonController : ControllerBase
     private readonly IPersonWriteService<Person> _writeService;
     private readonly PersonMapperBase _mapper;
 
-    public PersonController(PersonReadService readService, IPersonWriteService<Person> writeService, PersonMapperBase mapper)
+    public PersonController(IPersonReadService<Person> readService, IPersonWriteService<Person> writeService, PersonMapperBase mapper)
     {
         _readService = readService;
         _writeService = writeService;

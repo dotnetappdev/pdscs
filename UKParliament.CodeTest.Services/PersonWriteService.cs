@@ -17,7 +17,7 @@ namespace UKParliament.CodeTest.Services
             _writeRepository = writeRepository;
         }
 
-        public void SavePerson(Person person) => _writeRepositor.(person);
+        public void SavePerson(Person person) => _writeRepository.SavePerson(person);
         public void DeletePerson(int id) => _writeRepository.DeletePerson(id);
     }
 }

@@ -10,7 +10,7 @@ public class Person
 
     public string FullName => $"{FirstName} {LastName}";
 
-    public DateTime DOB { get; set; }
+    public DateOnly DOB { get; set; }
 
 
     public int DepartmentId { get; set; }  // Foreign key
