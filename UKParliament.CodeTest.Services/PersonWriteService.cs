@@ -10,14 +10,14 @@ namespace UKParliament.CodeTest.Services
 {
     public class PersonWriteService
     {
-        private readonly IWriteOnlyRepository<Person> _writeRepository;
+        private readonly IPersonWriteService<Person> _writeRepository;
 
-        public PersonWriteService(IWriteOnlyRepository<Person> writeRepository)
+        public PersonWriteService(IPersonWriteService<Person> writeRepository)
         {
             _writeRepository = writeRepository;
         }
 
-        public void SavePerson(Person person) => _writeRepository.Save(person);
-        public void DeletePerson(int id) => _writeRepository.Delete(id);
+        public void SavePerson(Person person) => _writeRepositor.(person);
+        public void DeletePerson(int id) => _writeRepository.DeletePerson(id);
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace UKParliament.CodeTest.Services.Repositories
 {
-    public interface IWriteOnlyRepository<T>
+    public interface IPersonReadService<T>
     {
-        void Save(T entity);
-        void Delete(int id);
+        T GetById(int id);
+        IEnumerable<T> GetAll();
     }
 }

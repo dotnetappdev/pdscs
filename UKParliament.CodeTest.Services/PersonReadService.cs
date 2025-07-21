@@ -8,18 +8,27 @@ using UKParliament.CodeTest.Services.Repositories;
 
 namespace UKParliament.CodeTest.Services
 {
-    public class PersonReadService
+    public class PersonReadService : IPersonReadService<Person>
     {
-        private readonly IReadOnlyRepository<Person> _readRepository;
+        private readonly IPersonReadService<Person> _readRepository;
 
-        public PersonReadService(IReadOnlyRepository<Person> readRepository)
+        public PersonReadService(IPersonReadService<Person> readRepository)
         {
             _readRepository = readRepository;
         }
 
         public Person GetPerson(int id) => _readRepository.GetById(id);
         public IEnumerable<Person> GetAllPersons() => _readRepository.GetAll();
+
+        public Person GetById(int id)
+        {
+            return (_readRepository.GetById(id));
+        }
+
+
+        public IEnumerable<Person> GetAll() => _readRepository.GetAll();
     }
+
 
 }
 

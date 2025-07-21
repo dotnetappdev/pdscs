@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Services;
 using UKParliament.CodeTest.Services.Mapper;
+using UKParliament.CodeTest.Services.Repositories;
 using UKParliament.CodeTest.Web.Mapper;
 using UKParliament.CodeTest.Web.ViewModels;
 
@@ -10,11 +12,11 @@ namespace UKParliament.CodeTest.Web.Controllers;
 [Route("api/[controller]")]
 public class PersonController : ControllerBase
 {
-    private readonly PersonReadService _readService;
-    private readonly PersonWriteService _writeService;
+    private readonly IPersonReadService<Person> _readService;
+    private readonly IPersonWriteService<Person> _writeService;
     private readonly PersonMapperBase _mapper;
 
-    public PersonController(PersonReadService readService, PersonWriteService writeService, PersonMapperBase mapper)
+    public PersonController(PersonReadService readService, IPersonWriteService<Person> writeService, PersonMapperBase mapper)
     {
         _readService = readService;
         _writeService = writeService;
@@ -26,8 +28,7 @@ public class PersonController : ControllerBase
     [HttpGet]
     public ActionResult<PersonViewModel> GetById(int id)
     {
-        var person = _readService.GetPerson(id);
-
+        var person = _readService.GetById(id);
         var personVm = _mapper.Map(person);
         return Ok(personVm);
     }
@@ -35,8 +36,16 @@ public class PersonController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var people = _readService.GetAllPersons();
+        var people = _readService.GetAll();
         var vmList = _mapper.MapList(people);
         return Ok(vmList);
     }
+
+    [HttpDelete]
+    public ActionResult Delete(int id)
+    {
+        var people = _writeService.DeletePerson(id);
+        return Ok(people);
+    }
+
 }

@@ -7,7 +7,7 @@ using UKParliament.CodeTest.Services.Repositories;
 
 namespace UKParliament.CodeTest.Data.Repositories
 {
-    public class PersonReadRepository : IReadOnlyRepository<Person>
+    public class PersonReadRepository : IPersonReadService<Person>
     {
         private readonly PersonManagerContext _context;
 

@@ -7,17 +7,17 @@ using UKParliament.CodeTest.Data;
 
 namespace UKParliament.CodeTest.Services.Repositories
 {
-    public class PersonWriteRepository : IWriteOnlyRepository<Person>
+    public class PersonWriteRepository : IPersonWriteService<Person>
     {
         private readonly PersonManagerContext _context;
         public PersonWriteRepository(PersonManagerContext context) => _context = context;
 
-        public void Save(Person person)
+
+        public void SavePerson(Person person)
         {
             _context.People.Add(person);
             _context.SaveChanges();
         }
-
         public void Delete(int id)
         {
             var person = _context.People.Find(id);
@@ -26,6 +26,22 @@ namespace UKParliament.CodeTest.Services.Repositories
                 _context.People.Remove(person);
                 _context.SaveChanges();
             }
+        }
+
+        public void AddPerson(Person person)
+        {
+            _context.People.Add(person);
+            _context.SaveChanges();
+        }
+
+        public Task<Person> UpdatePerson(Person person)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeletePerson(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
