@@ -12,20 +12,11 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
-  pageSize: number = 5;
+  pageSize: number = 5; // Default page size is 5
   currentPage: number = 1;
   get pageSizeOptions(): number[] {
-    const total = this.filteredPersons.length;
-    const baseOptions = [5, 10, 15, 20];
-    // Always show 'All' (0)
-    if (total === 0) return [0];
-    // If total is in baseOptions, show 'All' and total only
-    if (baseOptions.includes(total)) {
-      return [0, total];
-    }
-    // Otherwise, show 'All', all baseOptions less than total, and total
-    const options = baseOptions.filter(opt => opt < total);
-    return [0, ...options, total];
+    // Always show 'All' (0) and fixed options: 5, 10, 20, 25
+    return [0, 5, 10, 20, 25];
   }
   get pagedPersons(): any[] {
     // If pageSize equals total persons, show all filtered persons
@@ -118,6 +109,7 @@ export class PersonsComponent implements OnInit {
   }
 
   ngOnInit() {
+    // pageSize is already set to 5 by default above
     this.getAllPersons();
     this.loadDepartments();
   }
@@ -174,6 +166,7 @@ export class PersonsComponent implements OnInit {
       // Always clear field errors before save
       this.fieldErrors = {};
       const payload: any = {
+        Id: this.selectedPerson?.id ?? this.selectedPerson?.Id ?? 0,
         FirstName: this.selectedPerson?.firstName ?? '',
         LastName: this.selectedPerson?.lastName ?? '',
         Description: this.selectedPerson?.description ?? '',
@@ -239,8 +232,20 @@ export class PersonsComponent implements OnInit {
   onEdit(person: any) {
     // Clone to avoid editing the array object directly
     this.selectedPerson = { ...person };
-    if (!person.dob) {
-      this.selectedPerson.dob = null; // Ensure date picker is empty if dob is missing
+    // Set date picker value to yyyy-MM-dd string for input type=date
+    if (person.dob) {
+      const d = new Date(person.dob);
+      if (!isNaN(d.getTime())) {
+        // Format as yyyy-MM-dd
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const year = d.getFullYear();
+        this.selectedPerson.dob = `${year}-${month}-${day}`;
+      } else {
+        this.selectedPerson.dob = null;
+      }
+    } else {
+      this.selectedPerson.dob = null;
     }
   }
 
