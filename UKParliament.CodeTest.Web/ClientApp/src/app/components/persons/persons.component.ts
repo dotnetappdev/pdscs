@@ -15,22 +15,27 @@ export class PersonsComponent implements OnInit {
   selectedPerson: any = null;
   errorMessage: string = '';
   departments: any[] = [];
+  fieldErrors: { [key: string]: string } = {}; // Store field-specific errors
 
   constructor(
     private personService: PersonService,
     private departmentService: DepartmentService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     this.getAllPersons();
     this.loadDepartments();
   }
 
+
   loadDepartments() {
     this.departmentService.getDepartments().subscribe({
       next: (depts) => {
         this.departments = depts;
+
         this.cdr.detectChanges();
       },
       error: (err) => {
@@ -73,7 +78,7 @@ export class PersonsComponent implements OnInit {
         LastName: this.selectedPerson?.lastName ?? '',
         Description: this.selectedPerson?.description ?? '',
         DepartmentId: this.selectedPerson?.departmentId ?? 0,
-        DOB: this.formatDateForBackend(this.selectedPerson?.DOB)
+        DOB: this.selectedPerson?.DOB ? this.formatDateForBackend(this.selectedPerson?.DOB) : null
       };
       console.log('Payload sent to backend:', payload);
 
@@ -82,12 +87,32 @@ export class PersonsComponent implements OnInit {
       const handleError = (err: any) => {
         console.error('Error saving person:', err);
         this.errorMessage = this.formatError(err);
+        this.fieldErrors = {};
+        // Map backend PascalCase error keys to frontend camelCase
+        const keyMap: { [key: string]: string } = {
+          'FirstName': 'firstName',
+          'LastName': 'lastName',
+          'Description': 'description',
+          'DepartmentId': 'departmentId',
+          'DOB': 'DOB'
+        };
+        if (err?.error) {
+          const errors = err.error.errors || err.error.ModelState || err.error;
+          if (errors && typeof errors === 'object') {
+            Object.keys(errors).forEach(key => {
+              const val = Array.isArray(errors[key]) ? errors[key].join(' ') : errors[key];
+              const mappedKey = keyMap[key] || key;
+              this.fieldErrors[mappedKey] = val;
+            });
+          }
+        }
       };
 
       const handleSuccess = () => {
         console.log('Save successful, refreshing persons list');
         this.selectedPerson = null;  // clear selection
         this.getAllPersons();        // reload fresh data
+        this.fieldErrors = {};      // clear field errors on success
       };
 
       if (isEdit) {
@@ -107,6 +132,9 @@ export class PersonsComponent implements OnInit {
   onEdit(person: any) {
     // Clone to avoid editing the array object directly
     this.selectedPerson = { ...person };
+    if (!person.DOB) {
+      this.selectedPerson.DOB = null; // Ensure date picker is empty if DOB is missing
+    }
   }
 
   onDelete(person: any) {
@@ -125,7 +153,7 @@ export class PersonsComponent implements OnInit {
     this.selectedPerson = {
       firstName: '',
       lastName: '',
-      DOB: null,
+      DOB: null, // Ensure date picker is empty
       departmentId: 0,
       description: ''
     };
@@ -133,5 +161,6 @@ export class PersonsComponent implements OnInit {
 
   onCancelEdit() {
     this.selectedPerson = null;
+    this.fieldErrors = {}; // clear field errors on cancel
   }
 }

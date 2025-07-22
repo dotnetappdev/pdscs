@@ -44,26 +44,38 @@
   <div style="flex: 1; min-width: 300px; max-width: 400px; border-left: 1px solid #ccc; padding-left: 2rem; font-size:0.95rem; background: #f8f8fa;" *ngIf="selectedPerson">
     <h3 style="font-size:1.1rem; color:#373151;">{{ selectedPerson.fullName ? 'Edit Person' : 'Add Person' }}</h3>
     <form (ngSubmit)="onSave()" #editForm="ngForm">
-      <label for="firstName" style="font-size:0.95rem;">First Name</label>
-      <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required style="width:100%; font-size:0.95rem;" />
-      <br />
-      <label for="lastName" style="font-size:0.95rem;">Last Name</label>
-      <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required style="width:100%; font-size:0.95rem;" />
-      <br />
-      <label for="dob" style="font-size:0.95rem;">Date of Birth</label>
-      <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required style="width:100%; font-size:0.95rem;" />
-      <br />
-      <label for="department" style="font-size:0.95rem;">Department</label>
-      <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required style="width:100%; font-size:0.95rem;">
-        <option [ngValue]="null" disabled selected>Please select department...</option>
-        <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
-      </select>
-      <br />
-      <label for="description" style="font-size:0.95rem;">Description</label>
-      <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" style="width:100%; font-size:0.95rem; resize:vertical;" placeholder="Enter description..."></textarea>
-      <br />
-      <button type="submit" class="ukp-btn ukp-btn-save" style="margin-top:1rem; font-size:0.95rem;">Save</button>
-      <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="margin-left:0.5rem; font-size:0.95rem;">Cancel</button>
+      <div style="margin-bottom: 1.5rem;">
+        <label for="firstName" style="font-size:1rem; font-weight:500;">First Name</label>
+        <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
+        <div *ngIf="fieldErrors['firstName']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['firstName'] }}</div>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label for="lastName" style="font-size:1rem; font-weight:500;">Last Name</label>
+        <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
+        <div *ngIf="fieldErrors['lastName']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['lastName'] }}</div>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label for="dob" style="font-size:1rem; font-weight:500;">Date of Birth <span style="font-size:0.95rem; color:#666;">(yyyy-MM-dd)</span></label>
+        <input id="dob" name="DOB" type="date" [(ngModel)]="selectedPerson.DOB" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
+        <div *ngIf="fieldErrors['DOB']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['DOB'] }}</div>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label for="departmentId" style="font-size:1rem; font-weight:500;">Department</label>
+        <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;">
+          <option [ngValue]="null" disabled selected>Please select department...</option>
+          <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
+        </select>
+        <div *ngIf="fieldErrors['departmentId']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['departmentId'] }}</div>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label for="description" style="font-size:1rem; font-weight:500;">Description</label>
+        <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..."></textarea>
+        <div *ngIf="fieldErrors['description']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['description'] }}</div>
+      </div>
+      <div style="margin-top:2rem; display:flex; gap:1rem;">
+        <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem;">Save</button>
+        <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem;">Cancel</button>
+      </div>
     </form>
   </div>
 </section>

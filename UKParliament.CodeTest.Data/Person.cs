@@ -10,7 +10,7 @@ public class Person
 
     public string FullName => $"{FirstName} {LastName}";
 
-    public DateOnly DOB { get; set; }
+    public DateOnly? DOB { get; set; }
 
     public string Description { get; set; }
 

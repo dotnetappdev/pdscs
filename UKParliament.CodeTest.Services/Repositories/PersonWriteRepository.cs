@@ -38,11 +38,20 @@ namespace UKParliament.CodeTest.Services.Repositories
                 var validationResult = validator.Validate(person);
                 if (!validationResult.IsValid)
                 {
-                    var errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-                    return ApiResponse<Person>.Failure(
-                        string.Join("; ", errors),
-                        HttpStatusCode.BadRequest
-                    );
+                    var errorDict = validationResult.Errors
+                        .GroupBy(e => e.PropertyName)
+                        .ToDictionary(
+                            g => g.Key,
+                            g => g.Select(e => e.ErrorMessage).ToArray()
+                        );
+                    return new ApiResponse<Person>
+                    {
+                        Success = false,
+                        Message = "Validation failed",
+                        Data = null,
+                        StatusCode = HttpStatusCode.BadRequest,
+                        Errors = errorDict
+                    };
                 }
                 _context.People.Add(person);
                 _context.SaveChanges();
@@ -70,11 +79,20 @@ namespace UKParliament.CodeTest.Services.Repositories
                 var validationResult = validator.Validate(updatedPerson);
                 if (!validationResult.IsValid)
                 {
-                    var errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
-                    return ApiResponse<Person>.Failure(
-                        string.Join("; ", errors),
-                        HttpStatusCode.BadRequest
-                    );
+                    var errorDict = validationResult.Errors
+                        .GroupBy(e => e.PropertyName)
+                        .ToDictionary(
+                            g => g.Key,
+                            g => g.Select(e => e.ErrorMessage).ToArray()
+                        );
+                    return new ApiResponse<Person>
+                    {
+                        Success = false,
+                        Message = "Validation failed",
+                        Data = null,
+                        StatusCode = HttpStatusCode.BadRequest,
+                        Errors = errorDict
+                    };
                 }
                 var recordToUpdate = _context.People.Find(id);
                 if (recordToUpdate == null)

@@ -6,7 +6,7 @@ public class PersonViewModel
     public string LastName { get; set; }
     public string FullName { get; set; }
 
-    public DateOnly DOB { get; set; }
+    public DateOnly? DOB { get; set; }
 
     public int DepartmentId { get; set; }
     public string DepartmentName { get; set; }

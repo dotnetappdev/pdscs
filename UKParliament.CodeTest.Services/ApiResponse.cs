@@ -6,6 +6,8 @@ namespace UKParliament.CodeTest.Web
     {
         public bool Success { get; set; }
         public string? Message { get; set; }
+        // Field-level validation errors for frontend display
+        public Dictionary<string, string[]>? Errors { get; set; }
         public T? Data { get; set; }
         public HttpStatusCode StatusCode { get; set; }
 

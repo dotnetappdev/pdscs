@@ -31,12 +31,19 @@ public class PersonController : ControllerBase
         if (!ModelState.IsValid)
         {
             var errors = ModelState
-                .Where(x => x.Value.Errors.Count > 0)
+                .Where(x => x.Value != null && x.Value.Errors != null && x.Value.Errors.Count > 0)
                 .ToDictionary(
                     kvp => kvp.Key,
-                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    kvp => kvp.Value.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
                 );
-            return BadRequest(new { message = "Model binding failed", errors });
+            // If errors only contain keys like "person" or "$", it's a binding error, not FluentValidation
+            var onlyBindingErrors = errors.Keys.All(k => k == "person" || k.StartsWith("$"));
+            if (onlyBindingErrors)
+            {
+                return BadRequest(new { message = "Model binding failed", errors });
+            }
+            // Otherwise, return field-level errors (FluentValidation)
+            return BadRequest(new { message = "Validation failed", errors });
         }
         var api = _writeService.UpdatePerson(id, person);
         if (api.StatusCode == HttpStatusCode.OK)
@@ -45,6 +52,19 @@ public class PersonController : ControllerBase
         }
         else
         {
+            // Always return errors as { errors: { field: [messages] } }
+            var errors = api.GetType().GetProperty("Errors")?.GetValue(api);
+            if (errors is IDictionary<string, string[]> fieldErrors && fieldErrors.Count > 0)
+            {
+                // Ensure all errors have field names
+                return BadRequest(new { message = api.Message, errors = fieldErrors });
+            }
+            // If error is a string, treat as general error
+            if (errors is string msg && !string.IsNullOrWhiteSpace(msg))
+            {
+                var generalErrors = new Dictionary<string, string[]> { { "General", new[] { msg } } };
+                return BadRequest(new { message = api.Message, errors = generalErrors });
+            }
             return BadRequest(new { message = api.Message });
         }
 
@@ -56,12 +76,19 @@ public class PersonController : ControllerBase
         if (!ModelState.IsValid)
         {
             var errors = ModelState
-                .Where(x => x.Value.Errors.Count > 0)
+                .Where(x => x.Value != null && x.Value.Errors != null && x.Value.Errors.Count > 0)
                 .ToDictionary(
                     kvp => kvp.Key,
-                    kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    kvp => kvp.Value.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
                 );
-            return BadRequest(new { message = "Model binding failed", errors });
+            // If errors only contain keys like "person" or "$", it's a binding error, not FluentValidation
+            var onlyBindingErrors = errors.Keys.All(k => k == "person" || k.StartsWith("$"));
+            if (onlyBindingErrors)
+            {
+                return BadRequest(new { message = "Model binding failed", errors });
+            }
+            // Otherwise, return field-level errors (FluentValidation)
+            return BadRequest(new { message = "Validation failed", errors });
         }
         var api = _writeService.AddPerson(person);
         if (api.StatusCode == HttpStatusCode.OK)
@@ -74,6 +101,19 @@ public class PersonController : ControllerBase
         }
         else
         {
+            // Always return errors as { errors: { field: [messages] } }
+            var errors = api.GetType().GetProperty("Errors")?.GetValue(api);
+            if (errors is IDictionary<string, string[]> fieldErrors && fieldErrors.Count > 0)
+            {
+                // Ensure all errors have field names
+                return BadRequest(new { message = api.Message, errors = fieldErrors });
+            }
+            // If error is a string, treat as general error
+            if (errors is string msg && !string.IsNullOrWhiteSpace(msg))
+            {
+                var generalErrors = new Dictionary<string, string[]> { { "General", new[] { msg } } };
+                return BadRequest(new { message = api.Message, errors = generalErrors });
+            }
             return BadRequest(new { message = api.Message });
         }
 
