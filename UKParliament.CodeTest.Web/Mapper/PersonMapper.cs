@@ -28,7 +28,7 @@ namespace UKParliament.CodeTest.Web.Mapper
                 Id = person.Id,
                 FirstName = person.FirstName,
                 LastName = person.LastName,
-                DOB = person.DOB,
+                dob = person.DOB,
                 DepartmentId = person.DepartmentId,
                 DepartmentName = departmentName,
                 FullName = person.FirstName + " " + person.LastName,

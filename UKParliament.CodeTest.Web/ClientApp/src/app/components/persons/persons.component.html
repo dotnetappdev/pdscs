@@ -26,7 +26,7 @@
           <td>{{ person.id || person.Id }}</td> <!-- Debug: Show id -->
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
-          <td>{{ person.DOB | date: 'longDate' }}</td>
+          <td>{{ person.dob ? (person.dob | date: 'longDate') : '—' }}</td>
           <td>{{ person.departmentName }}</td>
           <td>{{ person.fullName }}</td>
           <td>

@@ -51,7 +51,11 @@ export class PersonsComponent implements OnInit {
     this.personService.getAll().subscribe({
       next: (persons) => {
         console.log('Received persons:', persons); // Debug log added
-        this.persons = persons;
+        // Map DOB to JS Date for correct display in table
+        this.persons = persons.map(p => ({
+          ...p,
+          dob: p.dob ? new Date(p.dob) : null
+        }));
         this.cdr.detectChanges(); // ensure UI updates after async fetch
       },
       error: (err) => {
