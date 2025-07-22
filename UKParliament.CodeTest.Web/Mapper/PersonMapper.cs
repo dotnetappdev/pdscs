@@ -25,6 +25,7 @@ namespace UKParliament.CodeTest.Web.Mapper
             }
             return new PersonViewModel
             {
+                Id = person.Id,
                 FirstName = person.FirstName,
                 LastName = person.LastName,
                 DOB = person.DOB,

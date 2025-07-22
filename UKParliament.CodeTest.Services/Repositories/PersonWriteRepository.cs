@@ -123,9 +123,37 @@ namespace UKParliament.CodeTest.Services.Repositories
             }
         }
 
-        public Task DeletePerson(int id)
+
+        public async Task<ApiResponse<Person>> DeletePerson(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var personToDelete = await _context.People.FindAsync(id);
+                if (personToDelete == null)
+                {
+                    return ApiResponse<Person>.Failure(
+                        "Person not found.",
+                        HttpStatusCode.NotFound
+                    );
+                }
+
+                _context.Remove(personToDelete);
+                await _context.SaveChangesAsync();
+
+                return ApiResponse<Person>.SuccessResponse(
+                    personToDelete,
+                    "Person deleted successfully.",
+                    HttpStatusCode.OK
+                );
+            }
+            catch (Exception ex)
+            {
+                // Optionally log ex here
+                return ApiResponse<Person>.Failure(
+                    "An error occurred while deleting the person.",
+                    HttpStatusCode.InternalServerError
+                );
+            }
         }
 
 

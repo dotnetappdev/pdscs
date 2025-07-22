@@ -16,6 +16,8 @@ export class PersonsComponent implements OnInit {
   errorMessage: string = '';
   departments: any[] = [];
   fieldErrors: { [key: string]: string } = {}; // Store field-specific errors
+  showDeleteModal: boolean = false;
+  selectedPersonToDelete: any = null;
 
   constructor(
     private personService: PersonService,
@@ -138,15 +140,47 @@ export class PersonsComponent implements OnInit {
   }
 
   onDelete(person: any) {
-    if (confirm(`Delete ${person.fullName}?`)) {
-      this.personService.delete(person.id).subscribe({
-        next: () => this.getAllPersons(),
+    if (!person.id && person.Id) {
+      person.id = person.Id; // Map Id to id if needed
+    }
+    if (!person.id) {
+      console.error('Delete failed: person.id is undefined', person);
+      this.errorMessage = 'Cannot delete: person id is missing.';
+      return;
+    }
+    // Show custom confirmation popup
+    this.showDeleteConfirm(person);
+  }
+
+  showDeleteConfirm(person: any) {
+    this.selectedPersonToDelete = person;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.selectedPersonToDelete && this.selectedPersonToDelete.id) {
+      this.personService.delete(this.selectedPersonToDelete.id).subscribe({
+        next: () => {
+          this.getAllPersons();
+          this.showDeleteModal = false;
+          this.selectedPersonToDelete = null;
+        },
         error: err => {
           console.error('Error deleting person:', err);
           this.errorMessage = this.formatError(err);
+          this.showDeleteModal = false;
+          this.selectedPersonToDelete = null;
         }
       });
+    } else {
+      this.showDeleteModal = false;
+      this.selectedPersonToDelete = null;
     }
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.selectedPersonToDelete = null;
   }
 
   onAdd() {

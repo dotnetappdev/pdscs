@@ -12,8 +12,10 @@ namespace UKParliament.CodeTest.Services.Repositories
     {
         void SavePerson(Person person);
 
+
         ApiResponse<Person> AddPerson(Person person);
         ApiResponse<Person> UpdatePerson(int id, Person person);
-        Task DeletePerson(int id);
+        Task<ApiResponse<Person>> DeletePerson(int id);
+
     }
 }
