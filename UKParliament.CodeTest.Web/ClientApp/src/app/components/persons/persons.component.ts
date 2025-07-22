@@ -12,6 +12,53 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  isMobileView: boolean = window.innerWidth <= 600;
+  // Validate person input for SQL keywords and dangerous characters, return error object
+  private validatePersonInput(person: any): { [key: string]: string } {
+    const errors: { [key: string]: string } = {};
+    const check = (val: string, field: string) => {
+      if (!val) return;
+      const lowered = val.toLowerCase();
+      this.sqlBlacklist.forEach(bad => {
+        if (lowered.includes(bad)) {
+          errors[field] = `Input contains forbidden keyword or character: '${bad}'`;
+        }
+      });
+    };
+    check(person.firstName, 'firstName');
+    check(person.lastName, 'lastName');
+    check(person.description, 'description');
+    return errors;
+  }
+  // SQL and dangerous character blacklist for input sanitization
+  private sqlBlacklist: string[] = [
+    "select", "insert", "update", "delete", "drop", "truncate", "union", "--", "/*", "*/", "xp_", "exec", "script", "<", ">", "'", '"', ";"
+  ];
+
+  private isInputSafe(input: string): boolean {
+    if (!input) return true;
+    const lowered = input.toLowerCase();
+    return !this.sqlBlacklist.some(bad => lowered.includes(bad));
+  }
+
+  private sanitizePersonInput(person: any): any {
+    // Remove dangerous SQL and script characters from person fields
+    const sanitize = (val: string) => {
+      if (!val) return val;
+      let result = val;
+      this.sqlBlacklist.forEach(bad => {
+        const regex = new RegExp(bad.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+        result = result.replace(regex, '');
+      });
+      return result;
+    };
+    return {
+      ...person,
+      firstName: sanitize(person.firstName),
+      lastName: sanitize(person.lastName),
+      description: sanitize(person.description)
+    };
+  }
   pageSize: number = 5; // Default page size is 5
   currentPage: number = 1;
   get pageSizeOptions(): number[] {
@@ -112,6 +159,17 @@ export class PersonsComponent implements OnInit {
     // pageSize is already set to 5 by default above
     this.getAllPersons();
     this.loadDepartments();
+    window.addEventListener('resize', this.onResize.bind(this));
+    this.onResize();
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize.bind(this));
+  }
+
+  onResize() {
+    this.isMobileView = window.innerWidth <= 600;
+    this.cdr.detectChanges();
   }
 
 
@@ -165,17 +223,26 @@ export class PersonsComponent implements OnInit {
     if (this.selectedPerson) {
       // Always clear field errors before save
       this.fieldErrors = {};
+      // Validate for SQL keywords and dangerous characters
+      const validationErrors = this.validatePersonInput(this.selectedPerson);
+      if (Object.keys(validationErrors).length > 0) {
+        this.fieldErrors = validationErrors;
+        this.errorMessage = 'Please remove forbidden keywords or characters from the highlighted fields.';
+        return;
+      }
+      // Sanitize input fields before sending to backend
+      const sanitizedPerson = this.sanitizePersonInput(this.selectedPerson);
       const payload: any = {
-        Id: this.selectedPerson?.id ?? this.selectedPerson?.Id ?? 0,
-        FirstName: this.selectedPerson?.firstName ?? '',
-        LastName: this.selectedPerson?.lastName ?? '',
-        Description: this.selectedPerson?.description ?? '',
-        DepartmentId: this.selectedPerson?.departmentId ?? 0,
-        DOB: this.selectedPerson?.dob ? this.formatDateForBackend(this.selectedPerson?.dob) : null
+        Id: sanitizedPerson?.id ?? sanitizedPerson?.Id ?? 0,
+        FirstName: sanitizedPerson?.firstName ?? '',
+        LastName: sanitizedPerson?.lastName ?? '',
+        Description: sanitizedPerson?.description ?? '',
+        DepartmentId: sanitizedPerson?.departmentId ?? 0,
+        DOB: sanitizedPerson?.dob ? this.formatDateForBackend(sanitizedPerson?.dob) : null
       };
       console.log('Payload sent to backend:', payload);
 
-      const isEdit = typeof this.selectedPerson.id === 'number' && this.selectedPerson.id > 0;
+      const isEdit = typeof sanitizedPerson.id === 'number' && sanitizedPerson.id > 0;
 
       const handleError = (err: any) => {
         console.error('Error saving person:', err);
@@ -209,7 +276,7 @@ export class PersonsComponent implements OnInit {
       };
 
       if (isEdit) {
-        this.personService.update(this.selectedPerson.id!, payload).subscribe({
+        this.personService.update(sanitizedPerson.id!, payload).subscribe({
           next: handleSuccess,
           error: handleError
         });

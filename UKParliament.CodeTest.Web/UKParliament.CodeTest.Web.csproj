@@ -13,6 +13,7 @@
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.0.0" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+		<PackageReference Include="HtmlSanitizer" Version="9.0.886" />
 		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.10" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.10" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />

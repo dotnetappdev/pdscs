@@ -7,8 +7,117 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      html, body, app-root {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100vw;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
+      .header-content, .footer-content {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      @media (max-width: 900px) {
+        .header-content, .footer-content {
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+        }
+        .header-logo {
+          font-size: 2rem !important;
+        }
+        .header-desc {
+          font-size: 1rem !important;
+        }
+        .footer-content {
+          padding-top: 20px !important;
+          padding-bottom: 16px !important;
+        }
+        .header-content {
+          width: 100vw !important;
+          margin-left: calc(-50vw + 50%) !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .header-content, .footer-content {
+          flex-direction: column !important;
+          gap: 16px !important;
+        }
+        .header-content {
+          width: 100vw !important;
+          margin-left: calc(-50vw + 50%) !important;
+        }
+        .header-logo {
+          font-size: 1.3rem !important;
+        }
+        .header-desc {
+          font-size: 0.95rem !important;
+        }
+        .footer-content {
+          padding-top: 12px !important;
+          padding-bottom: 8px !important;
+        }
+        .footer-content ul {
+          font-size: 0.95rem !important;
+        }
+        .table-responsive {
+          font-size: 0.9rem !important;
+        }
+        .ukp-btn-edit, .ukp-btn-delete {
+          min-width: 70px !important;
+          font-size: 0.9rem !important;
+          padding: 0.35rem 0.7rem !important;
+          margin-bottom: 0.25rem !important;
+        }
+        td[role="cell"] > .ukp-btn-edit,
+        td[role="cell"] > .ukp-btn-delete {
+          display: block !important;
+          width: 100% !important;
+        }
+        th[aria-label="Department"], th[aria-label="Full Name"], td[role="cell"]:nth-child(5), td[role="cell"]:nth-child(6) {
+          display: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- Header moved from persons.component.html -->
+    <div class="header">
+      <div class="header-content" style="background:#373151; color:#fff; padding:32px 0 16px 0; border-bottom:4px solid #7c183c; box-shadow:0 2px 8px rgba(44,42,41,0.08); width:100vw; margin-left:calc(-50vw + 50%); margin-top:0;">
+        <div style="max-width:1200px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+          <div style="min-width:220px; flex:1 1 300px;">
+            <span class="header-logo" style="font-family:'Merriweather','Georgia',serif; font-size:2.8rem; font-weight:700; letter-spacing:2px; text-shadow:1px 1px 0 #2c2a29, 0 2px 8px #7c183c44; word-break:break-word;">Persons Lookup</span>
+            <div class="header-desc" style="font-size:1.25rem; color:#e0c7d1; margin-top:0.5rem; font-family:'Open Sans','Arial',sans-serif; word-break:break-word;">Find civil service staff by name, department, and more.</div>
+          </div>
+          <nav class="header-nav" style="display:flex; gap:32px; flex-wrap:wrap; min-width:180px;">
+            <a href="#" style="color:#e0c7d1; font-size:1.1rem; text-decoration:none; font-weight:500;">Directory Home</a>
+            <a href="#" style="color:#e0c7d1; font-size:1.1rem; text-decoration:none; font-weight:500;">Departments</a>
+          </nav>
+        </div>
+      </div>
+    </div>
     <app-root>Loading...</app-root>
+    <!-- Footer moved from persons.component.html -->
+    <footer class="footer" style="width:100vw; margin-left:calc(-50vw + 50%);">
+      <div class="footer-content" style="background:#373151; color:#e0c7d1; padding:32px 0 24px 0; border-top:2px solid #7c183c; margin-bottom:0;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:48px; justify-content:space-between;">
+          <div style="flex:1 1 200px; min-width:180px;">
+            <div style="font-family:'Merriweather','Georgia',serif; font-size:1.2rem; font-weight:700; color:#fff; margin-bottom:0.75rem;">Popular</div>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li><a href="#" style="color:#e0c7d1; text-decoration:none; font-size:1rem; display:block; margin-bottom:0.5rem;">What's on in Persons Lookup</a></li>
+              <li><a href="#" style="color:#e0c7d1; text-decoration:none; font-size:1rem; display:block; margin-bottom:0.5rem;">Contact us</a></li>
+            </ul>
+          </div>
+          <div style="flex:1 1 200px; min-width:180px;">
+            <div style="font-family:'Merriweather','Georgia',serif; font-size:1.2rem; font-weight:700; color:#fff; margin-bottom:0.75rem;">Persons Lookup</div>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li><a href="#" style="color:#e0c7d1; text-decoration:none; font-size:1rem; display:block; margin-bottom:0.5rem;">Directory Home</a></li>
+              <li><a href="#" style="color:#e0c7d1; text-decoration:none; font-size:1rem; display:block; margin-bottom:0.5rem;">Departments</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

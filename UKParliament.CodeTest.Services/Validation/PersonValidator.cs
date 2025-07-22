@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Ganss.Xss;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,15 @@ namespace UKParliament.CodeTest.Services.Validation
         {
             RuleFor(p => p.FirstName)
                 .NotEmpty().WithMessage("*")
-                .MinimumLength(2).WithMessage("Must be at least 2 characters.");
+                .MinimumLength(2).WithMessage("Must be at least 2 characters.")
+                .MaximumLength(100)
+                .Must(input => IsSanitized(input)).WithMessage("Unsafe input detected.");
 
             RuleFor(p => p.LastName)
                 .NotEmpty().WithMessage("*")
-                .MinimumLength(2).WithMessage("Must be at least 2 characters.");
+                .MinimumLength(2).WithMessage("Must be at least 2 characters.")
+                .MaximumLength(100)
+                .Must(input => IsSanitized(input)).WithMessage("Unsafe input detected.");
 
             RuleFor(p => p.DepartmentId)
                 .NotEmpty().WithMessage("*");
@@ -26,7 +31,8 @@ namespace UKParliament.CodeTest.Services.Validation
             RuleFor(p => p.Description)
                 .NotEmpty().WithMessage("*")
                 .MinimumLength(2).WithMessage("Must be at least 2 characters.")
-                .MaximumLength(1000).WithMessage("Too long (max 1000 characters).");
+                .MaximumLength(1000).WithMessage("Too long (max 1000 characters).")
+                .Must(input => IsSanitized(input)).WithMessage("Unsafe input detected.");
 
             RuleFor(x => x.DOB)
                 .NotNull().WithMessage("*")
@@ -35,6 +41,15 @@ namespace UKParliament.CodeTest.Services.Validation
                 .Must(dob => dob == null || dob <= DateOnly.FromDateTime(DateTime.Today.AddYears(-18)))
                 .WithMessage("Must be at least 18 years old.");
         }
-    }
 
+        // Use HtmlSanitizer to check for unsafe input
+        private bool IsSanitized(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input)) return true;
+            var sanitizer = new HtmlSanitizer();
+            var sanitized = sanitizer.Sanitize(input);
+            // If sanitized differs from input, it contained unsafe content
+            return sanitized == input;
+        }
+    }
 }

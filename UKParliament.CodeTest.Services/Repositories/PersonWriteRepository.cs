@@ -34,6 +34,11 @@ namespace UKParliament.CodeTest.Services.Repositories
         {
             try
             {
+                // Sanitize fields before validation and saving
+                person.FirstName = Services.Validation.SanitizationHelper.Sanitize(person.FirstName);
+                person.LastName = Services.Validation.SanitizationHelper.Sanitize(person.LastName);
+                person.Description = Services.Validation.SanitizationHelper.Sanitize(person.Description);
+
                 var validator = new Services.Validation.PersonValidator();
                 var validationResult = validator.Validate(person);
                 if (!validationResult.IsValid)
@@ -75,6 +80,11 @@ namespace UKParliament.CodeTest.Services.Repositories
         {
             try
             {
+                // Sanitize fields before validation and saving
+                updatedPerson.FirstName = Services.Validation.SanitizationHelper.Sanitize(updatedPerson.FirstName);
+                updatedPerson.LastName = Services.Validation.SanitizationHelper.Sanitize(updatedPerson.LastName);
+                updatedPerson.Description = Services.Validation.SanitizationHelper.Sanitize(updatedPerson.Description);
+
                 var validator = new Services.Validation.PersonValidator();
                 var validationResult = validator.Validate(updatedPerson);
                 if (!validationResult.IsValid)

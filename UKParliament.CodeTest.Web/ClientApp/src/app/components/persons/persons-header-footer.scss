@@ -1,0 +1,102 @@
+/* Reset and base */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container that defines vertical flex layout */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header — if fixed, uncomment the styles below */
+.header {
+  background: #373151;
+  color: #fff;
+  /* position: fixed;   uncomment if you want header sticky */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  z-index: 100;
+}
+
+/* Main content fills available vertical space */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  /* If header is fixed, add margin-top equal to header height */
+  /* margin-top: 80px; */
+}
+
+/* Footer styling */
+.footer {
+  background: #373151;
+  color: #e0c7d1;
+  padding: 32px 0 24px;
+  font-size: 1rem;
+  border-top: 2px solid #7c183c;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: flex-start;
+}
+
+.footer-col {
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+
+.footer-title {
+  font-family: 'Merriweather', 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-link {
+  color: #e0c7d1;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .footer-columns {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-content {
+    padding: 0 8px;
+  }
+}
