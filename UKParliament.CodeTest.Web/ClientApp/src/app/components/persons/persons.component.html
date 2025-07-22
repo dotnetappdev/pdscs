@@ -8,7 +8,15 @@
 <!-- Persons Table -->
 <section aria-labelledby="persons-list-heading" style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
   <div style="flex: 2; min-width: 350px;">
-    <table *ngIf="persons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem;">
+    <!-- Filters -->
+    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center;">
+      <input type="text" [(ngModel)]="nameFilter" placeholder="Search first or last name..." style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 220px;" />
+      <select [(ngModel)]="departmentFilter" style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 180px;">
+        <option value="">All Departments</option>
+        <option *ngFor="let dept of departments" [value]="dept.name || dept.Name">{{ dept.name || dept.Name }}</option>
+      </select>
+    </div>
+    <table *ngIf="filteredPersons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem;">
       <caption class="sr-only">List of persons with first name, last name, date of birth, department, and full name</caption>
       <thead>
         <tr>
@@ -22,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let person of persons; let i = index">
+        <tr *ngFor="let person of filteredPersons; let i = index">
           <td>{{ person.id }}</td>
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>

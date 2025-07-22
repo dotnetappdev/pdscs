@@ -11,6 +11,26 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  nameFilter: string = '';
+  departmentFilter: string = '';
+  get filteredPersons(): any[] {
+    let filtered = this.persons;
+    if (this.nameFilter && this.nameFilter.trim()) {
+      const term = this.nameFilter.trim().toLowerCase();
+      filtered = filtered.filter(p => {
+        return (
+          (p.firstName && p.firstName.toLowerCase().includes(term)) ||
+          (p.lastName && p.lastName.toLowerCase().includes(term))
+        );
+      });
+    }
+    if (this.departmentFilter && this.departmentFilter !== '') {
+      filtered = filtered.filter(p =>
+        (p.departmentName || p.department?.name || p.department?.Name) === this.departmentFilter
+      );
+    }
+    return filtered;
+  }
   // Helper to get error messages as array for template
   getErrorMessages(errors: any): string[] {
     if (!errors) return [];
