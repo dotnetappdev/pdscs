@@ -34,6 +34,8 @@ public class Program
         builder.Services.AddScoped<PersonReadService>();
         builder.Services.AddScoped<PersonWriteService>();
         builder.Services.AddScoped<PersonMapperBase, PersonMapper>();
+        builder.Services.AddScoped<IDepartmentReadRepository, DepartmentReadService>();
+        builder.Services.AddScoped<IDepartmentWriteRepository, DepartmentWriteService>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

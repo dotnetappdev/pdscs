@@ -44,6 +44,12 @@
             <td *ngIf="!isMobileView" role="cell">
               <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.fullName">Edit</button>
               <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.fullName">Delete</button>
+<app-confirm-delete-modal
+  [show]="showDeleteModal"
+  [itemName]="selectedPersonToDelete?.firstName + ' ' + selectedPersonToDelete?.lastName"
+  (confirm)="confirmDelete()"
+  (cancel)="cancelDelete()">
+</app-confirm-delete-modal>
             </td>
           </tr>
         </tbody>
@@ -223,14 +229,3 @@
 
 <!-- ...existing code... -->
 
-<!-- Custom Delete Confirmation Modal -->
-<div *ngIf="showDeleteModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
-  <div class="modal-content">
-    <h4 id="deleteModalTitle" tabindex="0">Confirm Delete</h4>
-    <p aria-live="polite">Are you sure you want to delete <strong>{{ selectedPersonToDelete?.fullName }}</strong>?</p>
-    <div class="modal-actions">
-      <button type="button" (click)="confirmDelete()" class="ukp-btn ukp-btn-delete" aria-label="Confirm delete">Delete</button>
-      <button type="button" (click)="cancelDelete()" class="ukp-btn ukp-btn-cancel" aria-label="Cancel delete">Cancel</button>
-    </div>
-  </div>
-</div>

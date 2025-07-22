@@ -1,6 +1,6 @@
 // ...existing code...
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { PersonService } from '../../services/person.service';
+import { PersonsService } from './persons.service';
 import { PersonViewModel } from '../../models/person-view-model';
 import { Department } from '../../models/department.model';
 import { DepartmentService } from '../../services/department.service';
@@ -89,6 +89,7 @@ export class PersonsComponent implements OnInit {
   nameFilter: string = '';
   departmentFilter: string = '';
   get filteredPersons(): any[] {
+    if (!Array.isArray(this.persons) || this.persons.length === 0) return [];
     let filtered = this.persons;
     if (this.nameFilter && this.nameFilter.trim()) {
       const term = this.nameFilter.trim().toLowerCase();
@@ -100,11 +101,11 @@ export class PersonsComponent implements OnInit {
       });
     }
     if (this.departmentFilter && this.departmentFilter !== '') {
-      filtered = filtered.filter(p =>
-        (p.departmentName || p.department?.name || p.department?.Name) === this.departmentFilter
-      );
+      filtered = filtered.filter(p => {
+        const deptName = p.departmentName || p.department?.name || p.department?.Name || '';
+        return deptName === this.departmentFilter;
+      });
     }
-    console.log('filteredPersons:', filtered); // Debug log
     return filtered;
   }
   // Helper to get error messages as array for template
@@ -132,7 +133,7 @@ export class PersonsComponent implements OnInit {
   selectedPersonToDelete: any = null;
 
   constructor(
-    private personService: PersonService,
+    private personsService: PersonsService,
     private departmentService: DepartmentService,
     private cdr: ChangeDetectorRef
   ) {}
@@ -188,7 +189,7 @@ export class PersonsComponent implements OnInit {
   }
 
   getAllPersons() {
-    this.personService.getAll().subscribe({
+    this.personsService.getPersons().subscribe({
       next: (persons) => {
         console.log('Received persons:', persons); // Debug log added
         // Map DOB to JS Date for correct display in table
@@ -276,12 +277,12 @@ export class PersonsComponent implements OnInit {
       };
 
       if (isEdit) {
-        this.personService.update(sanitizedPerson.id!, payload).subscribe({
+        this.personsService.updatePerson(sanitizedPerson.id!, payload).subscribe({
           next: handleSuccess,
           error: handleError
         });
       } else {
-        this.personService.add(payload).subscribe({
+        this.personsService.addPerson(payload).subscribe({
           next: handleSuccess,
           error: handleError
         });
@@ -336,7 +337,7 @@ export class PersonsComponent implements OnInit {
 
   confirmDelete() {
     if (this.selectedPersonToDelete && this.selectedPersonToDelete.id) {
-      this.personService.delete(this.selectedPersonToDelete.id).subscribe({
+      this.personsService.deletePerson(this.selectedPersonToDelete.id).subscribe({
         next: () => {
           this.getAllPersons();
           this.showDeleteModal = false;

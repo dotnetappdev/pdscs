@@ -1,0 +1,10 @@
+<div *ngIf="show" class="modal-overlay">
+  <div class="modal-content">
+    <h3>Confirm Delete</h3>
+    <p>Are you sure you want to delete <strong>{{ itemName }}</strong>?</p>
+    <div class="modal-actions">
+      <button (click)="confirm.emit()" class="ukp-btn ukp-btn-delete">Delete</button>
+      <button (click)="cancel.emit()" class="ukp-btn ukp-btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
