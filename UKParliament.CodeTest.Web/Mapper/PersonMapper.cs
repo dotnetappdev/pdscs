@@ -7,15 +7,32 @@ using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Web.Mapper;
 using UKParliament.CodeTest.Web.ViewModels;
 
-namespace UKParliament.CodeTest.Services.Mapper
+namespace UKParliament.CodeTest.Web.Mapper
 {
     public class PersonMapper : PersonMapperBase
     {
-        public override PersonViewModel Map(Person person) => new PersonViewModel
+        public override PersonViewModel Map(Person person)
         {
-            FullName = person.FirstName + " " + person.LastName,
-            DOB = person.DOB
-        };
-
+            // Lookup department name from static list or context
+            string departmentName = string.Empty;
+            switch (person.DepartmentId)
+            {
+                case 1: departmentName = "Sales"; break;
+                case 2: departmentName = "Marketing"; break;
+                case 3: departmentName = "Finance"; break;
+                case 4: departmentName = "HR"; break;
+                default: departmentName = ""; break;
+            }
+            return new PersonViewModel
+            {
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                DOB = person.DOB,
+                DepartmentId = person.DepartmentId,
+                DepartmentName = departmentName,
+                FullName = person.FirstName + " " + person.LastName,
+                Description = person.Description
+            };
+        }
     }
 }

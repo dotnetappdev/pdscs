@@ -7,7 +7,7 @@ namespace UKParliament.CodeTest.Web.Mapper
     {
         public abstract PersonViewModel Map(Person person);
 
-        public virtual IEnumerable<PersonViewModel> MapList(IEnumerable<Person> people)
+        public IEnumerable<PersonViewModel> MapList(IEnumerable<Person> people)
         {
             return people.Select(Map);
         }

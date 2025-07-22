@@ -4,10 +4,13 @@ public class PersonViewModel
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string FullName { get; set; }
 
     public DateOnly DOB { get; set; }
 
-    public int DepartmentId { get; set; }  // Foreign key
-    public string DepartmentName { get; set; } // Assuming you want to include the department name
-    public string FullName { get; set; }
+    public int DepartmentId { get; set; }
+    public string DepartmentName { get; set; }
+
+    public string Description { get; set; }
+
 }

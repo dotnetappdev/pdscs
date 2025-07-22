@@ -12,8 +12,8 @@ public class Person
 
     public DateOnly DOB { get; set; }
 
+    public string Description { get; set; }
 
     public int DepartmentId { get; set; }  // Foreign key
-    public Department Department { get; set; }
 
 }

@@ -1,32 +1,69 @@
 <h2 id="persons-list-heading">Persons List</h2>
 
-<!-- Error Message -->
-<div *ngIf="errorMessage" class="error" role="alert" aria-live="assertive">
+<!-- Error Message: Only show for general (non-validation) errors -->
+<div *ngIf="errorMessage && !selectedPerson" class="error" role="alert" aria-live="assertive">
   {{ errorMessage }}
 </div>
 
 <!-- Persons Table -->
-<section aria-labelledby="persons-list-heading">
-  <table *ngIf="persons.length > 0; else noData" class="table" aria-describedby="persons-list-heading">
-    <caption class="sr-only">List of persons with first name, last name, and date of birth</caption>
-    <thead>
-      <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Date of Birth</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let person of persons">
-        <td>{{ person.firstName }}</td>
-        <td>{{ person.lastName }}</td>
-        <td>{{ person.DOB | date: 'longDate' }}</td>
-      </tr>
-    </tbody>
-  </table>
+<section aria-labelledby="persons-list-heading" style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+  <div style="flex: 2; min-width: 350px;">
+    <table *ngIf="persons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem;">
+      <caption class="sr-only">List of persons with first name, last name, date of birth, department, and full name</caption>
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Department</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of persons; let i = index">
+          <td>{{ person.firstName }}</td>
+          <td>{{ person.lastName }}</td>
+          <td>{{ person.DOB | date: 'longDate' }}</td>
+          <td>{{ person.departmentName }}</td>
+          <td>{{ person.fullName }}</td>
+          <td>
+            <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit">Edit</button>
+            <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" (click)="onAdd()" class="ukp-btn ukp-btn-add" style="margin-top: 1rem; font-size:0.95rem;">Add Person</button>
 
-  <!-- No Data Template -->
-  <ng-template #noData>
-    <p role="note">No persons available.</p>
-  </ng-template>
+    <!-- No Data Template -->
+    <ng-template #noData>
+      <p role="note" aria-live="polite">No persons available.</p>
+    </ng-template>
+  </div>
+  <div style="flex: 1; min-width: 300px; max-width: 400px; border-left: 1px solid #ccc; padding-left: 2rem; font-size:0.95rem; background: #f8f8fa;" *ngIf="selectedPerson">
+    <h3 style="font-size:1.1rem; color:#373151;">{{ selectedPerson.fullName ? 'Edit Person' : 'Add Person' }}</h3>
+    <form (ngSubmit)="onSave()" #editForm="ngForm">
+      <label for="firstName" style="font-size:0.95rem;">First Name</label>
+      <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required style="width:100%; font-size:0.95rem;" />
+      <br />
+      <label for="lastName" style="font-size:0.95rem;">Last Name</label>
+      <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required style="width:100%; font-size:0.95rem;" />
+      <br />
+      <label for="dob" style="font-size:0.95rem;">Date of Birth</label>
+      <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required style="width:100%; font-size:0.95rem;" />
+      <br />
+      <label for="department" style="font-size:0.95rem;">Department</label>
+      <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required style="width:100%; font-size:0.95rem;">
+        <option [ngValue]="null" disabled selected>Please select department...</option>
+        <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
+      </select>
+      <br />
+      <label for="description" style="font-size:0.95rem;">Description</label>
+      <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" style="width:100%; font-size:0.95rem; resize:vertical;" placeholder="Enter description..."></textarea>
+      <br />
+      <button type="submit" class="ukp-btn ukp-btn-save" style="margin-top:1rem; font-size:0.95rem;">Save</button>
+      <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="margin-left:0.5rem; font-size:0.95rem;">Cancel</button>
+    </form>
+  </div>
 </section>

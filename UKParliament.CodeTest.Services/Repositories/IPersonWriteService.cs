@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UKParliament.CodeTest.Data;
+using UKParliament.CodeTest.Web;
 
 namespace UKParliament.CodeTest.Services.Repositories
 {
@@ -11,8 +12,8 @@ namespace UKParliament.CodeTest.Services.Repositories
     {
         void SavePerson(Person person);
 
-        void AddPerson(Person person);
-        Task<Person> UpdatePerson(Person person);
+        ApiResponse<Person> AddPerson(Person person);
+        ApiResponse<Person> UpdatePerson(int id, Person person);
         Task DeletePerson(int id);
     }
 }

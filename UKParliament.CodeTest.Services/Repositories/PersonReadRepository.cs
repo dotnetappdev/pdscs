@@ -16,8 +16,8 @@ namespace UKParliament.CodeTest.Data.Repositories
         public Person GetById(int id) => _context.People.Find(id);
         public IEnumerable<Person> GetAll()
         {
-
             var test = _context.People.ToList();
+            Console.WriteLine($"Repository GetAll: {test.Count} people found");
             return test;
         }
     }

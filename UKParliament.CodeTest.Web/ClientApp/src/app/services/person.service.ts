@@ -18,4 +18,16 @@ export class PersonService {
     return this.http.get<PersonViewModel[]>(this.baseUrl + 'api/person');
   }
 
+  add(person: PersonViewModel): Observable<PersonViewModel> {
+    return this.http.post<PersonViewModel>(this.baseUrl + 'api/person', person);
+  }
+
+  update(id: number, person: PersonViewModel): Observable<PersonViewModel> {
+    return this.http.put<PersonViewModel>(this.baseUrl + `api/person/${id}`, person);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + `api/person/${id}`);
+  }
+
 }

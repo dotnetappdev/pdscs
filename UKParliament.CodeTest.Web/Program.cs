@@ -5,6 +5,7 @@ using UKParliament.CodeTest.Data.Repositories;
 using UKParliament.CodeTest.Services;
 using UKParliament.CodeTest.Services.Repositories;
 using UKParliament.CodeTest.Services.Validation;
+using UKParliament.CodeTest.Web.Mapper;
 namespace UKParliament.CodeTest.Web;
 
 public class Program
@@ -15,7 +16,11 @@ public class Program
 
         // Add services to the container.
 
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+            });
 
         builder.Services.AddValidatorsFromAssemblyContaining<PersonValidator>();
 
@@ -28,19 +33,12 @@ public class Program
         builder.Services.AddScoped<IPersonWriteService<Person>, PersonWriteRepository>();
         builder.Services.AddScoped<PersonReadService>();
         builder.Services.AddScoped<PersonWriteService>();
+        builder.Services.AddScoped<PersonMapperBase, PersonMapper>();
 
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
         var app = builder.Build();
-
-        // Create database so the data seeds
-        using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
-        {
-            using var context = serviceScope.ServiceProvider.GetRequiredService<PersonManagerContext>();
-            context.Database.EnsureCreated();
-            DbSeeder.SeedInMemoryData(context);
-
-        }
-
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -52,11 +50,24 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+
+        // Enable Swagger middleware
+        app.UseSwagger();
+        app.UseSwaggerUI();
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller}/{action=Index}/{id?}");
 
         app.MapFallbackToFile("index.html");
+
+        // Move seeding here, after app is built and before app.Run
+        using (var serviceScope = app.Services.CreateScope())
+        {
+            var context = serviceScope.ServiceProvider.GetRequiredService<PersonManagerContext>();
+            context.Database.EnsureCreated();
+            DbSeeder.SeedInMemoryData(context);
+            Console.WriteLine($"Seeded people count: {context.People.Count()}");
+        }
 
         app.Run();
     }
