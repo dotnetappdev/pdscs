@@ -18,7 +18,11 @@ namespace UKParliament.CodeTest.Services
         }
 
         public Person GetPerson(int id) => _readRepository.GetById(id);
-        public IEnumerable<Person> GetAllPersons() => _readRepository.GetAll();
+        public IEnumerable<Person> GetAllPersons() //=>
+        {
+            var test = _readRepository.GetAll();
+            return test;
+        }
 
         public Person GetById(int id)
         {

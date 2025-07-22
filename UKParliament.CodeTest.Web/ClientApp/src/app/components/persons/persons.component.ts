@@ -1,3 +1,4 @@
+// ...existing code...
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { PersonService } from '../../services/person.service';
 import { PersonViewModel } from '../../models/person-view-model';
@@ -11,6 +12,42 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  pageSize: number = 5;
+  currentPage: number = 1;
+  get pageSizeOptions(): number[] {
+    const total = this.filteredPersons.length;
+    const baseOptions = [5, 10, 15, 20];
+    // Always show 'All' (0)
+    if (total === 0) return [0];
+    // If total is in baseOptions, show 'All' and total only
+    if (baseOptions.includes(total)) {
+      return [0, total];
+    }
+    // Otherwise, show 'All', all baseOptions less than total, and total
+    const options = baseOptions.filter(opt => opt < total);
+    return [0, ...options, total];
+  }
+  get pagedPersons(): any[] {
+    // If pageSize equals total persons, show all filtered persons
+    if (this.pageSize === this.persons.length) {
+      console.log('pagedPersons (All):', this.filteredPersons); // Debug log
+      return this.filteredPersons;
+    }
+    const start = (this.currentPage - 1) * this.pageSize;
+    console.log('pagedPersons (Paged):', this.filteredPersons.slice(start, start + this.pageSize)); // Debug log
+    return this.filteredPersons.slice(start, start + this.pageSize);
+  }
+  get pageNumbers(): number[] {
+    // Prevent division by zero and invalid array length
+    if (!this.pageSize || this.pageSize <= 0) return [1];
+    const totalPages = Math.ceil(this.filteredPersons.length / this.pageSize);
+    if (!isFinite(totalPages) || totalPages < 1) return [1];
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  goToPage(page: number) {
+    if (page < 1 || page > this.pageNumbers.length) return;
+    this.currentPage = page;
+  }
   nameFilter: string = '';
   departmentFilter: string = '';
   get filteredPersons(): any[] {
@@ -29,6 +66,7 @@ export class PersonsComponent implements OnInit {
         (p.departmentName || p.department?.name || p.department?.Name) === this.departmentFilter
       );
     }
+    console.log('filteredPersons:', filtered); // Debug log
     return filtered;
   }
   // Helper to get error messages as array for template
@@ -59,8 +97,24 @@ export class PersonsComponent implements OnInit {
     private personService: PersonService,
     private departmentService: DepartmentService,
     private cdr: ChangeDetectorRef
-  ) {
+  ) {}
 
+
+  onPageSizeChange(newSize: number) {
+    if (newSize === 0) {
+      this.nameFilter = '';
+      this.departmentFilter = '';
+      this.pageSize = this.persons.length;
+      this.currentPage = 1;
+      this.getAllPersons();
+      setTimeout(() => {
+        this.cdr.detectChanges();
+      }, 0);
+    } else {
+      this.pageSize = newSize || 5;
+      this.currentPage = 1;
+      this.cdr.detectChanges();
+    }
   }
 
   ngOnInit() {
@@ -93,6 +147,9 @@ export class PersonsComponent implements OnInit {
           dob: p.dob ? new Date(p.dob) : null
         }));
         this.cdr.detectChanges(); // ensure UI updates after async fetch
+        setTimeout(() => {
+          this.cdr.detectChanges();
+        }, 0); // Extra change detection for stubborn UI
       },
       error: (err) => {
         console.error('Error fetching persons:', err);

@@ -16,7 +16,7 @@
         <option *ngFor="let dept of departments" [value]="dept.name || dept.Name">{{ dept.name || dept.Name }}</option>
       </select>
     </div>
-    <table *ngIf="filteredPersons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem;">
+    <table *ngIf="pagedPersons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem;">
       <caption class="sr-only">List of persons with first name, last name, date of birth, department, and full name</caption>
       <thead>
         <tr>
@@ -30,11 +30,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let person of filteredPersons; let i = index">
+        <tr *ngFor="let person of pagedPersons; let i = index">
           <td>{{ person.id }}</td>
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
-          <td>{{ person.dob ? (person.dob | date: 'longDate') : '—' }}</td>
+          <td>{{ person.dob ? (person.dob | date: 'dd/MM/yyyy') : '—' }}</td>
           <td>{{ person.departmentName }}</td>
           <td>{{ person.fullName }}</td>
           <td>
@@ -44,6 +44,23 @@
         </tr>
       </tbody>
     </table>
+    <!-- Pagination Controls (below table) -->
+    <div class="pagination-bar clearfix">
+      <div style="display: flex; align-items: center; gap: 0.5rem; float: left;">
+        <select [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 100px;">
+          <option *ngFor="let size of pageSizeOptions" [value]="size === 0 ? persons.length : size">{{ size === 0 ? 'All' : size }}</option>
+        </select>
+        <span style="font-size:0.95rem; color:#333;">Total: {{ filteredPersons.length }}</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem; justify-content: center;">
+        <button type="button" (click)="goToPage(currentPage - 1)" [disabled]="pageNumbers.length === 1 || currentPage === 1">Previous</button>
+        <span style="display: flex; gap: 0.25rem;">
+          <button *ngFor="let page of pageNumbers" type="button" (click)="goToPage(page)" [disabled]="pageNumbers.length === 1 || page === currentPage" [ngStyle]="{ 'font-weight': page === currentPage ? 'bold' : 'normal', 'background': page === currentPage ? '#eee' : 'inherit' }">{{ page }}</button>
+        </span>
+        <button type="button" (click)="goToPage(currentPage + 1)" [disabled]="pageNumbers.length === 1 || currentPage === pageNumbers.length">Next</button>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
     <button type="button" (click)="onAdd()" class="ukp-btn ukp-btn-add" style="margin-top: 1rem; font-size:0.95rem;">Add Person</button>
 
     <!-- No Data Template -->
@@ -78,7 +95,7 @@
       </div>
       <div style="margin-bottom: 1.5rem;">
         <label for="dob" [ngStyle]="{'color': fieldErrors['dob'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}">
-          Date of Birth <span style="font-size:0.95rem; color:#666;">(yyyy-MM-dd)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          Date of Birth <span style="font-size:0.95rem; color:#666;">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
         </label>
         <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.dob" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
         <div *ngIf="fieldErrors['dob']">
@@ -113,12 +130,7 @@
           </ng-container>
         </div>
       </div>
-<style>
-  .field-error {
-    border: 2px solid #0074d9 !important;
-    box-shadow: 0 0 4px #0074d933;
-  }
-</style>
+<!-- Styles moved to persons.component.scss -->
       <div style="margin-top:2rem;">
         <div style="width:100%; color:#c00; font-size:0.95rem; margin-bottom:1rem; text-align:left; display:block;">Note: <span style="color:#c00;">*</span> means required</div>
         <div style="display:flex; gap:1rem;">
@@ -143,34 +155,4 @@
 </div>
 
 <!-- Add some basic modal styles -->
-<style>
-  .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  .modal-content {
-    background: #fff;
-    padding: 1.25rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
-    min-width: 260px;
-    max-width: 340px;
-    min-height: 120px;
-    max-height: 220px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .modal-content .modal-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-</style>
+<!-- Styles moved to persons.component.scss -->
