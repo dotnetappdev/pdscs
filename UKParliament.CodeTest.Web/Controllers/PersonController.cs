@@ -68,6 +68,10 @@ public class PersonController : ControllerBase
         {
             return Ok();
         }
+        else if (api.StatusCode == HttpStatusCode.Created)
+        {
+            return Ok();
+        }
         else
         {
             return BadRequest(new { message = api.Message });

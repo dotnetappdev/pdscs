@@ -3,6 +3,7 @@ import { PersonService } from '../../services/person.service';
 import { PersonViewModel } from '../../models/person-view-model';
 import { Department } from '../../models/department.model';
 import { DepartmentService } from '../../services/department.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-persons',
@@ -42,6 +43,7 @@ export class PersonsComponent implements OnInit {
   getAllPersons() {
     this.personService.getAll().subscribe({
       next: (persons) => {
+        console.log('Received persons:', persons); // Debug log added
         this.persons = persons;
         this.cdr.detectChanges(); // ensure UI updates after async fetch
       },
