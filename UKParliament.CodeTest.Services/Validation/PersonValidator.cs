@@ -20,6 +20,10 @@ namespace UKParliament.CodeTest.Services.Validation
                 .NotEmpty().WithMessage("Last Name is required.")
                 .MinimumLength(4).WithMessage("Last Name must be at least 2 characters long.");
 
+            RuleFor(p => p.Description)
+               .NotEmpty().WithMessage("Description is required.")
+               .MinimumLength(4).WithMessage("Description must be at least 2 characters long.");
+
             RuleFor(x => x.DOB)
                 .Must(dob => dob != null)
                 .WithMessage("Must not be null.")
