@@ -1,4 +1,6 @@
-﻿namespace UKParliament.CodeTest.Data;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace UKParliament.CodeTest.Data;
 
 public class Person
 {
@@ -12,6 +14,7 @@ public class Person
 
     public DateOnly? DOB { get; set; }
 
+    [MaxLength(1000)]
     public string Description { get; set; }
 
     public int DepartmentId { get; set; }  // Foreign key

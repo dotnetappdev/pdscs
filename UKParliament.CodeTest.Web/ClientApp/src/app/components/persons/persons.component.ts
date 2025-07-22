@@ -11,6 +11,22 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  // Helper to get error messages as array for template
+  getErrorMessages(errors: any): string[] {
+    if (!errors) return [];
+    let msgs: string[] = [];
+    if (Array.isArray(errors)) {
+      msgs = errors;
+    } else if (typeof errors === 'string') {
+      if (errors.includes('.')) {
+        msgs = errors.split('.').map(e => e.trim()).filter(e => e);
+      } else {
+        msgs = [errors];
+      }
+    }
+    // Remove leading asterisk from each error message
+    return msgs.map(e => e.replace(/^\*/, '').trim()).filter(e => e);
+  }
   persons: any[] = [];
   selectedPerson: any = null;
   errorMessage: string = '';
@@ -73,18 +89,19 @@ export class PersonsComponent implements OnInit {
   }
 
   formatError(err: any): string {
-    // Format error messages as needed
     return err?.message || 'Unknown error occurred';
   }
 
   onSave() {
     if (this.selectedPerson) {
+      // Always clear field errors before save
+      this.fieldErrors = {};
       const payload: any = {
         FirstName: this.selectedPerson?.firstName ?? '',
         LastName: this.selectedPerson?.lastName ?? '',
         Description: this.selectedPerson?.description ?? '',
         DepartmentId: this.selectedPerson?.departmentId ?? 0,
-        DOB: this.selectedPerson?.DOB ? this.formatDateForBackend(this.selectedPerson?.DOB) : null
+        DOB: this.selectedPerson?.dob ? this.formatDateForBackend(this.selectedPerson?.dob) : null
       };
       console.log('Payload sent to backend:', payload);
 
@@ -100,7 +117,7 @@ export class PersonsComponent implements OnInit {
           'LastName': 'lastName',
           'Description': 'description',
           'DepartmentId': 'departmentId',
-          'DOB': 'DOB'
+          'DOB': 'dob'
         };
         if (err?.error) {
           const errors = err.error.errors || err.error.ModelState || err.error;
@@ -135,11 +152,18 @@ export class PersonsComponent implements OnInit {
     }
   }
 
+  onInputChange(field: string) {
+    // Clear field error for this field on input
+    if (this.fieldErrors[field]) {
+      this.fieldErrors[field] = '';
+    }
+  }
+
   onEdit(person: any) {
     // Clone to avoid editing the array object directly
     this.selectedPerson = { ...person };
-    if (!person.DOB) {
-      this.selectedPerson.DOB = null; // Ensure date picker is empty if DOB is missing
+    if (!person.dob) {
+      this.selectedPerson.dob = null; // Ensure date picker is empty if dob is missing
     }
   }
 
@@ -191,7 +215,7 @@ export class PersonsComponent implements OnInit {
     this.selectedPerson = {
       firstName: '',
       lastName: '',
-      DOB: null, // Ensure date picker is empty
+      dob: null, // Ensure date picker is empty
       departmentId: 0,
       description: ''
     };

@@ -1,4 +1,6 @@
-﻿namespace UKParliament.CodeTest.Web.ViewModels;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace UKParliament.CodeTest.Web.ViewModels;
 
 public class PersonViewModel
 {
@@ -9,9 +11,12 @@ public class PersonViewModel
 
     public DateOnly? dob { get; set; }
 
+    [MaxLength(1000)]
+    public string? Description { get; set; }
+
     public int DepartmentId { get; set; }
     public string? DepartmentName { get; set; }
 
-    public string? Description { get; set; }
+
 
 }

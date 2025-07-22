@@ -23,7 +23,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let person of persons; let i = index">
-          <td>{{ person.id || person.Id }}</td> <!-- Debug: Show id -->
+          <td>{{ person.id }}</td>
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
           <td>{{ person.dob ? (person.dob | date: 'longDate') : '—' }}</td>
@@ -47,36 +47,76 @@
     <h3 style="font-size:1.1rem; color:#373151;">{{ selectedPerson.fullName ? 'Edit Person' : 'Add Person' }}</h3>
     <form (ngSubmit)="onSave()" #editForm="ngForm">
       <div style="margin-bottom: 1.5rem;">
-        <label for="firstName" style="font-size:1rem; font-weight:500;">First Name</label>
-        <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
-        <div *ngIf="fieldErrors['firstName']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['firstName'] }}</div>
+        <label for="firstName" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}">
+          First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        </label>
+        <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
+        <div *ngIf="fieldErrors['firstName']">
+          <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
+            <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+          </ng-container>
+        </div>
       </div>
       <div style="margin-bottom: 1.5rem;">
-        <label for="lastName" style="font-size:1rem; font-weight:500;">Last Name</label>
-        <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
-        <div *ngIf="fieldErrors['lastName']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['lastName'] }}</div>
+        <label for="lastName" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}">
+          Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        </label>
+        <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
+        <div *ngIf="fieldErrors['lastName']">
+          <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
+            <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+          </ng-container>
+        </div>
       </div>
       <div style="margin-bottom: 1.5rem;">
-        <label for="dob" style="font-size:1rem; font-weight:500;">Date of Birth <span style="font-size:0.95rem; color:#666;">(yyyy-MM-dd)</span></label>
-        <input id="dob" name="DOB" type="date" [(ngModel)]="selectedPerson.DOB" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
-        <div *ngIf="fieldErrors['DOB']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['DOB'] }}</div>
+        <label for="dob" [ngStyle]="{'color': fieldErrors['dob'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}">
+          Date of Birth <span style="font-size:0.95rem; color:#666;">(yyyy-MM-dd)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        </label>
+        <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.dob" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" />
+        <div *ngIf="fieldErrors['dob']">
+          <ng-container *ngFor="let err of getErrorMessages(fieldErrors['dob'])">
+            <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+          </ng-container>
+        </div>
       </div>
       <div style="margin-bottom: 1.5rem;">
-        <label for="departmentId" style="font-size:1rem; font-weight:500;">Department</label>
-        <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required style="width:100%; font-size:1rem; margin-bottom:0.25rem;">
+        <label for="departmentId" [ngStyle]="{'color': fieldErrors['departmentId'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}">
+          Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        </label>
+        <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;">
           <option [ngValue]="null" disabled selected>Please select department...</option>
           <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
         </select>
-        <div *ngIf="fieldErrors['departmentId']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['departmentId'] }}</div>
+        <div *ngIf="fieldErrors['departmentId']">
+          <ng-container *ngFor="let err of getErrorMessages(fieldErrors['departmentId'])">
+            <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+          </ng-container>
+        </div>
       </div>
       <div style="margin-bottom: 1.5rem;">
-        <label for="description" style="font-size:1rem; font-weight:500;">Description</label>
-        <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..."></textarea>
-        <div *ngIf="fieldErrors['description']" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">{{ fieldErrors['description'] }}</div>
+        <label for="description" [ngStyle]="{'color': fieldErrors['description'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}">
+          Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        </label>
+        <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')"></textarea>
+        <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.description?.length || 0 }}/1000</div>
+        <div *ngIf="fieldErrors['description']">
+          <ng-container *ngFor="let err of getErrorMessages(fieldErrors['description'])">
+            <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+          </ng-container>
+        </div>
       </div>
-      <div style="margin-top:2rem; display:flex; gap:1rem;">
-        <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem;">Save</button>
-        <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem;">Cancel</button>
+<style>
+  .field-error {
+    border: 2px solid #0074d9 !important;
+    box-shadow: 0 0 4px #0074d933;
+  }
+</style>
+      <div style="margin-top:2rem;">
+        <div style="width:100%; color:#c00; font-size:0.95rem; margin-bottom:1rem; text-align:left; display:block;">Note: <span style="color:#c00;">*</span> means required</div>
+        <div style="display:flex; gap:1rem;">
+          <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem;">Save</button>
+          <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem;">Cancel</button>
+        </div>
       </div>
     </form>
   </div>
