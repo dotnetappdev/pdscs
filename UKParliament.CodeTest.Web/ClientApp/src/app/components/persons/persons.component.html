@@ -86,7 +86,7 @@
           <label for="FirstName" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
             First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
+          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" (input)="onInputChange('firstName')" />
           <div *ngIf="fieldErrors['firstName']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
@@ -97,10 +97,10 @@
           <label for="LastName" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
             Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
+          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" (input)="onInputChange('lastName')" />
           <div *ngIf="fieldErrors['lastName']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
-              <span class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
             </ng-container>
           </div>
         </div>

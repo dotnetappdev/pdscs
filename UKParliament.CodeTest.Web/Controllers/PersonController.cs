@@ -53,6 +53,10 @@ public class PersonController : ControllerBase
         {
             return Ok();
         }
+        if (api.StatusCode == HttpStatusCode.Accepted)
+        {
+            return Accepted();
+        }
         else
         {
             // Always return errors as { errors: { field: [messages] } }
