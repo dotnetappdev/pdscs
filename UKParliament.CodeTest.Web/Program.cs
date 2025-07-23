@@ -6,13 +6,27 @@ using UKParliament.CodeTest.Services;
 using UKParliament.CodeTest.Services.Repositories;
 using UKParliament.CodeTest.Services.Validation;
 using UKParliament.CodeTest.Web.Mapper;
+using Serilog;
 namespace UKParliament.CodeTest.Web;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+
+        // Configure Serilog
+        Log.Logger = new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .WriteTo.File(
+                path: "logs/{Year}/{Month}/{Day}.txt",
+                rollingInterval: RollingInterval.Day,
+                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+            .CreateLogger();
+
         var builder = WebApplication.CreateBuilder(args);
+
+        // Replace default logging with Serilog
+        builder.Host.UseSerilog();
 
         // Add services to the container.
 

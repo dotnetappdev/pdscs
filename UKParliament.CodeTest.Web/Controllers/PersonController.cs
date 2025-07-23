@@ -8,6 +8,7 @@ using UKParliament.CodeTest.Web.Mapper;
 using UKParliament.CodeTest.Web.ViewModels;
 
 namespace UKParliament.CodeTest.Web.Controllers;
+using Serilog;
 
 [ApiController]
 // Use explicit route for clarity
@@ -17,12 +18,14 @@ public class PersonController : ControllerBase
     private readonly IPersonReadService<Person> _readService;
     private readonly IPersonWriteService<Person> _writeService;
     private readonly PersonMapperBase _mapper;
+    private readonly ILogger _logger;
 
     public PersonController(IPersonReadService<Person> readService, IPersonWriteService<Person> writeService, PersonMapperBase mapper)
     {
         _readService = readService;
         _writeService = writeService;
         _mapper = mapper;
+        _logger = Log.ForContext<PersonController>();
     }
 
     [HttpPut("{id:int}")]
@@ -93,10 +96,12 @@ public class PersonController : ControllerBase
         var api = _writeService.AddPerson(person);
         if (api.StatusCode == HttpStatusCode.OK)
         {
+            _logger.Information("Person added successfully: {@Person}", person);
             return Ok();
         }
         else if (api.StatusCode == HttpStatusCode.Created)
         {
+            _logger.Information("Person created successfully: {@Person}", person);
             return Ok();
         }
         else
@@ -105,15 +110,17 @@ public class PersonController : ControllerBase
             var errors = api.GetType().GetProperty("Errors")?.GetValue(api);
             if (errors is IDictionary<string, string[]> fieldErrors && fieldErrors.Count > 0)
             {
-                // Ensure all errors have field names
+                _logger.Warning("Validation errors when adding person: {@Errors}", fieldErrors);
                 return BadRequest(new { message = api.Message, errors = fieldErrors });
             }
             // If error is a string, treat as general error
             if (errors is string msg && !string.IsNullOrWhiteSpace(msg))
             {
                 var generalErrors = new Dictionary<string, string[]> { { "General", new[] { msg } } };
+                _logger.Warning("General error when adding person: {Error}", msg);
                 return BadRequest(new { message = api.Message, errors = generalErrors });
             }
+            _logger.Error("Unknown error when adding person: {Message}", api.Message);
             return BadRequest(new { message = api.Message });
         }
 

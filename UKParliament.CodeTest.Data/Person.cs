@@ -6,16 +6,17 @@ public class Person
 {
     public int Id { get; set; }
 
-    public string FirstName { get; set; }
 
-    public string LastName { get; set; }
+    public required string FirstName { get; set; }
+
+    public required string LastName { get; set; }
 
     public string FullName => $"{FirstName} {LastName}";
 
     public DateOnly? DOB { get; set; }
 
     [MaxLength(1000)]
-    public string Description { get; set; }
+    public required string Description { get; set; }
 
     public int DepartmentId { get; set; }  // Foreign key
 

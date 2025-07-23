@@ -3,30 +3,48 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Services.Repositories;
+using Serilog;
 
 namespace UKParliament.CodeTest.Services
 {
     public class DepartmentReadService : IDepartmentReadRepository
     {
         private readonly PersonManagerContext _context;
-        public DepartmentReadService(PersonManagerContext context)
+        private readonly ILogger _logger;
+        public DepartmentReadService(PersonManagerContext context, ILogger logger)
         {
             _context = context;
+            _logger = logger.ForContext<DepartmentReadService>();
         }
 
         public async Task<IEnumerable<Department>> GetAllAsync()
         {
-            // Replace with async EF call in real code
-            var departments = await _context.Departments.ToListAsync();
-            return departments;
+            try
+            {
+                var departments = await _context.Departments.ToListAsync();
+                return departments;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Error getting all departments");
+                throw;
+            }
         }
 
         public async Task<Department> GetByIdAsync(int id)
         {
-            // Replace with async EF call in real code
-            var record = await _context.Departments.FindAsync(id);
-            return record;
-
+            try
+            {
+                var record = await _context.Departments.FindAsync(id);
+                if (record == null)
+                    throw new KeyNotFoundException($"Department with id {id} not found.");
+                return record;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Error getting department by id {id}");
+                throw;
+            }
         }
     }
 }

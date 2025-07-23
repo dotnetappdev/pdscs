@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Serilog;
 using System.Threading.Tasks;
 using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Web;
@@ -12,21 +13,42 @@ namespace UKParliament.CodeTest.Services.Repositories
     public class PersonWriteRepository : IPersonWriteService<Person>
     {
         private readonly PersonManagerContext _context;
-        public PersonWriteRepository(PersonManagerContext context) => _context = context;
+        private readonly ILogger _logger;
+        public PersonWriteRepository(PersonManagerContext context, ILogger logger)
+        {
+            _context = context;
+            _logger = logger.ForContext<PersonWriteRepository>();
+        }
 
 
         public void SavePerson(Person person)
         {
-            _context.People.Add(person);
-            _context.SaveChanges();
+            try
+            {
+                _context.People.Add(person);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error saving person");
+                throw;
+            }
         }
         public void Delete(int id)
         {
-            var person = _context.People.Find(id);
-            if (person != null)
+            try
             {
-                _context.People.Remove(person);
-                _context.SaveChanges();
+                var person = _context.People.Find(id);
+                if (person != null)
+                {
+                    _context.People.Remove(person);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Error deleting person with id {id}");
+                throw;
             }
         }
 
@@ -69,6 +91,7 @@ namespace UKParliament.CodeTest.Services.Repositories
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, "Error adding person");
                 return ApiResponse<Person>.Failure(
                     ex.Message.ToString(),
                     HttpStatusCode.InternalServerError
@@ -124,8 +147,9 @@ namespace UKParliament.CodeTest.Services.Repositories
                     HttpStatusCode.OK
                 );
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(ex, $"Error updating person with id {id}");
                 return ApiResponse<Person>.Failure(
                     "An error occurred while updating the person.",
                     HttpStatusCode.InternalServerError
@@ -158,7 +182,7 @@ namespace UKParliament.CodeTest.Services.Repositories
             }
             catch (Exception ex)
             {
-                // Optionally log ex here
+                _logger.Error(ex, $"Error deleting person with id {id}");
                 return ApiResponse<Person>.Failure(
                     "An error occurred while deleting the person.",
                     HttpStatusCode.InternalServerError
