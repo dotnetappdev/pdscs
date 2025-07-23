@@ -1914,3 +1914,749 @@ System.ArgumentException: An item with the same key has already been added. Key:
 [2025-07-23 17:57:29 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web) in 1.9149ms
 [2025-07-23 17:57:29 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
 [2025-07-23 17:57:29 INF] Request finished HTTP/1.1 DELETE https://localhost:44416/api/department/10 - 404 null application/problem+json; charset=utf-8 3.0653ms
+[2025-07-23 18:04:43 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:04:43 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:04:43 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:04:43 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:04:43 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:04:43 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:04:43 INF] Hosting environment: Development
+[2025-07-23 18:04:43 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:04:46 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:04:50 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:04:50 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:04:50 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4325.9856ms
+[2025-07-23 18:04:53 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:04:57 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:04:57 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4081.9562ms
+[2025-07-23 18:05:00 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:05:03 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:05:03 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:05:03 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 3277.996ms
+[2025-07-23 18:05:04 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:05:04 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:05:04 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:04 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:04 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:04 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:04 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:04 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:04 INF] Repository GetAll: 40 people found
+[2025-07-23 18:05:04 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:05:04 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:05:04 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 152.8083ms
+[2025-07-23 18:05:04 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 152.8087ms
+[2025-07-23 18:05:04 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:04 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:04 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 303.1221ms
+[2025-07-23 18:05:04 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 303.6424ms
+[2025-07-23 18:05:06 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:05:06 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:05:06 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:06 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:06 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:06 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:06 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:06 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:06 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:05:06 INF] Repository GetAll: 40 people found
+[2025-07-23 18:05:06 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:05:06 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 36.5438ms
+[2025-07-23 18:05:06 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:06 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 40.6608ms
+[2025-07-23 18:05:06 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 38.85ms
+[2025-07-23 18:05:06 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:06 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 43.3967ms
+[2025-07-23 18:05:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:05:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:05:27 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:27 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:27 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:27 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:27 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:27 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:05:27 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 3.8591ms
+[2025-07-23 18:05:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 9.8031ms
+[2025-07-23 18:05:27 INF] Repository GetAll: 40 people found
+[2025-07-23 18:05:27 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:05:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 5.535ms
+[2025-07-23 18:05:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 10.4553ms
+[2025-07-23 18:05:32 INF] Request starting HTTP/1.1 DELETE https://localhost:44416/api/department/8 - null 0
+[2025-07-23 18:05:32 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:32 INF] Route matched with {action = "DeleteDepartment", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteDepartment(Int32) on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:05:32 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:05:36 INF] Saved 1 entities to in-memory store.
+[2025-07-23 18:05:36 INF] Executing StatusCodeResult, setting HTTP status code 204
+[2025-07-23 18:05:36 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web) in 3400.6292ms
+[2025-07-23 18:05:36 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
+[2025-07-23 18:05:36 INF] Request finished HTTP/1.1 DELETE https://localhost:44416/api/department/8 - 204 null null 3414.3751ms
+[2025-07-23 18:16:47 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:16:47 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:16:47 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:16:48 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:16:48 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:16:48 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:16:48 INF] Hosting environment: Development
+[2025-07-23 18:16:48 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:16:49 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:16:53 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:16:53 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:16:53 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4479.8757ms
+[2025-07-23 18:16:57 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:17:01 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:17:01 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4103.7216ms
+[2025-07-23 18:17:04 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:17:06 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:17:06 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:17:06 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 2259.9488ms
+[2025-07-23 18:17:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:17:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:17:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:17:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:17:07 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:17:07 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:17:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:17:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:17:07 INF] Repository GetAll: 40 people found
+[2025-07-23 18:17:07 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:17:07 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:17:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 165.5119ms
+[2025-07-23 18:17:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 165.4085ms
+[2025-07-23 18:17:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:17:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:17:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 312.2656ms
+[2025-07-23 18:17:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 312.2657ms
+[2025-07-23 18:20:09 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:20:09 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:20:09 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:20:09 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:20:09 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:20:09 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:20:09 INF] Hosting environment: Development
+[2025-07-23 18:20:09 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:20:11 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:20:15 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:20:15 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:20:15 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4425.5917ms
+[2025-07-23 18:20:18 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:20:23 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:20:23 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4104.7004ms
+[2025-07-23 18:20:26 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:20:26 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:20:26 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:20:26 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 52.9304ms
+[2025-07-23 18:20:26 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:20:26 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:20:26 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:20:26 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:20:26 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:20:26 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:20:26 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:20:26 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:20:26 INF] Repository GetAll: 40 people found
+[2025-07-23 18:20:26 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:20:26 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:20:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 144.9914ms
+[2025-07-23 18:20:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 144.9907ms
+[2025-07-23 18:20:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:20:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:20:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 297.8081ms
+[2025-07-23 18:20:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 298.4447ms
+[2025-07-23 18:27:24 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:27:24 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:27:24 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:27:24 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:27:24 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:27:24 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:27:24 INF] Hosting environment: Development
+[2025-07-23 18:27:24 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:27:27 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:27:31 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:27:31 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:27:31 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4337.1238ms
+[2025-07-23 18:27:34 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:27:38 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:27:38 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4075.3711ms
+[2025-07-23 18:27:41 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:27:43 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:27:43 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:27:43 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 2175.5221ms
+[2025-07-23 18:27:44 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:27:44 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:27:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:27:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:27:44 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:27:44 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:27:44 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:27:44 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:27:44 INF] Repository GetAll: 40 people found
+[2025-07-23 18:27:44 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:27:44 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:27:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 165.9897ms
+[2025-07-23 18:27:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 165.9901ms
+[2025-07-23 18:27:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:27:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:27:44 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 303.2356ms
+[2025-07-23 18:27:44 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 303.1951ms
+[2025-07-23 18:29:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:29:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:29:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:29:07 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:29:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:29:07 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:29:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:29:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:29:07 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:29:07 INF] Repository GetAll: 40 people found
+[2025-07-23 18:29:07 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:29:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 46.7323ms
+[2025-07-23 18:29:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:29:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 52.559ms
+[2025-07-23 18:29:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 46.509ms
+[2025-07-23 18:29:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:29:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 53.3172ms
+[2025-07-23 18:30:35 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:30:35 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:30:35 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:30:36 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:30:36 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:30:36 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:30:36 INF] Hosting environment: Development
+[2025-07-23 18:30:36 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:30:37 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:30:41 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:30:42 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:30:42 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4430.0226ms
+[2025-07-23 18:30:45 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:30:49 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:30:49 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4064.1738ms
+[2025-07-23 18:30:52 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:30:52 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:30:52 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:30:52 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 18.6765ms
+[2025-07-23 18:30:52 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:30:52 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:30:53 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:30:53 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:30:53 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:30:53 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:30:53 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:30:53 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:30:53 INF] Repository GetAll: 40 people found
+[2025-07-23 18:30:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:30:53 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:30:53 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 152.2011ms
+[2025-07-23 18:30:53 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:30:53 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 152.4886ms
+[2025-07-23 18:30:53 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:30:53 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 285.4818ms
+[2025-07-23 18:30:53 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 287.2372ms
+[2025-07-23 18:31:05 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:31:05 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:31:05 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:31:05 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:31:05 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:31:05 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:31:05 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:31:05 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:31:05 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:31:05 INF] Repository GetAll: 40 people found
+[2025-07-23 18:31:05 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 32.416ms
+[2025-07-23 18:31:05 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:31:05 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:31:05 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 35.6233ms
+[2025-07-23 18:31:05 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 34.2704ms
+[2025-07-23 18:31:05 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:31:05 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 38.3784ms
+[2025-07-23 18:31:12 INF] Request starting HTTP/1.1 DELETE https://localhost:44416/api/department/8 - null 0
+[2025-07-23 18:31:12 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
+[2025-07-23 18:31:12 INF] Route matched with {action = "DeleteDepartment", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteDepartment(Int32) on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:31:12 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:31:14 INF] Saved 1 entities to in-memory store.
+[2025-07-23 18:31:14 INF] Executing StatusCodeResult, setting HTTP status code 204
+[2025-07-23 18:31:14 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web) in 1681.088ms
+[2025-07-23 18:31:14 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
+[2025-07-23 18:31:14 INF] Request finished HTTP/1.1 DELETE https://localhost:44416/api/department/8 - 204 null null 1694.6714ms
+[2025-07-23 18:34:10 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:34:10 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:34:10 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:34:10 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:34:10 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:34:10 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:34:10 INF] Hosting environment: Development
+[2025-07-23 18:34:10 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:34:12 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:34:16 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:34:16 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:34:16 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4479.9051ms
+[2025-07-23 18:34:19 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:34:23 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:34:23 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4098.3693ms
+[2025-07-23 18:34:26 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:34:27 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:34:27 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:34:27 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 42.6917ms
+[2025-07-23 18:34:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:34:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:34:28 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:34:28 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:34:28 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:34:28 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:34:28 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:34:28 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:34:28 INF] Repository GetAll: 40 people found
+[2025-07-23 18:34:28 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:34:28 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:34:28 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 160.1037ms
+[2025-07-23 18:34:28 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:34:28 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 160.1029ms
+[2025-07-23 18:34:28 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:34:28 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 538.1309ms
+[2025-07-23 18:34:28 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 538.5158ms
+[2025-07-23 18:40:33 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:40:33 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:40:33 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:40:33 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:40:33 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:40:33 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:40:33 INF] Hosting environment: Development
+[2025-07-23 18:40:33 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:40:35 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:40:39 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:40:39 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:40:39 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4440.177ms
+[2025-07-23 18:40:42 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:40:47 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:40:47 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4089.606ms
+[2025-07-23 18:40:50 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:40:50 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:40:50 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:40:50 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 49.6267ms
+[2025-07-23 18:40:50 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:40:50 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:40:50 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:40:50 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:40:50 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:40:50 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:40:50 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:40:50 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:40:50 INF] Repository GetAll: 40 people found
+[2025-07-23 18:40:50 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:40:50 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:40:50 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 142.7252ms
+[2025-07-23 18:40:50 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 144.9302ms
+[2025-07-23 18:40:50 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:40:50 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:40:50 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 283.5004ms
+[2025-07-23 18:40:50 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 283.6601ms
+[2025-07-23 18:42:06 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 87
+[2025-07-23 18:42:06 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:06 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:06 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"DOB":["*"]}
+[2025-07-23 18:42:06 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:06 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 587.247ms
+[2025-07-23 18:42:06 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:06 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 602.4077ms
+[2025-07-23 18:42:07 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 87
+[2025-07-23 18:42:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:07 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:07 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"DOB":["*"]}
+[2025-07-23 18:42:07 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 9.1884ms
+[2025-07-23 18:42:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:07 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 10.3492ms
+[2025-07-23 18:42:07 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 87
+[2025-07-23 18:42:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:07 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:07 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"DOB":["*"]}
+[2025-07-23 18:42:07 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.5331ms
+[2025-07-23 18:42:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:07 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 3.6179ms
+[2025-07-23 18:42:13 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:13 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:13 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:13 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DOB":["Must be at least 18 years old."]}
+[2025-07-23 18:42:13 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:13 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 4.2504ms
+[2025-07-23 18:42:13 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:13 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 5.141ms
+[2025-07-23 18:42:24 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:24 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:24 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:24 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:24 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:24 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 3.153ms
+[2025-07-23 18:42:24 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:24 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 4.2608ms
+[2025-07-23 18:42:25 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:25 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:25 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:25 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:25 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:25 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.4037ms
+[2025-07-23 18:42:25 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:25 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.96ms
+[2025-07-23 18:42:25 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:25 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:25 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:25 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:25 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:25 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.1617ms
+[2025-07-23 18:42:25 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:25 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.8286ms
+[2025-07-23 18:42:25 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:25 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:25 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:25 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:25 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:25 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.1068ms
+[2025-07-23 18:42:25 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:25 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.8777ms
+[2025-07-23 18:42:29 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:29 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:29 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:29 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:29 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:29 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.6523ms
+[2025-07-23 18:42:29 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:29 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.3095ms
+[2025-07-23 18:42:29 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:29 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:29 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:29 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:29 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:29 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.6687ms
+[2025-07-23 18:42:29 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:29 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 5.8453ms
+[2025-07-23 18:42:30 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:30 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:30 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:30 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:30 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.1514ms
+[2025-07-23 18:42:30 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.8476ms
+[2025-07-23 18:42:30 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:30 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:30 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:30 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:30 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.5845ms
+[2025-07-23 18:42:30 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.2373ms
+[2025-07-23 18:42:30 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:30 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:30 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:30 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:30 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.3743ms
+[2025-07-23 18:42:30 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.0209ms
+[2025-07-23 18:42:30 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:30 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:30 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:30 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:30 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.7281ms
+[2025-07-23 18:42:30 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:30 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.4968ms
+[2025-07-23 18:42:32 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:32 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:32 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:32 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:32 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:32 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.5487ms
+[2025-07-23 18:42:32 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:32 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 3.5028ms
+[2025-07-23 18:42:32 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:32 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:32 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:32 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:32 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:32 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.5922ms
+[2025-07-23 18:42:32 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:32 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.2863ms
+[2025-07-23 18:42:33 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:33 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:33 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.7645ms
+[2025-07-23 18:42:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.4645ms
+[2025-07-23 18:42:33 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:33 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:33 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.7875ms
+[2025-07-23 18:42:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.6009ms
+[2025-07-23 18:42:33 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:33 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:33 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.1305ms
+[2025-07-23 18:42:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.8455ms
+[2025-07-23 18:42:33 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:33 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:33 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.8061ms
+[2025-07-23 18:42:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.5999ms
+[2025-07-23 18:42:33 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:33 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:33 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.591ms
+[2025-07-23 18:42:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:33 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.2902ms
+[2025-07-23 18:42:34 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:34 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:34 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:34 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:34 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:34 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.4661ms
+[2025-07-23 18:42:34 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:34 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.0938ms
+[2025-07-23 18:42:34 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:34 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:34 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:34 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:34 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:34 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.6175ms
+[2025-07-23 18:42:34 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:34 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.4666ms
+[2025-07-23 18:42:34 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:34 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:34 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:34 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:34 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:34 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.3602ms
+[2025-07-23 18:42:34 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:34 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.1036ms
+[2025-07-23 18:42:36 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:36 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:36 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:36 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:36 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:36 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.2486ms
+[2025-07-23 18:42:36 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:36 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.7662ms
+[2025-07-23 18:42:36 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:36 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:36 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:36 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:36 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:36 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 0.8307ms
+[2025-07-23 18:42:36 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:36 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.25ms
+[2025-07-23 18:42:36 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 95
+[2025-07-23 18:42:36 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:36 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:42:36 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."]}
+[2025-07-23 18:42:36 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:42:36 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.5544ms
+[2025-07-23 18:42:36 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:42:36 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.27ms
+[2025-07-23 18:45:13 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:45:13 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:45:13 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:45:14 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:45:14 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:45:14 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:45:14 INF] Hosting environment: Development
+[2025-07-23 18:45:14 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:45:15 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:45:20 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:45:20 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:45:20 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4378.8414ms
+[2025-07-23 18:45:23 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:45:27 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:45:27 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4099.3436ms
+[2025-07-23 18:45:30 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:45:30 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:45:30 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:45:30 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 83.2343ms
+[2025-07-23 18:45:31 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:45:31 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:45:31 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:45:31 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:45:31 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:45:31 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:45:31 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:45:31 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:45:31 INF] Repository GetAll: 40 people found
+[2025-07-23 18:45:31 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:45:31 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:45:31 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 176.1478ms
+[2025-07-23 18:45:31 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 177.2776ms
+[2025-07-23 18:45:31 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:45:31 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:45:31 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 356.8959ms
+[2025-07-23 18:45:31 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 356.739ms
+[2025-07-23 18:54:52 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:54:52 INF] Saved 49 entities to in-memory store.
+[2025-07-23 18:54:52 INF] User profile is available. Using 'C:\Users\davidb\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-23 18:54:53 INF] Now listening on: https://localhost:7048
+[2025-07-23 18:54:53 INF] Now listening on: http://localhost:5048
+[2025-07-23 18:54:53 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-23 18:54:53 INF] Hosting environment: Development
+[2025-07-23 18:54:53 INF] Content root path: D:\CivilService\pdscs\UKParliament.CodeTest.Web
+[2025-07-23 18:54:54 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:54:59 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-23 18:54:59 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:54:59 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4346.3528ms
+[2025-07-23 18:55:02 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:55:06 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-23 18:55:06 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4095.7692ms
+[2025-07-23 18:55:09 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-23 18:55:12 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-23 18:55:12 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-23 18:55:12 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 2549.7082ms
+[2025-07-23 18:55:12 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-23 18:55:12 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-23 18:55:12 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:12 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:12 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:12 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:12 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:55:12 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-23 18:55:12 INF] Repository GetAll: 40 people found
+[2025-07-23 18:55:12 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:55:12 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-23 18:55:12 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 149.3425ms
+[2025-07-23 18:55:12 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 149.3491ms
+[2025-07-23 18:55:12 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:12 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:12 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 300.8412ms
+[2025-07-23 18:55:12 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 300.8403ms
+[2025-07-23 18:55:29 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:29 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:29 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:29 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:29 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:29 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 165.8436ms
+[2025-07-23 18:55:29 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:29 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 178.7361ms
+[2025-07-23 18:55:38 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:38 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:38 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:38 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:38 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:38 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 20.4616ms
+[2025-07-23 18:55:38 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:38 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 21.8503ms
+[2025-07-23 18:55:41 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:41 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:41 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:41 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:41 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:41 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.7635ms
+[2025-07-23 18:55:41 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:41 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.8707ms
+[2025-07-23 18:55:42 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:42 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:42 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:42 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:42 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.8372ms
+[2025-07-23 18:55:42 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 3.3031ms
+[2025-07-23 18:55:42 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:42 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:42 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:42 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:42 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.2147ms
+[2025-07-23 18:55:42 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 3.2599ms
+[2025-07-23 18:55:42 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:42 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:42 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:42 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:42 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.5304ms
+[2025-07-23 18:55:42 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.2424ms
+[2025-07-23 18:55:42 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:42 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:42 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:42 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:42 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.4419ms
+[2025-07-23 18:55:42 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:42 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.3506ms
+[2025-07-23 18:55:43 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:43 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:43 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:43 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:43 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:43 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.5871ms
+[2025-07-23 18:55:43 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:43 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 12.5925ms
+[2025-07-23 18:55:44 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:44 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:44 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 0.9489ms
+[2025-07-23 18:55:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.5327ms
+[2025-07-23 18:55:44 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:44 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:44 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.2819ms
+[2025-07-23 18:55:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.0369ms
+[2025-07-23 18:55:44 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:44 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:44 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.3052ms
+[2025-07-23 18:55:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.9956ms
+[2025-07-23 18:55:44 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:44 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:44 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.3333ms
+[2025-07-23 18:55:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:44 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 2.0336ms
+[2025-07-23 18:55:47 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:47 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:47 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:47 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:47 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:47 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 0.9526ms
+[2025-07-23 18:55:47 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:47 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.724ms
+[2025-07-23 18:55:53 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:53 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:53 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:53 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:53 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:53 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.0746ms
+[2025-07-23 18:55:53 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:53 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.7366ms
+[2025-07-23 18:55:54 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 82
+[2025-07-23 18:55:54 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:54 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-23 18:55:54 WRN] Validation errors when adding person: {"FirstName":["*","Must be at least 2 characters."],"LastName":["*","Must be at least 2 characters."],"DepartmentId":["*"],"Description":["*","Must be at least 2 characters."],"DOB":["*"]}
+[2025-07-23 18:55:54 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-07-23 18:55:54 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 1.1343ms
+[2025-07-23 18:55:54 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-23 18:55:54 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/json; charset=utf-8 1.7945ms

@@ -78,6 +78,7 @@
         <p role="note" aria-live="polite" tabindex="0">No persons available.</p>
       </ng-template>
     </div>
+    <app-toast [show]="showToast" [message]="toastMessage"></app-toast>
     <div *ngIf="selectedPerson && !isMobileView" style="flex: 1; min-width: 300px; max-width: 400px; border-left: 1px solid #ccc; padding-left: 2rem; font-size:0.95rem; background: #f8f8fa;">
       <h3 style="font-size:1.1rem; color:#373151;" tabindex="0" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
       <form (ngSubmit)="onSave()" #editForm="ngForm" aria-label="Person details form">
@@ -107,7 +108,7 @@
           <label for="dob" [ngStyle]="{'color': fieldErrors['dob'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Date of Birth'" tabindex="0">
             Date of Birth <span style="font-size:0.95rem; color:#666;">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.dob" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
+          <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
           <div *ngIf="fieldErrors['dob']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['dob'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
@@ -118,7 +119,7 @@
           <label for="departmentId" [ngStyle]="{'color': fieldErrors['departmentId'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Department'" tabindex="0">
             Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
+          <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.DepartmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
             <option [ngValue]="null" disabled selected>Please select department...</option>
             <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
           </select>
@@ -132,8 +133,8 @@
           <label for="description" [ngStyle]="{'color': fieldErrors['description'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Description'" tabindex="0">
             Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
-          <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.description?.length || 0 }}/1000</div>
+          <textarea id="description" name="description" [(ngModel)]="selectedPerson.Description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
+          <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.Description?.length || 0 }}/1000</div>
           <div *ngIf="fieldErrors['description']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['description'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>

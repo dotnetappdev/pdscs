@@ -71,7 +71,5 @@
       </div>
     </form>
   </div>
-  <div *ngIf="showToast" class="toast-message">
-    {{ toastMessage }}
-  </div>
+  <app-toast [show]="showToast" [message]="toastMessage"></app-toast>
 </div>

@@ -1,0 +1,22 @@
+/* Toast message styles */
+.toast-message {
+  background: #7c3aed;
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  min-width: 220px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.15);
+  animation: fadeInOut 2.5s;
+  z-index: 1000;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}

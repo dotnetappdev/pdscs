@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { PersonsComponent } from './components/persons/persons.component';
 import { DepartmentComponent } from './components/departments/department.component';
 import { ConfirmDeleteModalModule } from './components/shared/confirm-delete-modal.module';
+import { ToastComponent } from './components/shared/toast.component';
 @NgModule({
   declarations: [
     AppComponent,
     PersonsComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    ToastComponent
   ],
   bootstrap: [AppComponent], imports: [BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     FormsModule,

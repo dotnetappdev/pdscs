@@ -17,7 +17,11 @@ export class DepartmentComponent implements OnInit {
   showToast: boolean = false;
 
   deleteDepartment(): void {
-    if (!this.selectedDepartment) return;
+    if (!this.selectedDepartment) {
+      console.error('deleteDepartment called but no selectedDepartment is set!');
+      this.deleteError = 'No department selected for deletion.';
+      return;
+    }
     this.departmentService.deleteDepartment(this.selectedDepartment.Id).subscribe({
       next: () => {
         this.departments = this.departments.filter(d => d.Id !== this.selectedDepartment!.Id);

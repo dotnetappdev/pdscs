@@ -12,6 +12,15 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  showToast = false;
+  toastMessage = '';
+  showToastMessage(message: string): void {
+    this.toastMessage = message;
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 2500);
+  }
   isMobileView: boolean = window.innerWidth <= 600;
   // Validate person input for SQL keywords and dangerous characters, return error object
   private validatePersonInput(person: any): { [key: string]: string } {
@@ -274,6 +283,11 @@ export class PersonsComponent implements OnInit {
         this.selectedPerson = null;  // clear selection
         this.getAllPersons();        // reload fresh data
         this.fieldErrors = {};      // clear field errors on success
+        if (isEdit) {
+          this.showToastMessage('Person updated successfully!');
+        } else {
+          this.showToastMessage('Person added successfully!');
+        }
       };
 
       if (isEdit) {
@@ -298,23 +312,48 @@ export class PersonsComponent implements OnInit {
   }
 
   onEdit(person: any) {
-    // Clone to avoid editing the array object directly
-    this.selectedPerson = { ...person };
-    // Set date picker value to yyyy-MM-dd string for input type=date
-    if (person.dob) {
-      const d = new Date(person.dob);
-      if (!isNaN(d.getTime())) {
-        // Format as yyyy-MM-dd
-        const day = String(d.getDate()).padStart(2, '0');
-        const month = String(d.getMonth() + 1).padStart(2, '0');
-        const year = d.getFullYear();
-        this.selectedPerson.dob = `${year}-${month}-${day}`;
-      } else {
-        this.selectedPerson.dob = null;
-      }
-    } else {
-      this.selectedPerson.dob = null;
+    // Find department by name (case-insensitive)
+    let deptName = person.DepartmentName ?? person.departmentName ?? person.department ?? '';
+    let deptId = person.DepartmentId ?? person.departmentId ?? person.departmentID ?? person.DepartmentID ?? 0;
+    if (!deptId && deptName && Array.isArray(this.departments)) {
+      const found = this.departments.find(
+        d => (d.Name ?? d.name ?? '').toLowerCase() === deptName.toLowerCase()
+      );
+      if (found) deptId = found.Id ?? found.id ?? 0;
     }
+    // Get description/notes
+    let desc = person.Description ?? person.description ?? person.Notes ?? person.notes ?? '';
+    // Set DOB as yyyy-MM-dd string for input type=date
+    let dobVal = person.DOB ?? person.dob ?? person.Dob ?? '';
+    let dobStr = '';
+    if (dobVal) {
+      const d = new Date(dobVal);
+      if (!isNaN(d.getTime())) {
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        dobStr = `${d.getFullYear()}-${month}-${day}`;
+      }
+    }
+    this.selectedPerson = {
+      Id: person.Id ?? person.id ?? 0,
+      FirstName: person.FirstName ?? person.firstName ?? '',
+      LastName: person.LastName ?? person.lastName ?? '',
+      DOB: dobStr,
+      DepartmentId: deptId,
+      DepartmentName: deptName,
+      Description: desc
+    };
+    console.log('Selected person for edit:', this.selectedPerson);
+  }
+
+  formatDateForInput(date: any): string {
+    if (!date) return '';
+    const d = new Date(date);
+    if (isNaN(d.getTime())) return '';
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 
   onDelete(person: any) {
@@ -342,6 +381,7 @@ export class PersonsComponent implements OnInit {
           this.getAllPersons();
           this.showDeleteModal = false;
           this.selectedPersonToDelete = null;
+          this.showToastMessage('Person deleted successfully!');
         },
         error: err => {
           console.error('Error deleting person:', err);
@@ -363,11 +403,11 @@ export class PersonsComponent implements OnInit {
 
   onAdd() {
     this.selectedPerson = {
-      firstName: '',
-      lastName: '',
-      dob: null, // Ensure date picker is empty
-      departmentId: 0,
-      description: ''
+      FirstName: '',
+      LastName: '',
+      DOB: '',
+      DepartmentId: 0,
+      Description: ''
     };
   }
 

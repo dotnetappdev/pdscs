@@ -13,22 +13,20 @@ namespace UKParliament.CodeTest.Web.Mapper
     {
         public override PersonViewModel Map(Person person)
         {
-            // Lookup department name from static list or context
+            // Lookup department name from SampleData
             string departmentName = string.Empty;
-            switch (person.DepartmentId)
+            var departments = UKParliament.CodeTest.Data.SampleData.GetDepartments();
+            var dept = departments.FirstOrDefault(d => d.Id == person.DepartmentId);
+            if (dept != null)
             {
-                case 1: departmentName = "Sales"; break;
-                case 2: departmentName = "Marketing"; break;
-                case 3: departmentName = "Finance"; break;
-                case 4: departmentName = "HR"; break;
-                default: departmentName = ""; break;
+                departmentName = dept.Name;
             }
             return new PersonViewModel
             {
                 Id = person.Id,
                 FirstName = person.FirstName,
                 LastName = person.LastName,
-                DOB = $"{person.DOB:yyyy-MM-dd}", // Only show date part
+                DOB = person.DOB.HasValue ? person.DOB.Value.ToString("yyyy-MM-dd") : string.Empty,
                 DepartmentId = person.DepartmentId,
                 DepartmentName = departmentName,
                 FullName = person.FirstName + " " + person.LastName,
