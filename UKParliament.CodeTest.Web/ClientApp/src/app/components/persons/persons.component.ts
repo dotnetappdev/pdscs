@@ -25,8 +25,9 @@ export class PersonsComponent implements OnInit {
   // Validate person input for SQL keywords and dangerous characters, return error object
   private validatePersonInput(person: any): { [key: string]: string } {
     const errors: { [key: string]: string } = {};
+    // Only check forbidden keywords for FirstName/LastName if field is non-empty and not just whitespace
     const check = (val: string, field: string) => {
-      if (!val) return;
+      if (val == null || val.trim() === '') return; // Let backend handle required/blank validation
       const lowered = val.toLowerCase();
       this.sqlBlacklist.forEach(bad => {
         if (lowered.includes(bad)) {
@@ -36,7 +37,10 @@ export class PersonsComponent implements OnInit {
     };
     check(person.FirstName, 'FirstName');
     check(person.LastName, 'LastName');
-    check(person.Description, 'Description');
+    // For Description, allow forbidden keyword check even for whitespace (as before)
+    if (person.Description && person.Description.toString().trim() !== '') {
+      check(person.Description, 'Description');
+    }
     return errors;
   }
   // SQL and dangerous character blacklist for input sanitization
@@ -243,16 +247,16 @@ export class PersonsComponent implements OnInit {
       // Sanitize input fields before sending to backend
       const sanitizedPerson = this.sanitizePersonInput(this.selectedPerson);
       const payload: any = {
-        Id: sanitizedPerson?.id ?? sanitizedPerson?.Id ?? 0,
-        FirstName: sanitizedPerson?.firstName ?? '',
-        LastName: sanitizedPerson?.lastName ?? '',
-        Description: sanitizedPerson?.description ?? '',
-        DepartmentId: sanitizedPerson?.departmentId ?? 0,
-        DOB: sanitizedPerson?.dob ? this.formatDateForBackend(sanitizedPerson?.dob) : null
+        Id: sanitizedPerson?.Id ?? sanitizedPerson?.id ?? 0,
+        FirstName: sanitizedPerson?.FirstName ?? '',
+        LastName: sanitizedPerson?.LastName ?? '',
+        Description: sanitizedPerson?.Description ?? '',
+        DepartmentId: sanitizedPerson?.DepartmentId ?? 0,
+        DOB: sanitizedPerson?.DOB ? this.formatDateForBackend(sanitizedPerson?.DOB) : null
       };
       console.log('Payload sent to backend:', payload);
 
-      const isEdit = typeof sanitizedPerson.id === 'number' && sanitizedPerson.id > 0;
+      const isEdit = typeof sanitizedPerson.Id === 'number' && sanitizedPerson.Id > 0;
 
       const handleError = (err: any) => {
         console.error('Error saving person:', err);
@@ -291,7 +295,7 @@ export class PersonsComponent implements OnInit {
       };
 
       if (isEdit) {
-        this.personsService.updatePerson(sanitizedPerson.id!, payload).subscribe({
+        this.personsService.updatePerson(sanitizedPerson.Id!, payload).subscribe({
           next: handleSuccess,
           error: handleError
         });
@@ -305,9 +309,18 @@ export class PersonsComponent implements OnInit {
   }
 
   onInputChange(field: string) {
-    // Clear field error for this field on input
+    // Clear field error for this field on input, regardless of casing
     if (this.fieldErrors[field]) {
       this.fieldErrors[field] = '';
+    }
+    // Also clear PascalCase/camelCase variants
+    const pascal = field.charAt(0).toUpperCase() + field.slice(1);
+    const camel = field.charAt(0).toLowerCase() + field.slice(1);
+    if (this.fieldErrors[pascal]) {
+      this.fieldErrors[pascal] = '';
+    }
+    if (this.fieldErrors[camel]) {
+      this.fieldErrors[camel] = '';
     }
   }
 

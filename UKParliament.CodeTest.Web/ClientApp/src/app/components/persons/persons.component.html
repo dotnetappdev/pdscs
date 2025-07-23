@@ -83,24 +83,24 @@
       <h3 style="font-size:1.1rem; color:#373151;" tabindex="0" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
       <form (ngSubmit)="onSave()" #editForm="ngForm" aria-label="Person details form">
         <div style="margin-bottom: 1.5rem;">
-          <label for="FirstName" [ngStyle]="{'color': fieldErrors['FirstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
-            First Name<span *ngIf="fieldErrors['FirstName'] && fieldErrors['FirstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          <label for="FirstName" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
+            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['FirstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
-          <div *ngIf="fieldErrors['FirstName']">
-            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['FirstName'])">
+          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
+          <div *ngIf="fieldErrors['firstName']">
+            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
             </ng-container>
           </div>
         </div>
         <div style="margin-bottom: 1.5rem;">
-          <label for="LastName" [ngStyle]="{'color': fieldErrors['LastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
-            Last Name<span *ngIf="fieldErrors['LastName'] && fieldErrors['LastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          <label for="LastName" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
+            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['LastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
-          <div *ngIf="fieldErrors['LastName']">
-            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['LastName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
+          <div *ngIf="fieldErrors['lastName']">
+            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
+              <span class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
             </ng-container>
           </div>
         </div>
@@ -154,32 +154,32 @@
       <h3 style="font-size:1.1rem; color:#373151;" tabindex="0" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
       <form (ngSubmit)="onSave()" #editForm="ngForm" aria-label="Person details form">
         <div style="margin-bottom: 1.5rem;">
-          <label for="firstName" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
-            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          <label for="FirstName" [ngStyle]="{'color': fieldErrors['FirstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
+            First Name<span *ngIf="fieldErrors['FirstName'] && fieldErrors['FirstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
-          <div *ngIf="fieldErrors['firstName']">
-            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
-            </ng-container>
+          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['FirstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
+          <div *ngIf="fieldErrors['FirstName']">
+            <span *ngIf="!selectedPerson.FirstName || selectedPerson.FirstName.length < 1" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">First Name is required.</span>
+            <span *ngIf="selectedPerson.FirstName && (selectedPerson.FirstName.length < 2 && selectedPerson.FirstName.length >= 1)" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">First Name must be at least 2 characters.</span>
+            <span *ngIf="selectedPerson.FirstName && selectedPerson.FirstName.length > 50" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">First Name must be at most 50 characters.</span>
           </div>
         </div>
         <div style="margin-bottom: 1.5rem;">
-          <label for="lastName" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
-            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          <label for="LastName" [ngStyle]="{'color': fieldErrors['LastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
+            Last Name<span *ngIf="fieldErrors['LastName'] && fieldErrors['LastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
-          <div *ngIf="fieldErrors['lastName']">
-            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
-            </ng-container>
+          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['LastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
+          <div *ngIf="fieldErrors['LastName']">
+            <span *ngIf="!selectedPerson.LastName || selectedPerson.LastName.length < 1" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">Last Name is required.</span>
+            <span *ngIf="selectedPerson.LastName && (selectedPerson.LastName.length < 2 && selectedPerson.LastName.length >= 1)" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">Last Name must be at least 2 characters.</span>
+            <span *ngIf="selectedPerson.LastName && selectedPerson.LastName.length > 50" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">Last Name must be at most 50 characters.</span>
           </div>
         </div>
         <div style="margin-bottom: 1.5rem;">
           <label for="dob" [ngStyle]="{'color': fieldErrors['dob'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Date of Birth'" tabindex="0">
             Date of Birth <span style="font-size:0.95rem; color:#666;">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.dob" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
+          <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
           <div *ngIf="fieldErrors['dob']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['dob'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
@@ -190,7 +190,7 @@
           <label for="departmentId" [ngStyle]="{'color': fieldErrors['departmentId'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Department'" tabindex="0">
             Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.departmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
+          <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.DepartmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
             <option [ngValue]="null" disabled selected>Please select department...</option>
             <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
           </select>
@@ -204,8 +204,8 @@
           <label for="description" [ngStyle]="{'color': fieldErrors['description'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Description'" tabindex="0">
             Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <textarea id="description" name="description" [(ngModel)]="selectedPerson.description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
-          <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.description?.length || 0 }}/1000</div>
+          <textarea id="description" name="description" [(ngModel)]="selectedPerson.Description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
+          <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.Description?.length || 0 }}/1000</div>
           <div *ngIf="fieldErrors['description']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['description'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>

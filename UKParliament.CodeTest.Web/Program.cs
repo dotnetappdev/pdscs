@@ -7,6 +7,7 @@ using UKParliament.CodeTest.Services.Repositories;
 using UKParliament.CodeTest.Services.Validation;
 using UKParliament.CodeTest.Web.Mapper;
 using Serilog;
+using FluentValidation.AspNetCore;
 namespace UKParliament.CodeTest.Web;
 
 public class Program
@@ -34,15 +35,12 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllersWithViews()
-            .AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.PropertyNamingPolicy = null;
-            });
-
+      .AddJsonOptions(options =>
+      {
+          options.JsonSerializerOptions.PropertyNamingPolicy = null;
+      });
+        builder.Services.AddFluentValidationAutoValidation();
         builder.Services.AddValidatorsFromAssemblyContaining<PersonValidator>();
-
-
-
 
         builder.Services.AddDbContext<PersonManagerContext>(op => op.UseInMemoryDatabase("PersonManager"));
 
