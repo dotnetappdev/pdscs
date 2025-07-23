@@ -272,6 +272,7 @@ export class PersonsComponent implements OnInit {
         };
         if (err?.error) {
           const errors = err.error.errors || err.error.ModelState || err.error;
+          console.log('Validation errors from backend:', errors); // Debug log
           if (errors && typeof errors === 'object') {
             Object.keys(errors).forEach(key => {
               const val = Array.isArray(errors[key]) ? errors[key].join(' ') : errors[key];
@@ -287,6 +288,8 @@ export class PersonsComponent implements OnInit {
         this.selectedPerson = null;  // clear selection
         this.getAllPersons();        // reload fresh data
         this.fieldErrors = {};      // clear field errors on success
+        this.errorMessage = '';     // clear general error message on success
+        this.cdr.detectChanges();   // force UI update to clear errors
         if (isEdit) {
           this.showToastMessage('Person updated successfully!');
         } else {
