@@ -19,7 +19,7 @@ public class Program
         Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.File(
-                path: "logs/{Year}/{Month}/{Day}.txt",
+                path: "logs/{Year}/{MonthName}/{Date}.txt",
                 rollingInterval: RollingInterval.Day,
                 outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
             .CreateLogger();
