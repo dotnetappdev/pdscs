@@ -20,4 +20,5 @@ public class Person
 
     public int DepartmentId { get; set; }  // Foreign key
 
+   
 }

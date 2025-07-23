@@ -1,9 +1,9 @@
 export interface Person {
-  id: number;
-  firstName: string;
-  lastName: string;
-  dob: string | null;
-  departmentId: number;
-  departmentName?: string;
-  description: string;
+  Id: number;
+  FirstName: string;
+  LastName: string;
+  DOB: string | null;
+  DepartmentId: number;
+  DepartmentName?: string;
+  Description: string;
 }

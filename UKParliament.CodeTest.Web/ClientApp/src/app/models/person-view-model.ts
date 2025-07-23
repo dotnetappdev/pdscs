@@ -1,10 +1,10 @@
 export interface PersonViewModel {
-  id?: number;
-  firstName: string;
-  lastName: string;
-  dob: string | Date;
-  departmentId: number;
-  departmentName: string;
-  fullName: string;
-  description: string;
+  Id?: number;
+  FirstName: string;
+  LastName: string;
+  DOB: string | Date;
+  DepartmentId: number;
+  DepartmentName: string;
+  FullName: string;
+  Description: string;
 }

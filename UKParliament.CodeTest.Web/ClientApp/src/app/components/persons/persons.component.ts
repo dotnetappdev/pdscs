@@ -25,9 +25,9 @@ export class PersonsComponent implements OnInit {
         }
       });
     };
-    check(person.firstName, 'firstName');
-    check(person.lastName, 'lastName');
-    check(person.description, 'description');
+    check(person.FirstName, 'FirstName');
+    check(person.LastName, 'LastName');
+    check(person.Description, 'Description');
     return errors;
   }
   // SQL and dangerous character blacklist for input sanitization
@@ -54,9 +54,9 @@ export class PersonsComponent implements OnInit {
     };
     return {
       ...person,
-      firstName: sanitize(person.firstName),
-      lastName: sanitize(person.lastName),
-      description: sanitize(person.description)
+      FirstName: sanitize(person.FirstName),
+      LastName: sanitize(person.LastName),
+      Description: sanitize(person.Description)
     };
   }
   pageSize: number = 5; // Default page size is 5
@@ -95,14 +95,14 @@ export class PersonsComponent implements OnInit {
       const term = this.nameFilter.trim().toLowerCase();
       filtered = filtered.filter(p => {
         return (
-          (p.firstName && p.firstName.toLowerCase().includes(term)) ||
-          (p.lastName && p.lastName.toLowerCase().includes(term))
+          (p.FirstName && p.FirstName.toLowerCase().includes(term)) ||
+          (p.LastName && p.LastName.toLowerCase().includes(term))
         );
       });
     }
     if (this.departmentFilter && this.departmentFilter !== '') {
       filtered = filtered.filter(p => {
-        const deptName = p.departmentName || p.department?.name || p.department?.Name || '';
+        const deptName = p.DepartmentName || p.department?.Name || '';
         return deptName === this.departmentFilter;
       });
     }
@@ -195,7 +195,7 @@ export class PersonsComponent implements OnInit {
         // Map DOB to JS Date for correct display in table
         this.persons = persons.map(p => ({
           ...p,
-          dob: p.dob ? new Date(p.dob) : null
+          DOB: p.DOB ? new Date(p.DOB) : null
         }));
         this.cdr.detectChanges(); // ensure UI updates after async fetch
         setTimeout(() => {

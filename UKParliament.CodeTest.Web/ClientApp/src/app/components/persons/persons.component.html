@@ -16,7 +16,7 @@
         <input type="text" [(ngModel)]="nameFilter" placeholder="Search first or last name..." style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 220px;" aria-label="Filter by first or last name" aria-describedby="persons-list-heading" />
         <select [(ngModel)]="departmentFilter" style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 180px;" aria-label="Filter by department" aria-describedby="persons-list-heading">
           <option value="">All Departments</option>
-          <option *ngFor="let dept of departments" [value]="dept.name || dept.Name">{{ dept.name || dept.Name }}</option>
+          <option *ngFor="let dept of departments" [value]="dept.Name">{{ dept.Name }}</option>
         </select>
       </div>
       <table *ngIf="pagedPersons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem; min-width:900px; width:100%;" role="table">
@@ -37,16 +37,16 @@
               <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.fullName" style="font-size:0.85rem; padding:0.25rem 0.5rem; min-width:unset;">Edit</button>
               <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.fullName" style="font-size:0.85rem; padding:0.25rem 0.5rem; min-width:unset;">Delete</button>
             </td>
-            <td role="cell">{{ person.firstName }}</td>
-            <td role="cell">{{ person.lastName }}</td>
-            <td role="cell">{{ person.dob ? (person.dob | date: 'dd/MM/yyyy') : '—' }}</td>
-            <td *ngIf="!isMobileView" role="cell">{{ person.departmentName }}</td>
+            <td role="cell">{{ person.FirstName }}</td>
+            <td role="cell">{{ person.LastName }}</td>
+            <td role="cell">{{ person.DOB ? (person.DOB | date: 'dd/MM/yyyy') : '—' }}</td>
+            <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentName }}</td>
             <td *ngIf="!isMobileView" role="cell">
-              <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.fullName">Edit</button>
-              <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.fullName">Delete</button>
+              <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.FullName">Edit</button>
+              <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.FullName">Delete</button>
 <app-confirm-delete-modal
   [show]="showDeleteModal"
-  [itemName]="selectedPersonToDelete?.firstName + ' ' + selectedPersonToDelete?.lastName"
+  [itemName]="selectedPersonToDelete?.FirstName + ' ' + selectedPersonToDelete?.LastName"
   (confirm)="confirmDelete()"
   (cancel)="cancelDelete()">
 </app-confirm-delete-modal>
@@ -82,23 +82,23 @@
       <h3 style="font-size:1.1rem; color:#373151;" tabindex="0" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
       <form (ngSubmit)="onSave()" #editForm="ngForm" aria-label="Person details form">
         <div style="margin-bottom: 1.5rem;">
-          <label for="firstName" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
-            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          <label for="FirstName" [ngStyle]="{'color': fieldErrors['FirstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
+            First Name<span *ngIf="fieldErrors['FirstName'] && fieldErrors['FirstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="firstName" name="firstName" [(ngModel)]="selectedPerson.firstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
-          <div *ngIf="fieldErrors['firstName']">
-            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
+          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['FirstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" />
+          <div *ngIf="fieldErrors['FirstName']">
+            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['FirstName'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
             </ng-container>
           </div>
         </div>
         <div style="margin-bottom: 1.5rem;">
-          <label for="lastName" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
-            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+          <label for="LastName" [ngStyle]="{'color': fieldErrors['LastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
+            Last Name<span *ngIf="fieldErrors['LastName'] && fieldErrors['LastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
           </label>
-          <input id="lastName" name="lastName" [(ngModel)]="selectedPerson.lastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
-          <div *ngIf="fieldErrors['lastName']">
-            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
+          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['LastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" />
+          <div *ngIf="fieldErrors['LastName']">
+            <ng-container *ngFor="let err of getErrorMessages(fieldErrors['LastName'])">
               <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
             </ng-container>
           </div>

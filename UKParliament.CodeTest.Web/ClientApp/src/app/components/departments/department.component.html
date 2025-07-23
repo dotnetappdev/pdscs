@@ -1,6 +1,6 @@
 <h2 style="font-size:1.5rem; color:#373151; margin-bottom:1rem;">Departments</h2>
 <div *ngIf="errorMessage" class="error" style="color:#c00; margin-bottom:1rem;">{{ errorMessage }}</div>
-<div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap; min-height:calc(100vh - 120px); margin-top:0;">
+<div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap; min-height:calc(100vh - 120px); margin-top:0; position:relative;">
   <div style="flex:2; min-width:125PX;">
     <table *ngIf="departments.length > 0; else noData" class="table table-responsive" style="font-size:0.95rem; min-width:320px; max-width:480px; width:auto; border-collapse:collapse; background:#fff; box-shadow:0 2px 8px rgba(44,42,41,0.08); margin-left:0; border:1px solid #ccc;">
       <caption class="sr-only">List of departments with name and actions</caption>
@@ -30,7 +30,7 @@
     <app-confirm-delete-modal
       [show]="showDeleteModal"
       [itemName]="selectedDepartment?.Name || ''"
-      (confirm)="confirmDelete()"
+      (confirm)="deleteDepartment()"
       (cancel)="cancelDelete()">
     </app-confirm-delete-modal>
 
@@ -38,7 +38,7 @@
       <div class="modal-content">
         <h3>Persons in Department</h3>
         <ul *ngIf="personsInDepartment.length > 0; else noPersons">
-          <li *ngFor="let person of personsInDepartment">{{ person.firstName }} {{ person.lastName }}</li>
+          <li *ngFor="let person of personsInDepartment">{{ person.FirstName }} {{ person.LastName }}</li>
         </ul>
         <ng-template #noPersons>
           <p>No persons in this department.</p>
@@ -70,5 +70,8 @@
         <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem; background:#e0c7d1; color:#373151; border:none; border-radius:4px; cursor:pointer;">Cancel</button>
       </div>
     </form>
+  </div>
+  <div *ngIf="showToast" class="toast-message">
+    {{ toastMessage }}
   </div>
 </div>

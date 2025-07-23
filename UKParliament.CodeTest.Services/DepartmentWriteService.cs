@@ -1,46 +1,62 @@
 using System.Threading.Tasks;
 using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Services.Repositories;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace UKParliament.CodeTest.Services
 {
     public class DepartmentWriteService : IDepartmentWriteRepository
     {
         private readonly PersonManagerContext _context;
-        public DepartmentWriteService(PersonManagerContext context)
+        private readonly ILogger<DepartmentWriteService> _logger;
+        public DepartmentWriteService(PersonManagerContext context, ILogger<DepartmentWriteService> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-        public async Task<Department> AddAsync(Department department)
+        public async Task<Department?> AddAsync(Department department)
         {
             try
             {
+                if (department == null)
+                {
+                    // Return null if input is null
+                    return null;
+                }
                 _context.Departments.Add(department);
                 await _context.SaveChangesAsync();
                 return department;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error adding department");
+                _logger.LogError(ex, "Error adding department");
                 throw;
             }
         }
 
-        public async Task<Department> UpdateAsync(Department department)
+        public async Task<Department?> UpdateAsync(Department department)
         {
             try
             {
+                if (department == null)
+                {
+                    // Return null if input is null
+                    return null;
+                }
                 var existing = _context.Departments.Find(department.Id);
-                if (existing == null) return null;
+                if (existing == null)
+                {
+                    // Explicitly return null if not found (nullable reference type)
+                    return null;
+                }
                 existing.Name = department.Name;
                 await _context.SaveChangesAsync();
                 return existing;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"Error updating department with id {department.Id}");
+                _logger.LogError(ex, "Error updating department with id {DepartmentId}", department?.Id);
                 throw;
             }
         }
@@ -50,14 +66,18 @@ namespace UKParliament.CodeTest.Services
             try
             {
                 var department = _context.Departments.Find(id);
-                if (department == null) return false;
+                if (department == null)
+                {
+                    // Return false if not found, no null reference risk
+                    return false;
+                }
                 _context.Departments.Remove(department);
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"Error deleting department with id {id}");
+                _logger.LogError(ex, "Error deleting department with id {DepartmentId}", id);
                 throw;
             }
         }

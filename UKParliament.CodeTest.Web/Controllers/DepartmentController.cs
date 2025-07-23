@@ -39,6 +39,11 @@ namespace UKParliament.CodeTest.Web.Controllers
         public async Task<ActionResult<Department>> AddDepartment([FromBody] Department department)
         {
             var created = await _writeRepository.AddAsync(department);
+            if (created == null)
+            {
+                // Defensive: if creation failed, return 400
+                return BadRequest(new { message = "Failed to create department." });
+            }
             return CreatedAtAction(nameof(GetDepartment), new { id = created.Id }, created);
         }
 

@@ -12,9 +12,9 @@ namespace UKParliament.CodeTest.Data
         public static void SeedInMemoryData(PersonManagerContext context)
         {
             if (!context.Departments.Any() && !context.People.Any())
-            {
+            {   context.People.AddRange(SampleData.GetPeople());
+
                 context.Departments.AddRange(SampleData.GetDepartments());
-                context.People.AddRange(SampleData.GetPeople());
                 context.SaveChanges();
             }
         }

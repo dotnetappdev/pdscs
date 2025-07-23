@@ -28,7 +28,7 @@ namespace UKParliament.CodeTest.Web.Mapper
                 Id = person.Id,
                 FirstName = person.FirstName,
                 LastName = person.LastName,
-                dob = person.DOB,
+                DOB = $"{person.DOB:yyyy-MM-dd}", // Only show date part
                 DepartmentId = person.DepartmentId,
                 DepartmentName = departmentName,
                 FullName = person.FirstName + " " + person.LastName,

@@ -8,7 +8,7 @@ namespace UKParliament.CodeTest.Services.Repositories
 {
     public interface IPersonReadService<T>
     {
-        T GetById(int id);
+        T? GetById(int id);
         IEnumerable<T> GetAll();
     }
 }

@@ -28,12 +28,15 @@ public class Program
         // Replace default logging with Serilog
         builder.Host.UseSerilog();
 
+        // Register Serilog.ILogger for DI
+        builder.Services.AddSingleton(Log.Logger);
+
         // Add services to the container.
 
         builder.Services.AddControllersWithViews()
             .AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
 
         builder.Services.AddValidatorsFromAssemblyContaining<PersonValidator>();

@@ -4,14 +4,13 @@
   color: #fff;
   padding: 16px 24px;
   border-radius: 8px;
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
+  position: relative;
+  margin-left: 32px;
   min-width: 220px;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(124,58,237,0.15);
   animation: fadeInOut 2.5s;
-  z-index: 1000;
+  align-self: flex-start;
 }
 
 @keyframes fadeInOut {
@@ -19,26 +18,4 @@
   10% { opacity: 1; transform: translateY(0); }
   90% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(-10px); }
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-}
-th, td {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  text-align: left;
-}
-.error {
-  color: #c00;
-  margin-bottom: 1rem;
-}
-button {
-  font-size: 0.95rem;
-  padding: 0.25rem 0.75rem;
-  margin-right: 0.5rem;
-}
-form {
-  margin-top: 1rem;
 }

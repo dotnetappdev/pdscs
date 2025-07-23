@@ -34,10 +34,10 @@ public class PersonController : ControllerBase
         if (!ModelState.IsValid)
         {
             var errors = ModelState
-                .Where(x => x.Value != null && x.Value.Errors != null && x.Value.Errors.Count > 0)
+                .Where(x => x.Value?.Errors != null && x.Value.Errors.Count > 0)
                 .ToDictionary(
                     kvp => kvp.Key,
-                    kvp => kvp.Value.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
+                    kvp => kvp.Value?.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
                 );
             // If errors only contain keys like "person" or "$", it's a binding error, not FluentValidation
             var onlyBindingErrors = errors.Keys.All(k => k == "person" || k.StartsWith("$"));
@@ -79,10 +79,10 @@ public class PersonController : ControllerBase
         if (!ModelState.IsValid)
         {
             var errors = ModelState
-                .Where(x => x.Value != null && x.Value.Errors != null && x.Value.Errors.Count > 0)
+                .Where(x => x.Value?.Errors != null && x.Value.Errors.Count > 0)
                 .ToDictionary(
                     kvp => kvp.Key,
-                    kvp => kvp.Value.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
+                    kvp => kvp.Value?.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
                 );
             // If errors only contain keys like "person" or "$", it's a binding error, not FluentValidation
             var onlyBindingErrors = errors.Keys.All(k => k == "person" || k.StartsWith("$"));
@@ -136,9 +136,15 @@ public class PersonController : ControllerBase
         var person = _readService.GetById(id);
         if (person == null)
         {
+            // Return 404 if not found, avoid null reference
             return NotFound(new { message = $"Person with id {id} not found." });
         }
         var personVm = _mapper.Map(person);
+        if (personVm == null)
+        {
+            // Defensive: if mapping fails, return 500
+            return StatusCode(500, new { message = "Failed to map person to view model." });
+        }
         return Ok(personVm);
     }
 
@@ -156,6 +162,7 @@ public class PersonController : ControllerBase
         var person = _readService.GetById(id);
         if (person == null)
         {
+            // Return 404 if not found, avoid null reference
             return NotFound(new { message = $"Person with id {id} not found." });
         }
         _writeService.DeletePerson(id);

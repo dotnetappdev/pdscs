@@ -1,18 +1,20 @@
+
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Department } from '../models/department.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class DepartmentService {
-  // In-memory departments based on PersonManagerContext
-  private departments: Department[] = [
-    { Id: 1, Name: 'Sales' },
-    { Id: 2, Name: 'Marketing' },
-    { Id: 3, Name: 'Finance' },
-    { Id: 4, Name: 'HR' }
-  ];
+  private apiUrl = '/api/department';
+
+  constructor(private http: HttpClient) { }
 
   getDepartments(): Observable<Department[]> {
-    return of(this.departments);
+    return this.http.get<Department[]>(this.apiUrl);
+  }
+
+  deleteDepartment(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

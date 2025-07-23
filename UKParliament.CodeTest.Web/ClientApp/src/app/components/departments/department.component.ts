@@ -13,8 +13,36 @@ import { PersonViewModel } from '../../models/person-view-model';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
+  toastMessage: string = '';
+  showToast: boolean = false;
+
+  deleteDepartment(): void {
+    if (!this.selectedDepartment) return;
+    this.departmentService.deleteDepartment(this.selectedDepartment.Id).subscribe({
+      next: () => {
+        this.departments = this.departments.filter(d => d.Id !== this.selectedDepartment!.Id);
+        this.showDeleteModal = false;
+        this.selectedDepartment = null;
+        this.deleteError = '';
+        this.showToastMessage('Department deleted successfully!');
+      },
+      error: err => {
+        this.deleteError = 'Failed to delete department.';
+      }
+    });
+  }
+
+  // ...existing code...
+
+  showToastMessage(message: string): void {
+    this.toastMessage = message;
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 2500);
+  }
   hasPersons(dept: Department): boolean {
-    return this.persons.some(p => p.departmentId === dept.Id);
+    return this.persons.some(p => p.DepartmentId === dept.Id);
   }
   departments: Department[] = [];
   persons: PersonViewModel[] = [];
@@ -105,7 +133,7 @@ export class DepartmentComponent implements OnInit {
   // No deleteDepartment logic since not implemented in DepartmentService
 
   viewPersons(department: Department): void {
-    this.personsInDepartment = this.persons.filter(p => p.departmentId === department.Id);
+    this.personsInDepartment = this.persons.filter(p => p.DepartmentId === department.Id);
     this.showPersonsModal = true;
   }
 
