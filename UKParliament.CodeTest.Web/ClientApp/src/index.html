@@ -82,21 +82,26 @@
     </style>
   </head>
   <body>
-    <!-- Header moved from persons.component.html -->
-    <div class="header">
-      <div class="header-content" style="background:#373151; color:#fff; padding:32px 0 16px 0; border-bottom:4px solid #7c183c; box-shadow:0 2px 8px rgba(44,42,41,0.08); width:100vw; margin-left:calc(-50vw + 50%); margin-top:0;">
-        <div style="max-width:1200px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;">
-          <div style="min-width:220px; flex:1 1 300px;">
-            <span class="header-logo" style="font-family:'Merriweather','Georgia',serif; font-size:2.8rem; font-weight:700; letter-spacing:2px; text-shadow:1px 1px 0 #2c2a29, 0 2px 8px #7c183c44; word-break:break-word;">Persons Lookup</span>
-            <div class="header-desc" style="font-size:1.25rem; color:#e0c7d1; margin-top:0.5rem; font-family:'Open Sans','Arial',sans-serif; word-break:break-word;">Find civil service staff by name, department, and more.</div>
+    <header class="header" role="banner">
+
+      <!-- Header moved from persons.component.html -->
+      <div class="header">
+        <div class="header-content" style="background:#373151; color:#fff; padding:32px 0 16px 0; border-bottom:4px solid #7c183c; box-shadow:0 2px 8px rgba(44,42,41,0.08); width:100vw; margin-left:calc(-50vw + 50%); margin-top:0;">
+          <div style="max-width:1200px; margin:0 auto; padding:0 24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+            <div style="min-width:220px; flex:1 1 300px;">
+              <span class="header-logo" style="font-family:'Merriweather','Georgia',serif; font-size:2.8rem; font-weight:700; letter-spacing:2px; text-shadow:1px 1px 0 #2c2a29, 0 2px 8px #7c183c44; word-break:break-word;">Persons Lookup</span>
+              <div class="header-desc" style="font-size:1.25rem; color:#e0c7d1; margin-top:0.5rem; font-family:'Open Sans','Arial',sans-serif; word-break:break-word;">Find civil service staff by name, department, and more.</div>
+            </div>
+
+            <nav class="header-nav" style="display:flex; gap:32px; flex-wrap:wrap; min-width:180px;">
+              <a href="/persons" style="color:#e0c7d1; font-size:1.1rem; text-decoration:none; font-weight:500;">Persons</a>
+              <a href="/departments" style="color:#e0c7d1; font-size:1.1rem; text-decoration:none; font-weight:500;">Departments</a>
+            </nav>
           </div>
-          <nav class="header-nav" style="display:flex; gap:32px; flex-wrap:wrap; min-width:180px;">
-            <a href="/persons" style="color:#e0c7d1; font-size:1.1rem; text-decoration:none; font-weight:500;">Persons</a>
-            <a href="/departments" style="color:#e0c7d1; font-size:1.1rem; text-decoration:none; font-weight:500;">Departments</a>
-          </nav>
         </div>
       </div>
-    </div>
+
+    </header>
     <app-root>Loading...</app-root>
     <!-- Footer moved from persons.component.html -->
     <footer class="footer" style="width:100vw; margin-left:calc(-50vw + 50%);">

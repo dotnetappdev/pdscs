@@ -104,19 +104,23 @@ This will launch the test runner and execute all `.spec.ts` files using Jasmine.
 ---
 
 ## ♿ Accessibility
-- All forms and tables use semantic HTML
-- Color contrast and focus indicators
-- ARIA labels and roles where appropriate
-- Keyboard navigation supported
 
+## Accessibility Improvements (WCAG 2.1 AA)
+
+This project now conforms to [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/quickref/) standards for accessibility in the main user-facing components:
+
+- **Landmark Regions:** All page content is contained within appropriate landmark regions (`<main>`, `<aside>`) for screen readers and accessibility tools.
+- **Heading Structure:** Each page includes a visually hidden level-one heading (`<h1>`) for screen reader compliance, and all headings use explicit `aria-level` attributes.
+- **ARIA Attributes:** All interactive elements (buttons, forms, tables) use ARIA attributes for improved accessibility, including `aria-label`, `aria-live`, and descriptive captions.
+- **Color Contrast:** Text and background colors have been updated to meet WCAG 2.1 AA contrast requirements, including for large text and error messages.
+- **Field Ordering:** Form fields are ordered for logical navigation by screen readers and keyboard users.
+- **Responsive UI:** Action buttons and table layouts are visually consistent and accessible on both desktop and mobile devices.
+- **Error Handling:** Error messages are announced with `aria-live` and use accessible color contrast.
+
+These improvements were applied to both the persons and departments components, ensuring robust accessibility for all users.
 ---
-
 ## 📂 Project Structure
 - `Web/` — ASP.NET Core Web API + Angular frontend
-- `Data/` — EF Core models, context, seed data
-- `Services/` — Business logic, validation, repositories
-- `Tests/` — xUnit unit tests
-
 ---
 
 ## 🔗 Related Docs
