@@ -96,7 +96,12 @@ export class DepartmentComponent implements OnInit {
           this.showToastMessage('Department updated successfully!');
         },
         error: (err) => {
-          this.errorMessage = 'Failed to update department.';
+          if (err?.error?.fieldErrors) {
+            this.fieldErrors = err.error.fieldErrors;
+            this.errorMessage = Object.values(err.error.fieldErrors).join(' ');
+          } else {
+            this.errorMessage = 'Failed to update department.';
+          }
         }
       });
     } else {
@@ -109,7 +114,12 @@ export class DepartmentComponent implements OnInit {
           this.showToastMessage('Department added successfully!');
         },
         error: (err) => {
-          this.errorMessage = 'Failed to add department.';
+          if (err?.error?.fieldErrors) {
+            this.fieldErrors = err.error.fieldErrors;
+            this.errorMessage = Object.values(err.error.fieldErrors).join(' ');
+          } else {
+            this.errorMessage = 'Failed to add department.';
+          }
         }
       });
     }
