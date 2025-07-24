@@ -4,126 +4,153 @@
   <app-toast [show]="showToast" [message]="toastMessage"></app-toast>
 </aside>
 
-<main aria-labelledby="departments-list-heading" style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap; min-height:calc(100vh - 120px); margin-top:0; position:relative;">
+<main aria-labelledby="departments-list-heading" style="min-height:calc(100vh - 120px); margin-top:0; position:relative;">
   <h1 id="main-heading-dpcom" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Departments Management</h1>
-
-  <div style="flex:2; min-width:125px;">
-    <h2 id="departments-list-heading" style="font-size:1.5rem; color:#222; background:#f8f8fa; margin-bottom:1rem; padding:0.5rem 0.75rem; border-radius:4px;">
-      Departments List
-    </h2>
-
-    <aside aria-label="Error messages">
-      <div *ngIf="errorMessage" class="error" role="alert" aria-live="assertive" tabindex="0" style="color:#c00; margin-bottom:1rem;">
-        {{ errorMessage }}
-      </div>
-    </aside>
-
-    <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:0.25rem;">
-      <!-- Filter moved into table below -->
-    </div>
-    <table class="table table-responsive" aria-describedby="departments-list-heading" style="font-size:0.95rem; min-width:320px; max-width:480px; width:auto; border-collapse:collapse; background:#fff; box-shadow:0 2px 8px rgba(44,42,41,0.08); margin-left:0; border:1px solid #ccc;" role="table">
-      <caption id="departments-table-caption">List of departments with name and actions</caption>
-      <thead role="rowgroup" style="background:#f8f8fa;">
-        <tr role="row">
-          <th scope="col" aria-label="Department Name" id="departments-table-name-header" (click)="toggleSortDirection()" style="cursor:pointer; padding:0.5rem 0.5rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:1%; min-width:120px; max-width:180px; white-space:nowrap;">
-            <span id="departments-table-name-label">Name</span>
-            <span style="font-size:1rem; margin-left:0.25rem;">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
-          </th>
-          <th scope="col" aria-label="Actions" id="departments-table-actions-header" style="padding:0.5rem 0.25rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:3%; min-width:140px; max-width:180px; text-align:left; white-space:nowrap;">Actions</th>
-        </tr>
-        <tr>
-          <td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e0c7d1; border-right:1px solid #ccc; background:#fafafd;" colspan="1">
-            <input type="text" [(ngModel)]="departmentNameFilter" (ngModelChange)="onDepartmentNameFilterChange()" placeholder="Filter by department name..." aria-label="Filter by department name"
-              style="font-size:0.97rem; padding:0.13rem 0.3rem; width: 100%; max-width:180px; border-radius:4px; border:1px solid #ccc; box-sizing:border-box;" />
-          </td>
-          <td style="background:#fafafd;"></td>
-        </tr>
-      </thead>
-      <tbody role="rowgroup">
-        <tr *ngIf="filteredDepartments.length === 0">
-          <td colspan="2" style="text-align:center; color:#888; padding:1.2rem 0; font-size:1rem;">No departments found.</td>
-        </tr>
-        <tr *ngFor="let dept of filteredDepartments" role="row" style="border-bottom:1px solid #e0c7d1;">
-          <td role="cell" headers="departments-table-name-header" style="padding:0.5rem 0.5rem; border-bottom:1px solid #e0c7d1; border-right:1px solid #ccc; width:1%; min-width:120px; max-width:180px; white-space:nowrap;">{{ dept.Name }}</td>
-          <td role="cell" headers="departments-table-actions-header" style="padding:0.5rem 0.25rem; text-align:center; border-right:1px solid #ccc; width:3%; min-width:120px; max-width:180px; border-bottom:1px solid #e0c7d1; white-space:nowrap;">
-            <div class="department-actions">
-              <button type="button" (click)="onEdit(dept)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit department ' + dept.Name" style="font-size:0.95rem; padding:0.5rem 0; min-width:110px; width:100%; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;">Edit</button>
-              <button type="button" (click)="viewPersons(dept)" class="ukp-btn ukp-btn-view" [attr.aria-label]="'View persons in department ' + dept.Name" style="font-size:0.95rem; padding:0.5rem 0; min-width:110px; width:100%; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;">View Persons</button>
-              <button type="button"
-                (click)="confirmDelete(dept)"
-                class="ukp-btn ukp-btn-delete"
-                [disabled]="hasPersons(dept)"
-                [ngStyle]="{ opacity: hasPersons(dept) ? 0.5 : 1 }"
-                [attr.aria-label]="'Delete department ' + dept.Name"
-                style="font-size:0.95rem; padding:0.5rem 0; min-width:110px; width:100%; background:#c00; color:#fff; border:none; border-radius:4px; cursor:pointer;">Delete</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <app-confirm-delete-modal [show]="showDeleteModal"
-                              [itemName]="selectedDepartment?.Name || ''"
-                              (confirm)="deleteDepartment()"
-                              (cancel)="cancelDelete()"
-                              aria-label="Confirm delete department modal"
-                              role="dialog"
-                              aria-modal="true">
-    </app-confirm-delete-modal>
-
-    <div *ngIf="showPersonsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="persons-modal-title">
-      <div class="modal-content">
-        <h3 id="persons-modal-title" role="heading" aria-level="3">Persons in Department</h3>
-        <ul *ngIf="personsInDepartment.length > 0; else noPersons">
-          <li *ngFor="let person of personsInDepartment">{{ person.FirstName }} {{ person.LastName }}</li>
-        </ul>
-        <ng-template #noPersons>
-          <p>No persons in this department.</p>
-        </ng-template>
-        <div class="modal-actions">
-          <button type="button" (click)="closePersonsModal()" class="ukp-btn ukp-btn-cancel" aria-label="Close persons modal">Close</button>
-        </div>
-      </div>
-    </div>
-
-    <ng-template #noData>
-      <p role="note" aria-live="polite" tabindex="0">No departments available.</p>
-    </ng-template>
-
-    <button type="button" (click)="onAdd()" class="ukp-btn ukp-btn-add" style="margin-top: 1rem; font-size: 0.95rem; padding: 0.25rem 0.75rem; background: #2e7d32; color: #fff; border: none; border-radius: 4px; cursor: pointer;" aria-label="Add Department">
-      Add Department
-    </button>
-  </div>
-
-  <div *ngIf="selectedDepartment" style="flex:1; min-width:300px; max-width:400px; border-left:1px solid #ccc; margin-left:10px; padding-left:2rem; font-size:0.95rem; background:#f8f8fa;">
-    <div style="display:flex; align-items:center; justify-content:space-between;">
-      <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px; margin:0;" tabindex="0">
-        {{ selectedDepartment.Id ? 'Edit Department' : 'Add Department' }}
-      </h3>
-      <button type="button" (click)="onCancelEdit()" aria-label="Close form" style="background:none; border:none; color:#c00; font-size:1.7rem; font-weight:bold; cursor:pointer; line-height:1; margin-right:0.25rem; margin-top:0.25rem;" title="Close">
-        &times;
+  <div style="display:flex; flex-direction:row; align-items:stretch; gap:2rem; flex-wrap:nowrap; width:100%; position:relative;">
+    <div style="flex:2; min-width:125px; display:flex; flex-direction:column;">
+      <!-- All table and related content here (from original left column) -->
+      <h2 id="departments-list-heading" style="font-size:1.5rem; color:#222; background:#f8f8fa; margin-bottom:1rem; padding:0.5rem 0.75rem; border-radius:4px;">
+        Departments List
+      </h2>
+      <button type="button" (click)="onAdd()" class="ukp-btn ukp-btn-add" style="margin-bottom: 1rem; font-size: 0.85rem; padding: 0.12rem 0.3rem; background: #2e7d32; color: #fff; border: none; border-radius: 4px; cursor: pointer; min-width: 60px; min-height: 28px;" aria-label="Add Department">
+        Add Department
       </button>
-    </div>
-
-    <form (ngSubmit)="onSave()" aria-label="Department details form">
-      <div style="margin-bottom: 1.5rem;">
-        <label for="departmentName" id="name-label" [ngStyle]="{ color: errorMessage === 'Department name cannot be blank.' ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500' }" tabindex="0">
-          Department Name<span *ngIf="errorMessage === 'Department name cannot be blank.'" style="color:#c00;">*</span>
-        </label>
-        <input id="departmentName" name="name" [(ngModel)]="selectedDepartment.Name" required
-               [ngClass]="{'field-error': fieldErrors['Name']}"
-               style="width:100%; font-size:1rem; margin-bottom:0.25rem; border:1px solid; border-radius:4px; padding:0.5rem;"
-               aria-required="true" tabindex="0" />
-        <div *ngIf="fieldErrors['Name']" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">
-          {{ fieldErrors['Name'] }}
-          <span style="font-weight:normal; color:red;">(Notes * means required field)</span>.
+      <aside aria-label="Error messages">
+        <div *ngIf="errorMessage" class="error" role="alert" aria-live="assertive" tabindex="0" style="color:#c00; margin-bottom:1rem;">
+          {{ errorMessage }}
+        </div>
+      </aside>
+      <div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:0.25rem;">
+        <!-- Filter moved into table below -->
+      </div>
+      <table class="table table-responsive" aria-describedby="departments-list-heading" style="font-size:0.95rem; min-width:320px; max-width:480px; width:auto; border-collapse:collapse; background:#fff; box-shadow:0 2px 8px rgba(44,42,41,0.08); margin-left:0; border:1px solid #ccc;" role="table">
+        <caption id="departments-table-caption">List of departments with name and actions</caption>
+        <thead role="rowgroup" style="background:#f8f8fa;">
+          <tr role="row">
+            <th scope="col" aria-label="Department Name" id="departments-table-name-header" (click)="toggleSortDirection()" style="cursor:pointer; padding:0.5rem 0.5rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:1%; min-width:120px; max-width:180px; white-space:nowrap;">
+              <span id="departments-table-name-label">Name</span>
+              <span style="font-size:1rem; margin-left:0.25rem;">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th scope="col" aria-label="Actions" id="departments-table-actions-header" style="padding:0.5rem 0.25rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:3%; min-width:140px; max-width:180px; text-align:left; white-space:nowrap;">Actions</th>
+          </tr>
+          <tr>
+            <td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e0c7d1; border-right:1px solid #ccc; background:#fafafd;" colspan="1">
+              <input type="text" [(ngModel)]="departmentNameFilter" (ngModelChange)="onDepartmentNameFilterChange()" placeholder="Filter by department name..." aria-label="Filter by department name"
+                style="font-size:0.97rem; padding:0.13rem 0.3rem; width: 100%; max-width:180px; border-radius:4px; border:1px solid #ccc; box-sizing:border-box;" />
+            </td>
+            <td style="background:#fafafd;"></td>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr *ngIf="filteredDepartments.length === 0">
+            <td colspan="2" style="text-align:center; color:#888; padding:1.2rem 0; font-size:1rem;">No departments found.</td>
+          </tr>
+          <tr *ngFor="let dept of filteredDepartments" role="row" style="border-bottom:1px solid #e0c7d1;">
+            <td role="cell" headers="departments-table-name-header" style="padding:0.5rem 0.5rem; border-bottom:1px solid #e0c7d1; border-right:1px solid #ccc; width:1%; min-width:120px; max-width:180px; white-space:nowrap;">{{ dept.Name }}</td>
+            <td role="cell" headers="departments-table-actions-header" style="padding:0.25rem 0.1rem; text-align:center; border-right:1px solid #ccc; width:1%; min-width:120px; max-width:140px; border-bottom:1px solid #e0c7d1; white-space:nowrap;">
+              <div class="department-actions" style="display:flex; flex-direction:row; gap:0.2rem; justify-content:center; align-items:center;">
+                <button type="button" (click)="onEdit(dept)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit department ' + dept.Name" style="font-size:0.82rem; padding:0.18rem 0.4rem; min-width:48px; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;">Edit</button>
+                <button type="button" (click)="viewPersons(dept)" class="ukp-btn ukp-btn-view" [attr.aria-label]="'View persons in department ' + dept.Name" style="font-size:0.82rem; padding:0.18rem 0.4rem; min-width:48px; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;">View</button>
+                <button type="button"
+                  (click)="confirmDelete(dept)"
+                  class="ukp-btn ukp-btn-delete"
+                  [disabled]="hasPersons(dept)"
+                  [ngStyle]="{ opacity: hasPersons(dept) ? 0.5 : 1 }"
+                  [attr.aria-label]="'Delete department ' + dept.Name"
+                  style="font-size:0.82rem; padding:0.18rem 0.4rem; min-width:48px; background:#c00; color:#fff; border:none; border-radius:4px; cursor:pointer;">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Pagination Controls (outside table, responsive, like persons) -->
+      <div class="pagination-bar clearfix" style="margin-top:0.5rem;">
+        <div [ngStyle]="isMobileView ? {'display':'block','margin-bottom':'0.5rem'} : {'display':'flex','align-items':'center','gap':'1.5rem','justify-content':'flex-start'}">
+          <div style="display:inline-block;">
+            <select [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 100px;" aria-label="Select page size">
+              <option *ngFor="let size of pageSizeOptions" [value]="size === 0 ? filteredDepartments.length : size">{{ size === 0 ? 'All' : size }}</option>
+            </select>
+            <span style="font-size:0.95rem; color:#333; margin-left:0.5rem;">Total: {{ filteredDepartments.length }}</span>
+          </div>
+          <div [ngStyle]="isMobileView ? {'margin-top':'0.5rem'} : {'margin-top':'0'}" style="display:inline-block;">
+            <button type="button" (click)="goToPage(currentPage - 1)" [disabled]="pageNumbers.length === 1 || currentPage === 1" aria-label="Go to previous page">Previous</button>
+            <span style="display: inline-flex; gap: 0.25rem;">
+              <button *ngFor="let page of pageNumbers" type="button" (click)="goToPage(page)" [disabled]="pageNumbers.length === 1 || page === currentPage" [ngStyle]="{ 'font-weight': page === currentPage ? 'bold' : 'normal', 'background': page === currentPage ? '#eee' : 'inherit' }" [attr.aria-label]="'Go to page ' + page">{{ page }}</button>
+            </span>
+            <button type="button" (click)="goToPage(currentPage + 1)" [disabled]="pageNumbers.length === 1 || currentPage === pageNumbers.length" aria-label="Go to next page">Next</button>
+          </div>
         </div>
       </div>
-
-      <div style="margin-top:1rem; display:flex; gap:1rem;">
-        <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;" aria-label="Save department details">Save</button>
-        <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem; background:#e0c7d1; color:#373151; border:none; border-radius:4px; cursor:pointer;" aria-label="Cancel editing">Cancel</button>
+      <app-confirm-delete-modal [show]="showDeleteModal"
+                                [itemName]="selectedDepartment?.Name || ''"
+                                (confirm)="deleteDepartment()"
+                                (cancel)="cancelDelete()"
+                                aria-label="Confirm delete department modal"
+                                role="dialog"
+                                aria-modal="true">
+      </app-confirm-delete-modal>
+      <div *ngIf="showPersonsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="persons-modal-title">
+        <div class="modal-content">
+          <h3 id="persons-modal-title" role="heading" aria-level="3">Persons in Department</h3>
+          <ul *ngIf="personsInDepartment.length > 0; else noPersons">
+            <li *ngFor="let person of personsInDepartment">{{ person.FirstName }} {{ person.LastName }}</li>
+          </ul>
+          <ng-template #noPersons>
+            <p>No persons in this department.</p>
+          </ng-template>
+          <div class="modal-actions">
+            <button type="button" (click)="closePersonsModal()" class="ukp-btn ukp-btn-cancel" aria-label="Close persons modal">Close</button>
+          </div>
+        </div>
       </div>
-    </form>
+      <ng-template #noData>
+        <p role="note" aria-live="polite" tabindex="0">No departments available.</p>
+      </ng-template>
+    </div>
+    <div *ngIf="selectedDepartment"
+         [ngStyle]="isMobileView ? {
+           'min-width': '300px',
+           'max-width': '400px',
+           'border-left': '1px solid #ccc',
+           'margin-left': '0',
+           'background': '#f8f8fa',
+           'align-self': 'flex-start'
+         } : {
+           'min-width': '300px',
+           'max-width': '400px',
+           'border-left': '1px solid #ccc',
+           'margin-left': '10px',
+           'background': '#f8f8fa',
+           'align-self': 'flex-start',
+           'box-shadow': '0 2px 8px rgba(44,42,41,0.08)'
+         }">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px; margin:0;" tabindex="0">
+          {{ selectedDepartment.Id ? 'Edit Department' : 'Add Department' }}
+        </h3>
+        <button type="button" (click)="onCancelEdit()" aria-label="Close form" style="background:none; border:none; color:#c00; font-size:1.7rem; font-weight:bold; cursor:pointer; line-height:1; margin-right:0.25rem; margin-top:0.25rem;" title="Close">
+          &times;
+        </button>
+      </div>
+      <form (ngSubmit)="onSave()" aria-label="Department details form">
+        <div style="margin-bottom: 1.5rem;">
+          <label for="departmentName" id="name-label" [ngStyle]="{ color: errorMessage === 'Department name cannot be blank.' ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500' }" tabindex="0">
+            Department Name<span *ngIf="errorMessage === 'Department name cannot be blank.'" style="color:#c00;">*</span>
+          </label>
+          <input id="departmentName" name="name" [(ngModel)]="selectedDepartment.Name" required
+                 [ngClass]="{'field-error': fieldErrors['Name']}"
+                 style="width:100%; font-size:1rem; margin-bottom:0.25rem; border:1px solid; border-radius:4px; padding:0.5rem;"
+                 aria-required="true" tabindex="0" />
+          <div *ngIf="fieldErrors['Name']" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">
+            {{ fieldErrors['Name'] }}
+            <span style="font-weight:normal; color:red;">(Notes * means required field)</span>.
+          </div>
+        </div>
+        <div style="margin-top:1rem; display:flex; gap:1rem;">
+          <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;" aria-label="Save department details">Save</button>
+          <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem; background:#e0c7d1; color:#373151; border:none; border-radius:4px; cursor:pointer;" aria-label="Cancel editing">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
 </main>

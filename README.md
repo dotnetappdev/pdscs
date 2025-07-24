@@ -23,8 +23,10 @@
 | 🏠 Main Overview | [README.md](./README.md) |
 | 🌐 Web API & Frontend | [README.web.md](./README.web.md) |
 | 🧪 Test Suite | [README.tests.md](./README.tests.md) |
+| 📋 Release Notes | [RELEASE-NOTES.md](./RELEASE-NOTES.md) |
 
 ---
+
 
 ## Overview
 
@@ -35,13 +37,23 @@ This project is a modern CRUD web application built with:
 - **xUnit** for unit testing
 - **FluentValidation** for robust backend validation
 
-The app demonstrates:
-- Clean OOP design
-- Web API best practices
-- Full CRUD for Departments and Persons
-- End-to-end validation with error display
-- Accessibility and semantic HTML
-- Compliance with accessibility standards (WCAG/ARIA)
+### Key Features (Latest)
+- Departments and Persons management UI:
+  - Filters are now above tables for both Persons and Departments, always visible and accessible.
+  - "Add Person" and "Add Department" buttons are above their respective tables for improved usability.
+  - Action buttons in Departments table are compact and responsive.
+  - Pagination for Departments table matches Persons table (controls below table, responsive, accessible, default page size 5).
+  - All tables and forms are accessible and responsive (WCAG 2.1 AA compliant).
+  - Persistent filters and error messages for both tables.
+  - Close (×) button for forms and modals.
+  - Markup and structure fixes for valid HTML and accessibility.
+
+### Accessibility
+- All UI changes are tested for WCAG 2.1 AA compliance.
+- Semantic HTML, ARIA roles, and keyboard navigation are supported throughout.
+
+### Release Notes
+- See [RELEASE-NOTES.md](./RELEASE-NOTES.md) for a summary of recent changes, features, and bug fixes.
 
 ---
 

@@ -15,7 +15,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class PersonsComponent implements OnInit {
   // Filter bar properties for restored filters
   searchText: string = '';
-  selectedDepartmentFilter: string | null = null;
+  selectedDepartmentFilter: number | null = null;
 
   // Called when search input changes
   onSearchChange() {
@@ -25,7 +25,7 @@ export class PersonsComponent implements OnInit {
 
   // Called when department filter changes
   onDepartmentFilterChange(event: any) {
-    this.departmentFilter = this.selectedDepartmentFilter || '';
+    this.departmentFilter = this.selectedDepartmentFilter;
     this.currentPage = 1;
   }
 
@@ -34,7 +34,7 @@ export class PersonsComponent implements OnInit {
     this.searchText = '';
     this.selectedDepartmentFilter = null;
     this.nameFilter = '';
-    this.departmentFilter = '';
+    this.departmentFilter = null;
     this.currentPage = 1;
   }
   showToast = false;
@@ -125,7 +125,7 @@ export class PersonsComponent implements OnInit {
     this.currentPage = page;
   }
   nameFilter: string = '';
-  departmentFilter: string = '';
+  departmentFilter: number | null = null;
   get filteredPersons(): any[] {
     if (!Array.isArray(this.persons) || this.persons.length === 0) return [];
     let filtered = this.persons.map(p => {
@@ -151,10 +151,9 @@ export class PersonsComponent implements OnInit {
         );
       });
     }
-    if (this.departmentFilter && this.departmentFilter !== '') {
+    if (this.departmentFilter && this.departmentFilter !== null) {
       filtered = filtered.filter(p => {
-        const deptName = p.DepartmentName || '';
-        return deptName === this.departmentFilter;
+        return p.DepartmentId === this.departmentFilter;
       });
     }
     // Sort by selected column and direction
@@ -217,7 +216,7 @@ export class PersonsComponent implements OnInit {
   onPageSizeChange(newSize: number) {
     if (newSize === 0) {
       this.nameFilter = '';
-      this.departmentFilter = '';
+      this.departmentFilter = null;
       this.pageSize = this.persons.length;
       this.currentPage = 1;
       this.getAllPersons();
@@ -492,11 +491,17 @@ export class PersonsComponent implements OnInit {
   }
 
   onAdd() {
+    let latestDeptId = 0;
+    if (Array.isArray(this.departments) && this.departments.length > 0) {
+      // Find the department with the highest Id (assume new department has highest Id)
+      const latestDept = this.departments.reduce((max, d) => d.Id > max.Id ? d : max, this.departments[0]);
+      latestDeptId = latestDept.Id;
+    }
     this.selectedPerson = {
       FirstName: '',
       LastName: '',
       DOB: '',
-      DepartmentId: 0,
+      DepartmentId: latestDeptId,
       Description: ''
     };
   }

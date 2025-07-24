@@ -11,6 +11,38 @@ import { PersonViewModel } from '../../models/person-view-model';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
+  isMobileView: boolean = false;
+  pageSize: number = 5; // Default page size
+  currentPage: number = 1;
+  get pageSizeOptions(): number[] {
+    return [0, 5, 10, 20, 25];
+  }
+  get pagedDepartments(): Department[] {
+    if (this.pageSize === this.filteredDepartments.length) {
+      return this.filteredDepartments;
+    }
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.filteredDepartments.slice(start, start + this.pageSize);
+  }
+  get pageNumbers(): number[] {
+    if (!this.pageSize || this.pageSize <= 0) return [1];
+    const totalPages = Math.ceil(this.filteredDepartments.length / this.pageSize);
+    if (!isFinite(totalPages) || totalPages < 1) return [1];
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  goToPage(page: number) {
+    if (page < 1 || page > this.pageNumbers.length) return;
+    this.currentPage = page;
+  }
+  onPageSizeChange(newSize: number) {
+    if (newSize === 0) {
+      this.pageSize = this.filteredDepartments.length;
+      this.currentPage = 1;
+    } else {
+      this.pageSize = newSize || 5;
+      this.currentPage = 1;
+    }
+  }
   departmentNameFilter: string = '';
   filteredDepartments: Department[] = [];
   fieldErrors: { [key: string]: string } = {};
@@ -71,6 +103,8 @@ export class DepartmentComponent implements OnInit {
     this.loadDepartments();
     this.loadPersons();
     this.filteredDepartments = this.departments;
+    this.onResize();
+    window.addEventListener('resize', this.onResize.bind(this));
   }
 
   onAdd(): void {
@@ -159,6 +193,7 @@ export class DepartmentComponent implements OnInit {
     } else {
       this.filteredDepartments = this.departments.filter(d => d.Name.toLowerCase().includes(filter));
     }
+    this.currentPage = 1;
   // removed extra closing brace here
   }
 
@@ -203,6 +238,12 @@ export class DepartmentComponent implements OnInit {
   closePersonsModal(): void {
     this.showPersonsModal = false;
     this.personsInDepartment = [];
+  }
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize.bind(this));
+  }
+  onResize() {
+    this.isMobileView = window.innerWidth <= 600;
   }
 }
 
