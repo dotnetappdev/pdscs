@@ -16,6 +16,8 @@ This file describes all unit tests for the solution, written with **xUnit** and 
 - Adding a department with a valid name returns success
 - Adding a department with a null/empty name fails validation
 - Adding a person with invalid data fails validation
+- Deleting a person or department removes it from the database
+- Updating a person or department changes the data as expected
 
 ## How to Run
 ```sh

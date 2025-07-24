@@ -1,4 +1,14 @@
-# 🟣 .NET 9 | 🟦 ASP.NET Core | 🟩 Angular | 🧪 xUnit | 🗄️ InMemory DB
+[![Backend Tests](https://github.com/<OWNER>/<REPO>/actions/workflows/backend-tests.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/backend-tests.yml)
+[![Frontend Tests](https://github.com/<OWNER>/<REPO>/actions/workflows/frontend-tests.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/frontend-tests.yml)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-9.0-purple?logo=dotnet&logoColor=white" alt=".NET 9" />
+  <img src="https://img.shields.io/badge/ASP.NET%20Core-9.0-blue?logo=dotnet&logoColor=white" alt="ASP.NET Core 9" />
+  <img src="https://img.shields.io/badge/Angular-17+-red?logo=angular&logoColor=white" alt="Angular 17+" />
+  <img src="https://img.shields.io/badge/xUnit-2.4+-orange?logo=xunit&logoColor=white" alt="xUnit 2.4+" />
+  <img src="https://img.shields.io/badge/EF%20Core-InMemory-green?logo=database&logoColor=white" alt="EF Core InMemory" />
+  <img src="https://img.shields.io/badge/FluentValidation-11+-blueviolet" alt="FluentValidation 11+" />
+</p>
 
 ---
 
@@ -57,12 +67,22 @@ The app demonstrates:
 
 ## 🧪 Tests
 - **xUnit** unit tests for repositories and validation logic
+- **Angular Frontend Unit Tests**: Jasmine/Karma tests for components and services
 - Tests cover:
-  - Adding departments/persons
+  - Adding, updating, and deleting departments/persons
   - Validation failures (e.g., missing department name)
   - InMemory DB context setup
+  - Angular component rendering and service logic
 
-See [`README.tests.md`](./README.tests.md) for test details.
+See [`README.tests.md`](./README.tests.md) for backend test details.
+
+### ▶️ Running Frontend Tests
+To run Angular (frontend) unit tests with Jasmine/Karma:
+```sh
+cd UKParliament.CodeTest.Web/ClientApp
+ng test
+```
+This will launch the test runner and execute all `.spec.ts` files using Jasmine.
 
 ---
 
@@ -108,9 +128,14 @@ See [`README.tests.md`](./README.tests.md) for test details.
    ```sh
    dotnet run --project UKParliament.CodeTest.Web
    ```
-3. **Run tests:**
+3. **Run backend tests:**
    ```sh
    dotnet test
+   ```
+4. **Run frontend (Angular) tests:**
+   ```sh
+   cd UKParliament.CodeTest.Web/ClientApp
+   ng test
    ```
 
 ---
@@ -124,5 +149,4 @@ See [`README.tests.md`](./README.tests.md) for test details.
 
 ## 📢 Notes
 - No real data is used. All data is for demonstration/testing only.
-- No references to any real-world organizations or abbreviations in code or CSS.
 

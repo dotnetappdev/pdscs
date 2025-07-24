@@ -53,5 +53,53 @@ namespace UKParliament.CodeTest.Tests.DepartmentTests
             Assert.False(result.IsValid);
             Assert.Contains(result.Errors, e => e.PropertyName == "Name");
         }
+
+        [Fact]
+        public async Task DeleteDepartment_WithValidId_RemovesDepartment()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<UKParliament.CodeTest.Services.DepartmentWriteService>();
+            var repo = new UKParliament.CodeTest.Services.DepartmentWriteService(context, logger);
+            var department = new Department {
+                Name = "Delete Department"
+            };
+            var created = await repo.AddAsync(department);
+            Assert.NotNull(created);
+            var id = created.Id;
+
+            // Act
+            var deleted = await repo.DeleteAsync(id);
+
+            // Assert
+            Assert.True(deleted);
+            Assert.Null(context.Departments.Find(id));
+        }
+
+        [Fact]
+        public async Task UpdateDepartment_WithValidData_UpdatesDepartment()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<UKParliament.CodeTest.Services.DepartmentWriteService>();
+            var repo = new UKParliament.CodeTest.Services.DepartmentWriteService(context, logger);
+            var department = new Department {
+                Name = "Original Department"
+            };
+            var created = await repo.AddAsync(department);
+            Assert.NotNull(created);
+            var id = created.Id;
+
+            // Act
+            var updatedDepartment = new Department {
+                Id = id,
+                Name = "Updated Department"
+            };
+            var updated = await repo.UpdateAsync(updatedDepartment);
+
+            // Assert
+            Assert.NotNull(updated);
+            Assert.Equal("Updated Department", updated.Name);
+        }
     }
 }

@@ -64,5 +64,73 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             Assert.False(result.Success);
             Assert.Equal(System.Net.HttpStatusCode.BadRequest, result.StatusCode);
         }
+
+        [Fact]
+        public async Task DeletePerson_WithValidId_RemovesPerson()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            context.Departments.AddRange(SampleData.GetDepartments());
+            context.People.AddRange(SampleData.GetPeople());
+            context.SaveChanges();
+            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonWriteRepository>();
+            var repo = new PersonWriteRepository(context, logger);
+            var person = new Person {
+                FirstName = "DeleteMe",
+                LastName = "Person",
+                DepartmentId = 1,
+                Description = "To be deleted",
+                DOB = new System.DateOnly(1990, 1, 1)
+            };
+            var addResult = repo.AddPerson(person);
+            Assert.True(addResult.Success);
+            var id = addResult.Data.Id;
+
+            // Act
+            var deleteResult = await repo.DeletePerson(id);
+
+            // Assert
+            Assert.True(deleteResult.Success);
+            Assert.Equal(System.Net.HttpStatusCode.OK, deleteResult.StatusCode);
+            Assert.Null(context.People.Find(id));
+        }
+
+        [Fact]
+        public void UpdatePerson_WithValidData_UpdatesPerson()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            context.Departments.AddRange(SampleData.GetDepartments());
+            context.People.AddRange(SampleData.GetPeople());
+            context.SaveChanges();
+            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonWriteRepository>();
+            var repo = new PersonWriteRepository(context, logger);
+            var person = new Person {
+                FirstName = "UpdateMe",
+                LastName = "Person",
+                DepartmentId = 1,
+                Description = "To be updated",
+                DOB = new System.DateOnly(1995, 5, 5)
+            };
+            var addResult = repo.AddPerson(person);
+            Assert.True(addResult.Success);
+            var id = addResult.Data.Id;
+
+            // Act
+            var updatedPerson = new Person {
+                Id = id,
+                FirstName = "Updated",
+                LastName = "Person",
+                DepartmentId = 1,
+                Description = "Updated description",
+                DOB = new System.DateOnly(1995, 5, 5)
+            };
+            var updateResult = repo.UpdatePerson(id, updatedPerson);
+
+            // Assert
+            Assert.True(updateResult.Success);
+            Assert.Equal("Updated", updateResult.Data.FirstName);
+            Assert.Equal("Updated description", updateResult.Data.Description);
+        }
     }
 }
