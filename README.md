@@ -10,12 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/dotnetappdev/pdscs/actions/workflows/frontend-tests.yml">
-    <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/frontend-tests.yml/badge.svg" alt="Frontend Tests" />
-  </a>
-  <a href="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml">
-    <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml/badge.svg" alt="Backend Tests" />
-  </a>
+<a href="https://github.com/dotnetappdev/pdscs/actions/workflows/frontend-tests.yml" style="text-decoration: none;">
+  <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/frontend-tests.yml/badge.svg" alt="Frontend Tests" />
+</a>
+ <a href="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml" style="text-decoration: none;">
+  <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml/badge.svg" alt="Backend Tests" />
+</a>
 </p>
  
 
