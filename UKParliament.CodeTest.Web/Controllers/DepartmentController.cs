@@ -38,10 +38,19 @@ namespace UKParliament.CodeTest.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<Department>> AddDepartment([FromBody] Department department)
         {
+            // Validate using DepartmentValidator
+            var validator = new UKParliament.CodeTest.Services.Validation.DepartmentValidator();
+            var validationResult = validator.Validate(department);
+            if (!validationResult.IsValid)
+            {
+                var fieldErrors = validationResult.Errors
+                    .GroupBy(e => e.PropertyName)
+                    .ToDictionary(g => g.Key, g => g.First().ErrorMessage);
+                return BadRequest(new { fieldErrors });
+            }
             var created = await _writeRepository.AddAsync(department);
             if (created == null)
             {
-                // Defensive: if creation failed, return 400
                 return BadRequest(new { message = "Failed to create department." });
             }
             return CreatedAtAction(nameof(GetDepartment), new { id = created.Id }, created);

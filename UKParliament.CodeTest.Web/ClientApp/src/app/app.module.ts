@@ -9,6 +9,7 @@ import { PersonsComponent } from './components/persons/persons.component';
 import { DepartmentComponent } from './components/departments/department.component';
 import { ConfirmDeleteModalModule } from './components/shared/confirm-delete-modal.module';
 import { ToastComponent } from './components/shared/toast.component';
+import { DepartmentService } from './services/department.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,6 @@ import { ToastComponent } from './components/shared/toast.component';
     { path: '', component: PersonsComponent, pathMatch: 'full' },
     { path: 'persons', component: PersonsComponent },
     { path: 'departments', component: DepartmentComponent }
-  ])], providers: [provideHttpClient(withInterceptorsFromDi())]
+  ])], providers: [provideHttpClient(withInterceptorsFromDi()), DepartmentService]
 })
 export class AppModule { }

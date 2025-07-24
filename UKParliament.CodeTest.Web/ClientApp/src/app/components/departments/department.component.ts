@@ -1,6 +1,3 @@
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from '../../services/department.service';
 import { PersonService } from '../../services/person.service';
@@ -13,6 +10,7 @@ import { PersonViewModel } from '../../models/person-view-model';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
+  fieldErrors: { [key: string]: string } = {};
   toastMessage: string = '';
   showToast: boolean = false;
 
@@ -30,7 +28,7 @@ export class DepartmentComponent implements OnInit {
         this.deleteError = '';
         this.showToastMessage('Department deleted successfully!');
       },
-      error: err => {
+      error: (err: any) => {
         this.deleteError = 'Failed to delete department.';
       }
     });
@@ -82,24 +80,39 @@ export class DepartmentComponent implements OnInit {
   }
 
   onSave(): void {
+    this.fieldErrors = {};
     if (!this.selectedDepartment || !this.selectedDepartment.Name || this.selectedDepartment.Name.trim() === '') {
+      this.fieldErrors['Name'] = 'Department name cannot be blank.';
       this.errorMessage = 'Department name cannot be blank.';
       return;
     }
     if (this.isEditMode) {
-      // Update in-memory for now
-      const idx = this.departments.findIndex(d => d.Id === this.selectedDepartment!.Id);
-      if (idx > -1) {
-        this.departments[idx] = { ...this.selectedDepartment };
-      }
+      this.departmentService.updateDepartment(this.selectedDepartment).subscribe({
+        next: (updated) => {
+          this.loadDepartments();
+          this.selectedDepartment = null;
+          this.isEditMode = false;
+          this.errorMessage = '';
+          this.showToastMessage('Department updated successfully!');
+        },
+        error: (err) => {
+          this.errorMessage = 'Failed to update department.';
+        }
+      });
     } else {
-      // Add new department (simulate ID)
-      const newId = this.departments.length > 0 ? Math.max(...this.departments.map(d => d.Id)) + 1 : 1;
-      this.departments.push({ Id: newId, Name: this.selectedDepartment.Name });
+      this.departmentService.addDepartment(this.selectedDepartment).subscribe({
+        next: (created) => {
+          this.loadDepartments();
+          this.selectedDepartment = null;
+          this.isEditMode = false;
+          this.errorMessage = '';
+          this.showToastMessage('Department added successfully!');
+        },
+        error: (err) => {
+          this.errorMessage = 'Failed to add department.';
+        }
+      });
     }
-    this.selectedDepartment = null;
-    this.isEditMode = false;
-    this.errorMessage = '';
   }
 
   onCancelEdit(): void {

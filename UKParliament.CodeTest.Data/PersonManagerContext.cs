@@ -19,9 +19,9 @@ public class PersonManagerContext : DbContext
         modelBuilder.Entity<Person>().HasData(SampleData.GetPeople());
     }
 
-    public required DbSet<Person> People { get; set; }
+public DbSet<Person> People { get; set; } = default!;
 
-    public required DbSet<Department> Departments { get; set; }
+public DbSet<Department> Departments { get; set; } = default!;
 
 
 

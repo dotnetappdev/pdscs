@@ -56,6 +56,13 @@ namespace UKParliament.CodeTest.Services.Repositories
         {
             try
             {
+                if (person == null)
+                {
+                    return ApiResponse<Person>.Failure(
+                        "Person cannot be null.",
+                        System.Net.HttpStatusCode.BadRequest
+                    );
+                }
                 // Sanitize fields before validation and saving
                 person.FirstName = Services.Validation.SanitizationHelper.Sanitize(person.FirstName);
                 person.LastName = Services.Validation.SanitizationHelper.Sanitize(person.LastName);
@@ -76,7 +83,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                         Success = false,
                         Message = "Validation failed",
                         Data = null,
-                        StatusCode = HttpStatusCode.BadRequest,
+                        StatusCode = System.Net.HttpStatusCode.BadRequest,
                         Errors = errorDict
                     };
                 }
@@ -86,7 +93,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                 return ApiResponse<Person>.SuccessResponse(
                     person,
                     "Person added successfully.",
-                    HttpStatusCode.Created // 201
+                    System.Net.HttpStatusCode.Created // 201
                 );
             }
             catch (Exception ex)
@@ -94,7 +101,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                 _logger.LogError(ex, "Error adding person");
                 return ApiResponse<Person>.Failure(
                     ex.Message.ToString(),
-                    HttpStatusCode.InternalServerError
+                    System.Net.HttpStatusCode.InternalServerError
                 );
             }
         }

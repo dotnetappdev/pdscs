@@ -19,9 +19,9 @@ namespace UKParliament.CodeTest.Services
         {
             try
             {
-                if (department == null)
+                if (department == null || string.IsNullOrWhiteSpace(department.Name))
                 {
-                    // Return null if input is null
+                    // Return null if input is null or Name is null/empty
                     return null;
                 }
                 _context.Departments.Add(department);

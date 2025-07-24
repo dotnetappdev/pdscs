@@ -60,11 +60,14 @@
       </label>
       <input [(ngModel)]="selectedDepartment.Name" name="name" required
         [ngStyle]="{
-          borderColor: errorMessage === 'Department name cannot be blank.' ? '#c00' : '#ccc',
-          background: errorMessage === 'Department name cannot be blank.' ? '#fff6f6' : '#fff'
+          borderColor: fieldErrors['Name'] ? '#c00' : '#ccc',
+          background: fieldErrors['Name'] ? '#fff6f6' : '#fff'
         }"
         style="width:100%; font-size:1rem; margin-bottom:0.25rem; border:1px solid; border-radius:4px; padding:0.5rem;" />
-      <div *ngIf="errorMessage === 'Department name cannot be blank.'" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;"><span style="font-weight:normal; color:red;">(Notes * means required field)</span>.</div>
+      <div *ngIf="fieldErrors['Name']" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem;">
+        {{ fieldErrors['Name'] }}
+        <span style="font-weight:normal; color:red;">(Notes * means required field)</span>.
+      </div>
       <div style="display:flex; gap:1rem; margin-top:1rem;">
         <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem; background:#373151; color:#fff; border:none; border-radius:4px; cursor:pointer;">Save</button>
         <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem; background:#e0c7d1; color:#373151; border:none; border-radius:4px; cursor:pointer;">Cancel</button>

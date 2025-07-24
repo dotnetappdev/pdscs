@@ -147,7 +147,7 @@ export class PersonsComponent implements OnInit {
 
   constructor(
     private personsService: PersonsService,
-    private departmentService: DepartmentService,
+    public departmentService: DepartmentService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -189,12 +189,11 @@ export class PersonsComponent implements OnInit {
 
   loadDepartments() {
     this.departmentService.getDepartments().subscribe({
-      next: (depts) => {
+      next: (depts: any[]) => {
         this.departments = depts;
-
         this.cdr.detectChanges();
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error loading departments:', err);
         this.errorMessage = 'Failed to load departments.';
       }
@@ -203,7 +202,7 @@ export class PersonsComponent implements OnInit {
 
   getAllPersons() {
     this.personsService.getPersons().subscribe({
-      next: (persons) => {
+      next: (persons: any[]) => {
         console.log('Received persons:', persons); // Debug log added
         // Map DOB to JS Date for correct display in table
         this.persons = persons.map(p => ({
@@ -215,7 +214,7 @@ export class PersonsComponent implements OnInit {
           this.cdr.detectChanges();
         }, 0); // Extra change detection for stubborn UI
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error fetching persons:', err);
         this.errorMessage = 'Failed to load persons.';
       }
