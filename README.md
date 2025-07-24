@@ -17,16 +17,7 @@
     <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml/badge.svg" alt="Backend Tests" />
   </a>
 </p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/.NET-9.0-purple?logo=dotnet&logoColor=white" alt=".NET 9" />
-  <img src="https://img.shields.io/badge/ASP.NET%20Core-9.0-blue?logo=dotnet&logoColor=white" alt="ASP.NET Core 9" />
-  <img src="https://img.shields.io/badge/Angular-17+-red?logo=angular&logoColor=white" alt="Angular 17+" />
-  <!-- xUnit badge below is static. For live test status, see the Backend Tests badge above. -->
-  <img src="https://img.shields.io/badge/xUnit-2.4+-orange?logo=xunit&logoColor=white" alt="xUnit 2.4+" />
-  <img src="https://img.shields.io/badge/EF%20Core-InMemory-green?logo=database&logoColor=white" alt="EF Core InMemory" />
-  <img src="https://img.shields.io/badge/FluentValidation-11+-blueviolet" alt="FluentValidation 11+" />
-</p>
+ 
 
 ---
 
