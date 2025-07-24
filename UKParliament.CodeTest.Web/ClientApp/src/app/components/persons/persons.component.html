@@ -20,44 +20,42 @@
         </select>
       </div>
       <table *ngIf="pagedPersons.length > 0; else noData" class="table table-responsive" aria-describedby="persons-list-heading" style="font-size: 0.95rem; min-width:900px; width:100%;" role="table">
-        <caption class="sr-only">List of persons with first name, last name, date of birth, department, and full name</caption>
+        <caption id="persons-table-caption">List of persons with first name, last name, date of birth, department, and actions</caption>
         <thead role="rowgroup">
           <tr role="row">
-            <th *ngIf="isMobileView" scope="col" aria-label="Actions">Actions</th>
-            <th scope="col" aria-label="First Name" (click)="setSort('FirstName')" style="cursor:pointer;">
-              First Name
+            <th *ngIf="isMobileView" scope="col" aria-label="Actions" id="actions-header">Actions</th>
+            <th scope="col" aria-label="First Name" id="first-name-header" (click)="setSort('FirstName')" style="cursor:pointer;">
+              <span>First Name</span>
               <span style="font-size:1rem; margin-left:0.25rem;" *ngIf="sortColumn === 'FirstName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
             </th>
-            <th scope="col" aria-label="Last Name" (click)="setSort('LastName')" style="cursor:pointer;">
-              Last Name
+            <th scope="col" aria-label="Last Name" id="last-name-header" (click)="setSort('LastName')" style="cursor:pointer;">
+              <span>Last Name</span>
               <span style="font-size:1rem; margin-left:0.25rem;" *ngIf="sortColumn === 'LastName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
             </th>
-            <th scope="col" aria-label="Date of Birth">Date of Birth</th>
-            <th *ngIf="!isMobileView" scope="col" aria-label="Department">Department</th>
-            <th *ngIf="!isMobileView" scope="col" aria-label="Actions">Actions</th>
+            <th scope="col" aria-label="Date of Birth" id="dob-header">Date of Birth</th>
+            <th *ngIf="!isMobileView" scope="col" aria-label="Department" id="department-header">Department</th>
+            <th *ngIf="!isMobileView" scope="col" aria-label="Actions" id="actions-header-desktop">Actions</th>
           </tr>
         </thead>
         <tbody role="rowgroup">
           <tr *ngFor="let person of pagedPersons; let i = index" role="row">
-            <td *ngIf="isMobileView" role="cell">
+            <td *ngIf="isMobileView" role="cell" headers="actions-header">
               <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.fullName" style="font-size:0.85rem; padding:0.25rem 0.5rem; min-width:unset;">Edit</button>
               <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.fullName" style="font-size:0.85rem; padding:0.25rem 0.5rem; min-width:unset;">Delete</button>
             </td>
-            <td role="cell">{{ person.FirstName }}</td>
-            <td role="cell">{{ person.LastName }}</td>
-            <td role="cell">{{ person.DOB ? (person.DOB | date: 'dd/MM/yyyy') : '—' }}</td>
-            <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentName }}</td>
-            <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentId }}</td>
-            <!-- <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentId }}</td> -->
-            <td *ngIf="!isMobileView" role="cell">
+            <td role="cell" headers="first-name-header">{{ person.FirstName }}</td>
+            <td role="cell" headers="last-name-header">{{ person.LastName }}</td>
+            <td role="cell" headers="dob-header">{{ person.DOB ? (person.DOB | date: 'dd/MM/yyyy') : '—' }}</td>
+            <td *ngIf="!isMobileView" role="cell" headers="department-header">{{ person.DepartmentName }}</td>
+            <td *ngIf="!isMobileView" role="cell" headers="actions-header-desktop">
               <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.FullName">Edit</button>
               <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.FullName">Delete</button>
-<app-confirm-delete-modal
-  [show]="showDeleteModal"
-  [itemName]="selectedPersonToDelete?.FirstName + ' ' + selectedPersonToDelete?.LastName"
-  (confirm)="confirmDelete()"
-  (cancel)="cancelDelete()">
-</app-confirm-delete-modal>
+              <app-confirm-delete-modal
+                [show]="showDeleteModal"
+                [itemName]="selectedPersonToDelete?.FirstName + ' ' + selectedPersonToDelete?.LastName"
+                (confirm)="confirmDelete()"
+                (cancel)="cancelDelete()">
+              </app-confirm-delete-modal>
             </td>
           </tr>
         </tbody>
