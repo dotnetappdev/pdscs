@@ -96,9 +96,14 @@
   </div>
 
   <div *ngIf="selectedDepartment" style="flex:1; min-width:300px; max-width:400px; border-left:1px solid #ccc; margin-left:10px; padding-left:2rem; font-size:0.95rem; background:#f8f8fa;">
-    <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px;" tabindex="0">
-      {{ selectedDepartment.Id ? 'Edit Department' : 'Add Department' }}
-    </h3>
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px; margin:0;" tabindex="0">
+        {{ selectedDepartment.Id ? 'Edit Department' : 'Add Department' }}
+      </h3>
+      <button type="button" (click)="onCancelEdit()" aria-label="Close form" style="background:none; border:none; color:#c00; font-size:1.7rem; font-weight:bold; cursor:pointer; line-height:1; margin-right:0.25rem; margin-top:0.25rem;" title="Close">
+        &times;
+      </button>
+    </div>
 
     <form (ngSubmit)="onSave()" aria-label="Department details form">
       <div style="margin-bottom: 1.5rem;">

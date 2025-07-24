@@ -97,7 +97,12 @@
     </div>
     <!-- Desktop/iPad form floats right -->
     <div *ngIf="selectedPerson && !isMobileView" class="persons-form-container">
-      <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px;" tabindex="0" role="heading" aria-level="3" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px; margin:0;" tabindex="0" role="heading" aria-level="3" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
+        <button type="button" (click)="onCancelEdit()" aria-label="Close form" style="background:none; border:none; color:#c00; font-size:1.7rem; font-weight:bold; cursor:pointer; line-height:1; margin-right:0.25rem; margin-top:0.25rem;" title="Close">
+          &times;
+        </button>
+      </div>
       <form (ngSubmit)="onSave()" #editForm="ngForm" aria-label="Person details form">
         <!-- ...existing code for form fields... -->
         <div style="margin-bottom: 1.5rem;">
