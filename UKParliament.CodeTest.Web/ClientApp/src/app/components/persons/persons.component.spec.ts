@@ -2,6 +2,79 @@ import { TestBed } from '@angular/core/testing';
 import { PersonsComponent } from './persons.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('PersonsComponent', () => {
+  it('updates a person and reflects the change in the table', async () => {
+    // Arrange
+    const fixture = TestBed.createComponent(PersonsComponent);
+    const component = fixture.componentInstance;
+    const person = {
+      Id: 1,
+      FirstName: 'Matt',
+      LastName: 'Smith',
+      DOB: '2001-01-26',
+      DepartmentId: 1,
+      DepartmentName: 'HR',
+      FullName: 'Matt Smith',
+      Description: 'HR Specialist'
+    };
+    component.persons = [person];
+    fixture.detectChanges();
+
+    // Act: update the person
+    const updatedPerson = {
+      ...person,
+      FirstName: 'Matthew',
+      Description: 'HR Manager'
+    };
+    component.persons = [updatedPerson];
+    fixture.detectChanges();
+
+    // Assert
+    const compiled = fixture.nativeElement as HTMLElement;
+    const row = compiled.querySelector('table tbody tr');
+    expect(row).toBeTruthy();
+    expect(row?.textContent).toContain('Matthew');
+    expect(row?.textContent).toContain('Smith');
+    expect(row?.textContent).toContain('26/01/2001');
+    expect(row?.textContent).toContain('HR');
+  });
+  it('deletes a person and removes their row from the table', async () => {
+    // Arrange
+    const fixture = TestBed.createComponent(PersonsComponent);
+    const component = fixture.componentInstance;
+    const person1 = {
+      Id: 1,
+      FirstName: 'Matt',
+      LastName: 'Smith',
+      DOB: '2001-01-26',
+      DepartmentId: 1,
+      DepartmentName: 'HR',
+      FullName: 'Matt Smith',
+      Description: 'HR Specialist'
+    };
+    const person2 = {
+      Id: 2,
+      FirstName: 'David',
+      LastName: 'Brown',
+      DOB: '1977-06-26',
+      DepartmentId: 9,
+      DepartmentName: 'Software Development',
+      FullName: 'David Brown',
+      Description: 'Software Developer'
+    };
+    component.persons = [person1, person2];
+    fixture.detectChanges();
+
+    // Act: simulate delete by manually removing from array
+    component.persons = component.persons.filter(p => p.Id !== person1.Id);
+    fixture.detectChanges();
+
+    // Assert
+    const compiled = fixture.nativeElement as HTMLElement;
+    const rows = compiled.querySelectorAll('table tbody tr');
+    expect(rows.length).toBe(1);
+    expect(rows[0].textContent).toContain('David');
+    expect(rows[0].textContent).not.toContain('Matt');
+  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -15,14 +88,14 @@ describe('PersonsComponent', () => {
     const fixture = TestBed.createComponent(PersonsComponent);
     const component = fixture.componentInstance;
     const testPerson = {
-      id: 1,
-      firstName: 'Matt',
-      lastName: 'Smith',
-      dob: '2001-01-26',
-      departmentId: 1,
-      departmentName: 'HR',
-      fullName: 'Matt Smith',
-      description: 'HR Specialist'
+      Id: 1,
+      FirstName: 'Matt',
+      LastName: 'Smith',
+      DOB: '2001-01-26',
+      DepartmentId: 1,
+      DepartmentName: 'HR',
+      FullName: 'Matt Smith',
+      Description: 'HR Specialist'
     };
     component.persons = [testPerson];
     fixture.detectChanges();
@@ -46,14 +119,14 @@ describe('PersonsComponent', () => {
     const component = fixture.componentInstance;
     // Matt Smith, Department HR (id: 1)
     const testPerson = {
-      id: 1,
-      firstName: 'Matt',
-      lastName: 'Smith',
-      dob: '2001-01-26',
-      departmentId: 1,
-      departmentName: 'HR',
-      fullName: 'Matt Smith',
-      description: 'HR Specialist'
+      Id: 1,
+      FirstName: 'Matt',
+      LastName: 'Smith',
+      DOB: '2001-01-26',
+      DepartmentId: 1,
+      DepartmentName: 'HR',
+      FullName: 'Matt Smith',
+      Description: 'HR Specialist'
     };
     component.persons = [testPerson];
     fixture.detectChanges();

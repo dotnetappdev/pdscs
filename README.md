@@ -1,5 +1,5 @@
-[![Backend Tests](https://github.com/<OWNER>/<REPO>/actions/workflows/backend-tests.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/backend-tests.yml)
 [![Frontend Tests](https://github.com/<OWNER>/<REPO>/actions/workflows/frontend-tests.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/frontend-tests.yml)
+[![Backend Tests](https://github.com/<OWNER>/<REPO>/actions/workflows/backend-tests.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/backend-tests.yml)
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-9.0-purple?logo=dotnet&logoColor=white" alt=".NET 9" />
