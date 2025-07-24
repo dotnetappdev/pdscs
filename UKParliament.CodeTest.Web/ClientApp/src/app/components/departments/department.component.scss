@@ -1,3 +1,25 @@
+/* Responsive actions row for department buttons */
+.department-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .department-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+  }
+  .department-actions button {
+    width: 100%;
+    min-width: 110px;
+  }
+}
 /* Toast message styles */
 .toast-message {
   background: #7c3aed;

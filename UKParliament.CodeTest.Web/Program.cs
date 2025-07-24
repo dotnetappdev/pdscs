@@ -16,11 +16,16 @@ public class Program
     {
         try
         {
-            // Configure Serilog
+
+            var now = DateTime.Now;
+            var logDir = Path.Combine("logs", now.ToString("yyyy-MM"));
+            Directory.CreateDirectory(logDir);
+            var logFile = Path.Combine(logDir, $"{now:yyyy-MM-dd}_{now:dddd}.txt");
+
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.File(
-                    path: "logs/{Year}/{MonthName}/{Date}.txt",
+                    path: logFile,
                     rollingInterval: RollingInterval.Day,
                     outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
                 .CreateLogger();

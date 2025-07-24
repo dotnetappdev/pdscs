@@ -1,3 +1,51 @@
+// Layout for persons main flex container and children
+.persons-main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: calc(100vh - 120px);
+  margin-top: 0;
+}
+
+.persons-table-form-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.persons-table-container {
+  flex: 2 1 0;
+  min-width: 350px;
+  max-width: 900px;
+}
+
+.persons-form-container {
+  flex: 1 1 300px;
+  min-width: 300px;
+  max-width: 400px;
+  border-left: 1px solid #ccc;
+  padding-left: 2rem;
+  font-size: 0.95rem;
+  background: #f8f8fa;
+}
+
+@media (max-width: 900px) {
+  .persons-table-form-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .persons-form-container {
+    border-left: none;
+    border-top: 1px solid #ccc;
+    padding-left: 0;
+    padding-top: 1.5rem;
+    max-width: 100%;
+  }
+}
 .error {
   color: #c00 !important;
   font-size: 0.95rem;

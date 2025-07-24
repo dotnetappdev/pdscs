@@ -11,6 +11,8 @@ import { PersonViewModel } from '../../models/person-view-model';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
+  departmentNameFilter: string = '';
+  filteredDepartments: Department[] = [];
   fieldErrors: { [key: string]: string } = {};
   toastMessage: string = '';
   showToast: boolean = false;
@@ -68,6 +70,7 @@ export class DepartmentComponent implements OnInit {
   ngOnInit(): void {
     this.loadDepartments();
     this.loadPersons();
+    this.filteredDepartments = this.departments;
   }
 
   onAdd(): void {
@@ -145,7 +148,18 @@ export class DepartmentComponent implements OnInit {
           return b.Name.localeCompare(a.Name);
         }
       });
+      this.onDepartmentNameFilterChange();
     });
+  }
+
+  onDepartmentNameFilterChange(): void {
+    const filter = this.departmentNameFilter.trim().toLowerCase();
+    if (!filter) {
+      this.filteredDepartments = this.departments;
+    } else {
+      this.filteredDepartments = this.departments.filter(d => d.Name.toLowerCase().includes(filter));
+    }
+  // removed extra closing brace here
   }
 
   toggleSortDirection(): void {

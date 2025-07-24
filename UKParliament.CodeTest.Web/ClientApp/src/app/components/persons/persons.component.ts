@@ -13,6 +13,30 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent implements OnInit {
+  // Filter bar properties for restored filters
+  searchText: string = '';
+  selectedDepartmentFilter: string | null = null;
+
+  // Called when search input changes
+  onSearchChange() {
+    this.nameFilter = this.searchText;
+    this.currentPage = 1;
+  }
+
+  // Called when department filter changes
+  onDepartmentFilterChange(event: any) {
+    this.departmentFilter = this.selectedDepartmentFilter || '';
+    this.currentPage = 1;
+  }
+
+  // Clear both filters
+  clearFilters() {
+    this.searchText = '';
+    this.selectedDepartmentFilter = null;
+    this.nameFilter = '';
+    this.departmentFilter = '';
+    this.currentPage = 1;
+  }
   showToast = false;
   toastMessage = '';
   showToastMessage(message: string): void {
