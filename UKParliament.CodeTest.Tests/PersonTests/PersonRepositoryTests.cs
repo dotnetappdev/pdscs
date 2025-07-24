@@ -11,8 +11,9 @@ namespace UKParliament.CodeTest.Tests.PersonTests
     {
         private PersonManagerContext GetInMemoryContext()
         {
+            var uniqueDbName = $"TestDb_Persons_{System.Guid.NewGuid()}";
             var options = new DbContextOptionsBuilder<PersonManagerContext>()
-                .UseInMemoryDatabase(databaseName: "TestDb_Persons")
+                .UseInMemoryDatabase(databaseName: uniqueDbName)
                 .Options;
             var context = new PersonManagerContext(options);
             return context;
@@ -23,15 +24,18 @@ namespace UKParliament.CodeTest.Tests.PersonTests
         {
             // Arrange
             var context = GetInMemoryContext();
-            // Seed with SampleData for consistency
+            // Seed both departments and people to use sample data
             context.Departments.AddRange(SampleData.GetDepartments());
             context.People.AddRange(SampleData.GetPeople());
             context.SaveChanges();
             var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonWriteRepository>();
             var repo = new PersonWriteRepository(context, logger);
-            var person = new Person {
-                FirstName = "TestAdd",
-                LastName = "Person", // similar to sample but unique for test
+            // Use a unique name to avoid conflicts with seeded people
+            var person = new Person
+            {
+                Id = 1000,
+                FirstName = "TestAddUnique",
+                LastName = "PersonTest",
                 DepartmentId = 1,
                 Description = "HR Specialist",
                 DOB = new System.DateOnly(1998, 1, 26)
@@ -44,8 +48,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             Assert.NotNull(result);
             Assert.True(result.Success);
             Assert.NotNull(result.Data);
-            Assert.Equal("TestAdd", result.Data.FirstName);
-            Assert.Equal("Person", result.Data.LastName);
+            Assert.Equal("TestAddUnique", result.Data.FirstName);
+            Assert.Equal("PersonTest", result.Data.LastName);
         }
 
         [Fact]
@@ -75,7 +79,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             context.SaveChanges();
             var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonWriteRepository>();
             var repo = new PersonWriteRepository(context, logger);
-            var person = new Person {
+            var person = new Person
+            {
                 FirstName = "DeleteMe",
                 LastName = "Person",
                 DepartmentId = 1,
@@ -101,11 +106,11 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             // Arrange
             var context = GetInMemoryContext();
             context.Departments.AddRange(SampleData.GetDepartments());
-            context.People.AddRange(SampleData.GetPeople());
             context.SaveChanges();
             var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonWriteRepository>();
             var repo = new PersonWriteRepository(context, logger);
-            var person = new Person {
+            var person = new Person
+            {
                 FirstName = "UpdateMe",
                 LastName = "Person",
                 DepartmentId = 1,
@@ -117,7 +122,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var id = addResult.Data.Id;
 
             // Act
-            var updatedPerson = new Person {
+            var updatedPerson = new Person
+            {
                 Id = id,
                 FirstName = "Updated",
                 LastName = "Person",

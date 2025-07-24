@@ -10,8 +10,9 @@ namespace UKParliament.CodeTest.Tests.DepartmentTests
     {
         private PersonManagerContext GetInMemoryContext()
         {
+            var uniqueDbName = $"TestDb_Departments_{System.Guid.NewGuid()}";
             var options = new DbContextOptionsBuilder<PersonManagerContext>()
-                .UseInMemoryDatabase(databaseName: "TestDb_Departments")
+                .UseInMemoryDatabase(databaseName: uniqueDbName)
                 .Options;
             var context = new PersonManagerContext(options);
             return context;

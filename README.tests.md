@@ -12,16 +12,35 @@ This file describes all unit tests for the solution, written with **xUnit** and 
 - **Error Handling:**
   - Ensures validation errors are returned and handled as expected
 
-## Example Tests
-- Adding a department with a valid name returns success
-- Adding a department with a null/empty name fails validation
-- Adding a person with invalid data fails validation
-- Deleting a person or department removes it from the database
-- Updating a person or department changes the data as expected
+## Example xUnit Tests (Backend)
+
+| Test Name                                      | Description                                      |
+|------------------------------------------------|--------------------------------------------------|
+| AddPerson_WithValidPerson_ReturnsSuccessAndPerson | Adds a valid person and checks result            |
+| AddPerson_WithNullPerson_ReturnsBadRequest     | Ensures null person returns BadRequest           |
+| DeletePerson_WithValidId_RemovesPerson         | Deletes a person and checks removal              |
+| UpdatePerson_WithValidData_UpdatesPerson       | Updates a person and checks new values           |
+| AddDepartment_WithValidDepartment_ReturnsSuccessAndDepartment | Adds a valid department and checks result      |
+| AddDepartment_WithNullDepartmentName_FailsValidation | Ensures null department name fails validation |
+| DeleteDepartment_WithValidId_RemovesDepartment | Deletes a department and checks removal          |
+| UpdateDepartment_WithValidData_UpdatesDepartment | Updates a department and checks new values      |
+
+## Example Jasmine Tests (Frontend)
+
+| Test File                        | Description                                      |
+|----------------------------------|--------------------------------------------------|
+| persons.component.spec.ts        | Renders persons table, checks CRUD UI, error display |
+| department.component.spec.ts     | Renders departments table, checks CRUD UI, error display |
+| department.service.spec.ts       | Tests API calls for department service            |
+| person.service.spec.ts           | Tests API calls for person service                |
+
+> For a full list and live results, see the [GitHub Actions test runs](https://github.com/<OWNER>/<REPO>/actions).
 
 ## How to Run
 ```sh
-dotnet test
+dotnet test           # Run backend xUnit tests
+cd UKParliament.CodeTest.Web/ClientApp
+ng test               # Run frontend Jasmine/Karma tests
 ```
 
 ---
