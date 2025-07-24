@@ -10,9 +10,8 @@ namespace UKParliament.CodeTest.Tests.DepartmentTests
     {
         private PersonManagerContext GetInMemoryContext()
         {
-            var uniqueDbName = $"TestDb_Departments_{System.Guid.NewGuid()}";
             var options = new DbContextOptionsBuilder<PersonManagerContext>()
-                .UseInMemoryDatabase(databaseName: uniqueDbName)
+                .UseInMemoryDatabase(databaseName: "TestDb_Departments")
                 .Options;
             var context = new PersonManagerContext(options);
             return context;
@@ -101,6 +100,28 @@ namespace UKParliament.CodeTest.Tests.DepartmentTests
             // Assert
             Assert.NotNull(updated);
             Assert.Equal("Updated Department", updated.Name);
+        }
+        [Fact]
+        public async Task GetByIdAsync_WithValidId_ReturnsDepartment()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            // Use a Serilog logger mock for testing
+            var logger = new Serilog.LoggerConfiguration().CreateLogger();
+            var repo = new UKParliament.CodeTest.Services.DepartmentReadService(context, logger);
+            var department = new Department {
+                Name = "Finance"
+            };
+            context.Departments.Add(department);
+            await context.SaveChangesAsync();
+            var id = department.Id;
+
+            // Act
+            var result = await repo.GetByIdAsync(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Finance", result.Name);
         }
     }
 }

@@ -1,9 +1,14 @@
 using System.Threading.Tasks;
 using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Services.Repositories;
+using UKParliament.CodeTest.Data.Repositories;
 using UKParliament.CodeTest.Services;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
+
+// Ensure PersonReadRepository is available
+// If the class is in a different namespace, add the correct using below
+// using UKParliament.CodeTest.Services.Repositories;
 
 namespace UKParliament.CodeTest.Tests.PersonTests
 {
@@ -18,7 +23,46 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var context = new PersonManagerContext(options);
             return context;
         }
+         [Fact]
+        public void GetAll_ReturnsAllPersons()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            context.Departments.AddRange(SampleData.GetDepartments());
+            context.People.AddRange(SampleData.GetPeople());
+            context.SaveChanges();
+            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonReadRepository>();
+            var repo = new PersonReadRepository(context, logger);
 
+            // Act
+            var result = repo.GetAll();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal(context.People.Count(), result.Count());
+        }
+
+        [Fact]
+        public void GetById_WithValidId_ReturnsPerson()
+        {
+            // Arrange
+            var context = GetInMemoryContext();
+            context.Departments.AddRange(SampleData.GetDepartments());
+            context.People.AddRange(SampleData.GetPeople());
+            context.SaveChanges();
+            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonReadRepository>();
+            var repo = new PersonReadRepository(context, logger);
+            var person = context.People.First();
+
+            // Act
+            var result = repo.GetById(person.Id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(person.FirstName, result.FirstName);
+            Assert.Equal(person.LastName, result.LastName);
+        }
         [Fact]
         public void AddPerson_WithValidPerson_ReturnsSuccessAndPerson()
         {
@@ -61,7 +105,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var repo = new PersonWriteRepository(context, logger);
 
             // Act
-            var result = repo.AddPerson(null);
+            var result = repo.AddPerson(null!);
 
             // Assert
             Assert.NotNull(result);
@@ -89,7 +133,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             };
             var addResult = repo.AddPerson(person);
             Assert.True(addResult.Success);
-            var id = addResult.Data.Id;
+            Assert.NotNull(addResult.Data);
+            var id = addResult.Data!.Id;
 
             // Act
             var deleteResult = await repo.DeletePerson(id);
@@ -119,7 +164,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             };
             var addResult = repo.AddPerson(person);
             Assert.True(addResult.Success);
-            var id = addResult.Data.Id;
+            Assert.NotNull(addResult.Data);
+            var id = addResult.Data!.Id;
 
             // Act
             var updatedPerson = new Person
@@ -135,7 +181,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
 
             // Assert
             Assert.True(updateResult.Success);
-            Assert.Equal("Updated", updateResult.Data.FirstName);
+            Assert.NotNull(updateResult.Data);
+            Assert.Equal("Updated", updateResult.Data!.FirstName);
             Assert.Equal("Updated description", updateResult.Data.Description);
         }
     }
