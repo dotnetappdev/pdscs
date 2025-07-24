@@ -46,8 +46,8 @@ public class Program
 
             builder.Services.AddDbContext<PersonManagerContext>(op => op.UseInMemoryDatabase("PersonManager"));
 
-            builder.Services.AddScoped<IPersonReadService<Person>, PersonReadRepository>();
-            builder.Services.AddScoped<IPersonWriteService<Person>, PersonWriteRepository>();
+            builder.Services.AddScoped<IPersonReadService, PersonReadRepository>();
+            builder.Services.AddScoped<IPersonWriteService, PersonWriteRepository>();
             builder.Services.AddScoped<PersonReadService>();
             builder.Services.AddScoped<PersonWriteService>();
             builder.Services.AddScoped<PersonMapperBase, PersonMapper>();

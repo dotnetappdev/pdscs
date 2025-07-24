@@ -1,58 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
-using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Web;
 
 namespace UKParliament.CodeTest.Services.Repositories
 {
-    public class PersonWriteRepository : IPersonWriteService<Person>
+    public class PersonWriteRepository : IPersonWriteService
     {
         private readonly PersonManagerContext _context;
         private readonly ILogger<PersonWriteRepository> _logger;
+
         public PersonWriteRepository(PersonManagerContext context, ILogger<PersonWriteRepository> logger)
         {
             _context = context;
             _logger = logger;
         }
 
-
-        public void SavePerson(Person person)
-        {
-            try
-            {
-                _context.People.Add(person);
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error saving person");
-                throw;
-            }
-        }
-        public void Delete(int id)
-        {
-            try
-            {
-                var person = _context.People.Find(id);
-                if (person != null)
-                {
-                    _context.People.Remove(person);
-                    _context.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error deleting person with id {PersonId}", id);
-                throw;
-            }
-        }
-
-        public ApiResponse<Person> AddPerson(Person person)
+        public async Task<ApiResponse<Person>> AddPersonAsync(Person person)
         {
             try
             {
@@ -63,7 +29,6 @@ namespace UKParliament.CodeTest.Services.Repositories
                         System.Net.HttpStatusCode.BadRequest
                     );
                 }
-                // Sanitize fields before validation and saving
                 person.FirstName = Services.Validation.SanitizationHelper.Sanitize(person.FirstName);
                 person.LastName = Services.Validation.SanitizationHelper.Sanitize(person.LastName);
                 person.Description = Services.Validation.SanitizationHelper.Sanitize(person.Description);
@@ -87,13 +52,13 @@ namespace UKParliament.CodeTest.Services.Repositories
                         Errors = errorDict
                     };
                 }
-                _context.People.Add(person);
-                _context.SaveChanges();
+                await _context.People.AddAsync(person);
+                await _context.SaveChangesAsync();
 
                 return ApiResponse<Person>.SuccessResponse(
                     person,
                     "Person added successfully.",
-                    System.Net.HttpStatusCode.Created // 201
+                    System.Net.HttpStatusCode.Created
                 );
             }
             catch (Exception ex)
@@ -106,11 +71,10 @@ namespace UKParliament.CodeTest.Services.Repositories
             }
         }
 
-        public ApiResponse<Person> UpdatePerson(int id, Person updatedPerson)
+        public async Task<ApiResponse<Person>> UpdatePersonAsync(int id, Person updatedPerson)
         {
             try
             {
-                // Sanitize fields before validation and saving
                 updatedPerson.FirstName = Services.Validation.SanitizationHelper.Sanitize(updatedPerson.FirstName);
                 updatedPerson.LastName = Services.Validation.SanitizationHelper.Sanitize(updatedPerson.LastName);
                 updatedPerson.Description = Services.Validation.SanitizationHelper.Sanitize(updatedPerson.Description);
@@ -130,28 +94,25 @@ namespace UKParliament.CodeTest.Services.Repositories
                         Success = false,
                         Message = "Validation failed",
                         Data = null,
-                        StatusCode = HttpStatusCode.BadRequest,
+                        StatusCode = System.Net.HttpStatusCode.BadRequest,
                         Errors = errorDict
                     };
                 }
-                var recordToUpdate = _context.People.Find(id);
+                var recordToUpdate = await _context.People.FindAsync(id);
                 if (recordToUpdate == null)
                 {
                     return ApiResponse<Person>.Failure(
                         $"Person with ID {id} not found.",
-                        HttpStatusCode.NotFound
+                        System.Net.HttpStatusCode.NotFound
                     );
                 }
-
-                // Safely copy values from updatedPerson to the tracked entity
                 _context.Entry(recordToUpdate).CurrentValues.SetValues(updatedPerson);
-
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return ApiResponse<Person>.SuccessResponse(
                     recordToUpdate,
                     "Person updated successfully.",
-                    HttpStatusCode.OK
+                    System.Net.HttpStatusCode.OK
                 );
             }
             catch (Exception ex)
@@ -159,13 +120,12 @@ namespace UKParliament.CodeTest.Services.Repositories
                 _logger.LogError(ex, "Error updating person with id {PersonId}", id);
                 return ApiResponse<Person>.Failure(
                     "An error occurred while updating the person.",
-                    HttpStatusCode.InternalServerError
+                    System.Net.HttpStatusCode.InternalServerError
                 );
             }
         }
 
-
-        public async Task<ApiResponse<Person>> DeletePerson(int id)
+        public async Task<ApiResponse<Person>> DeletePersonAsync(int id)
         {
             try
             {
@@ -174,7 +134,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                 {
                     return ApiResponse<Person>.Failure(
                         "Person not found.",
-                        HttpStatusCode.NotFound
+                        System.Net.HttpStatusCode.NotFound
                     );
                 }
 
@@ -184,7 +144,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                 return ApiResponse<Person>.SuccessResponse(
                     personToDelete,
                     "Person deleted successfully.",
-                    HttpStatusCode.OK
+                    System.Net.HttpStatusCode.OK
                 );
             }
             catch (Exception ex)
@@ -192,11 +152,9 @@ namespace UKParliament.CodeTest.Services.Repositories
                 _logger.LogError(ex, "Error deleting person with id {PersonId}", id);
                 return ApiResponse<Person>.Failure(
                     "An error occurred while deleting the person.",
-                    HttpStatusCode.InternalServerError
+                    System.Net.HttpStatusCode.InternalServerError
                 );
             }
         }
-
-
     }
 }

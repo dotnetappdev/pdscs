@@ -6,8 +6,11 @@
       <caption class="sr-only">List of departments with name and actions</caption>
       <thead style="background:#f8f8fa;">
         <tr>
-          <th style="padding:0.5rem 0.5rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:1%; min-width:120px; max-width:180px; white-space:nowrap;">Name</th>
-          <th style="padding:0.5rem 0.25rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:1%; min-width:56px; max-width:70px; text-align:center; white-space:nowrap;">Actions</th>
+          <th (click)="toggleSortDirection()" style="cursor:pointer; padding:0.5rem 0.5rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:1%; min-width:120px; max-width:180px; white-space:nowrap;">
+            Name
+            <span style="font-size:1rem; margin-left:0.25rem;">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+          </th>
+          <th style="padding:0.5rem 0.25rem; border-bottom:2px solid #e0c7d1; border-right:1px solid #ccc; color:#373151; font-weight:600; width:1%; min-width:140px; max-width:70px; text-align:center; white-space:nowrap;">Actions</th>
         </tr>
       </thead>
       <tbody>

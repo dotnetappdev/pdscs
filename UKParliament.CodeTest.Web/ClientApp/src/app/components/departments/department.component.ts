@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from '../../services/department.service';
+import { DepartmentSyncService } from '../../services/department-sync.service';
 import { PersonService } from '../../services/person.service';
 import { Department } from '../../models/department.model';
 import { PersonViewModel } from '../../models/person-view-model';
@@ -56,10 +57,12 @@ export class DepartmentComponent implements OnInit {
 
   errorMessage: string = '';
   isEditMode: boolean = false;
+  sortDirection: 'asc' | 'desc' = 'asc';
 
   constructor(
     private departmentService: DepartmentService,
-    private personService: PersonService
+    private personService: PersonService,
+    private departmentSyncService: DepartmentSyncService
   ) {}
 
   ngOnInit(): void {
@@ -90,6 +93,7 @@ export class DepartmentComponent implements OnInit {
       this.departmentService.updateDepartment(this.selectedDepartment).subscribe({
         next: (updated) => {
           this.loadDepartments();
+          this.departmentSyncService.notifyDepartmentChanged();
           this.selectedDepartment = null;
           this.isEditMode = false;
           this.errorMessage = '';
@@ -108,6 +112,7 @@ export class DepartmentComponent implements OnInit {
       this.departmentService.addDepartment(this.selectedDepartment).subscribe({
         next: (created) => {
           this.loadDepartments();
+          this.departmentSyncService.notifyDepartmentChanged();
           this.selectedDepartment = null;
           this.isEditMode = false;
           this.errorMessage = '';
@@ -133,12 +138,29 @@ export class DepartmentComponent implements OnInit {
 
   loadDepartments(): void {
     this.departmentService.getDepartments().subscribe((data: Department[]) => {
-      this.departments = data;
+      this.departments = data.sort((a, b) => {
+        if (this.sortDirection === 'asc') {
+          return a.Name.localeCompare(b.Name);
+        } else {
+          return b.Name.localeCompare(a.Name);
+        }
+      });
+    });
+  }
+
+  toggleSortDirection(): void {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.departments = [...this.departments].sort((a, b) => {
+      if (this.sortDirection === 'asc') {
+        return a.Name.localeCompare(b.Name);
+      } else {
+        return b.Name.localeCompare(a.Name);
+      }
     });
   }
 
   loadPersons(): void {
-    this.personService.getAll().subscribe((data: PersonViewModel[]) => {
+    this.personService.getAllAsync().subscribe((data: PersonViewModel[]) => {
       this.persons = data;
     });
   }

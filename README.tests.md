@@ -20,23 +20,29 @@ This file describes all unit tests for the solution, written with **xUnit** and 
 | AddPerson_WithNullPerson_ReturnsBadRequest     | Ensures null person returns BadRequest           |
 | DeletePerson_WithValidId_RemovesPerson         | Deletes a person and checks removal              |
 | UpdatePerson_WithValidData_UpdatesPerson       | Updates a person and checks new values           |
-| Jasmine: deletes a person and removes their row from the table | Verifies person row is removed from table after delete |
-| Jasmine: updates a person and reflects the change in the table | Verifies person row is updated in table after update |
+| GetAllPersonsAsync_ReturnsAllPersons           | Verifies async retrieval of all persons          |
+| AddPersonAsync_AddsPersonSuccessfully          | Verifies async add method for person             |
+| UpdatePersonAsync_UpdatesPersonSuccessfully    | Verifies async update method for person          |
+| DeletePersonAsync_DeletesPersonSuccessfully    | Verifies async delete method for person          |
 | AddDepartment_WithValidDepartment_ReturnsSuccessAndDepartment | Adds a valid department and checks result      |
 | AddDepartment_WithNullDepartmentName_FailsValidation | Ensures null department name fails validation |
 | DeleteDepartment_WithValidId_RemovesDepartment | Deletes a department and checks removal          |
 | UpdateDepartment_WithValidData_UpdatesDepartment | Updates a department and checks new values      |
-| Jasmine: deletes a department and removes its row from the table | Verifies department row is removed from table after delete |
-| Jasmine: updates a department and reflects the change in the table | Verifies department row is updated in table after update |
+| GetAllDepartmentsAsync_ReturnsAllDepartments   | Verifies async retrieval of all departments      |
+| AddDepartmentAsync_AddsDepartmentSuccessfully  | Verifies async add method for department         |
+| UpdateDepartmentAsync_UpdatesDepartmentSuccessfully | Verifies async update method for department    |
+| DeleteDepartmentAsync_DeletesDepartmentSuccessfully | Verifies async delete method for department    |
 
 ## Example Jasmine Tests (Frontend)
 
 | Test File                        | Description                                      |
 |----------------------------------|--------------------------------------------------|
 | persons.component.spec.ts        | Renders persons table, checks CRUD UI, error display |
+| persons.component.spec.ts        | Tests sorting by first name and last name, toggling sort direction |
 | department.component.spec.ts     | Renders departments table, checks CRUD UI, error display |
-| department.service.spec.ts       | Tests API calls for department service            |
-| person.service.spec.ts           | Tests API calls for person service                |
+| department.component.spec.ts     | Tests sorting by department name, toggling sort direction |
+| department.service.spec.ts       | Tests API calls for department service (async CRUD) |
+| person.service.spec.ts           | Tests API calls for person service (async CRUD)   |
 
 > For a full list and live results, see the [GitHub Actions test runs](https://github.com/<OWNER>/<REPO>/actions).
 

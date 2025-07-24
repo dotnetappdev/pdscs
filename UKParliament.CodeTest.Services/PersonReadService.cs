@@ -10,22 +10,22 @@ using Serilog;
 namespace UKParliament.CodeTest.Services
 {
 
-    public class PersonReadService : IPersonReadService<Person>
+    public class PersonReadService : IPersonReadService
     {
-        private readonly IPersonReadService<Person> _readRepository;
+        private readonly IPersonReadService _readRepository;
         private readonly ILogger _logger;
 
-        public PersonReadService(IPersonReadService<Person> readRepository, ILogger logger)
+        public PersonReadService(IPersonReadService readRepository, ILogger logger)
         {
             _readRepository = readRepository;
             _logger = logger.ForContext<PersonReadService>();
         }
 
-        public Person GetById(int id)
+        public async Task<Person?> GetByIdAsync(int id)
         {
             try
             {
-                return _readRepository.GetById(id);
+                return await _readRepository.GetByIdAsync(id);
             }
             catch (Exception ex)
             {
@@ -34,11 +34,11 @@ namespace UKParliament.CodeTest.Services
             }
         }
 
-        public IEnumerable<Person> GetAll()
+        public async Task<IEnumerable<Person>> GetAllAsync()
         {
             try
             {
-                return _readRepository.GetAll();
+                return await _readRepository.GetAllAsync();
             }
             catch (Exception ex)
             {

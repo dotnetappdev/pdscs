@@ -24,8 +24,14 @@
         <thead role="rowgroup">
           <tr role="row">
             <th *ngIf="isMobileView" scope="col" aria-label="Actions">Actions</th>
-            <th scope="col" aria-label="First Name">First Name</th>
-            <th scope="col" aria-label="Last Name">Last Name</th>
+            <th scope="col" aria-label="First Name" (click)="setSort('FirstName')" style="cursor:pointer;">
+              First Name
+              <span style="font-size:1rem; margin-left:0.25rem;" *ngIf="sortColumn === 'FirstName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th scope="col" aria-label="Last Name" (click)="setSort('LastName')" style="cursor:pointer;">
+              Last Name
+              <span style="font-size:1rem; margin-left:0.25rem;" *ngIf="sortColumn === 'LastName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
             <th scope="col" aria-label="Date of Birth">Date of Birth</th>
             <th *ngIf="!isMobileView" scope="col" aria-label="Department">Department</th>
             <th *ngIf="!isMobileView" scope="col" aria-label="Actions">Actions</th>
@@ -41,6 +47,8 @@
             <td role="cell">{{ person.LastName }}</td>
             <td role="cell">{{ person.DOB ? (person.DOB | date: 'dd/MM/yyyy') : '—' }}</td>
             <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentName }}</td>
+            <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentId }}</td>
+            <!-- <td *ngIf="!isMobileView" role="cell">{{ person.DepartmentId }}</td> -->
             <td *ngIf="!isMobileView" role="cell">
               <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.FullName">Edit</button>
               <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.FullName">Delete</button>

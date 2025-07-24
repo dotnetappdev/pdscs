@@ -13,15 +13,15 @@ export class PersonsService {
     return this.http.get<Person[]>(this.apiUrl);
   }
 
-  addPerson(person: Person): Observable<Person> {
+  AddPersonAsync(person: Person): Observable<Person> {
     return this.http.post<Person>(this.apiUrl, person);
   }
 
-  updatePerson(id: number, person: any): Observable<any> {
+  UpdatePersonAsync(id: number, person: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, person);
   }
 
-  deletePerson(id: number): Observable<void> {
+  DeletePersonAsync(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

@@ -4,6 +4,7 @@ import { PersonsService } from './persons.service';
 import { PersonViewModel } from '../../models/person-view-model';
 import { Department } from '../../models/department.model';
 import { DepartmentService } from '../../services/department.service';
+import { DepartmentSyncService } from '../../services/department-sync.service';
 import { HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -103,7 +104,20 @@ export class PersonsComponent implements OnInit {
   departmentFilter: string = '';
   get filteredPersons(): any[] {
     if (!Array.isArray(this.persons) || this.persons.length === 0) return [];
-    let filtered = this.persons;
+    let filtered = this.persons.map(p => {
+      let deptName = p.DepartmentName || (p.department && p.department.Name) || p.departmentName || (p.department && p.department.name) || '';
+      // If department name is missing, look it up from departments array
+      if ((!deptName || deptName === '') && p.DepartmentId && Array.isArray(this.departments)) {
+        const foundDept = this.departments.find(d => d.Id === p.DepartmentId || d.id === p.DepartmentId);
+        if (foundDept) {
+          deptName = foundDept.Name || foundDept.name || '';
+        }
+      }
+      return {
+        ...p,
+        DepartmentName: deptName
+      };
+    });
     if (this.nameFilter && this.nameFilter.trim()) {
       const term = this.nameFilter.trim().toLowerCase();
       filtered = filtered.filter(p => {
@@ -115,11 +129,34 @@ export class PersonsComponent implements OnInit {
     }
     if (this.departmentFilter && this.departmentFilter !== '') {
       filtered = filtered.filter(p => {
-        const deptName = p.DepartmentName || p.department?.Name || '';
+        const deptName = p.DepartmentName || '';
         return deptName === this.departmentFilter;
       });
     }
+    // Sort by selected column and direction
+    filtered = [...filtered].sort((a, b) => {
+      const col = this.sortColumn;
+      const aVal = (a[col] || '').toLowerCase();
+      const bVal = (b[col] || '').toLowerCase();
+      if (this.sortDirection === 'asc') {
+        return aVal.localeCompare(bVal);
+      } else {
+        return bVal.localeCompare(aVal);
+      }
+    });
     return filtered;
+  }
+
+  sortColumn: 'FirstName' | 'LastName' = 'LastName';
+  sortDirection: 'asc' | 'desc' = 'asc';
+
+  setSort(column: 'FirstName' | 'LastName') {
+    if (this.sortColumn === column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
   }
   // Helper to get error messages as array for template
   getErrorMessages(errors: any): string[] {
@@ -148,7 +185,8 @@ export class PersonsComponent implements OnInit {
   constructor(
     private personsService: PersonsService,
     public departmentService: DepartmentService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private departmentSyncService: DepartmentSyncService
   ) {}
 
 
@@ -175,6 +213,10 @@ export class PersonsComponent implements OnInit {
     this.loadDepartments();
     window.addEventListener('resize', this.onResize.bind(this));
     this.onResize();
+    // Subscribe to department changes
+    this.departmentSyncService.departmentChanged$.subscribe(() => {
+      this.loadDepartments();
+    });
   }
 
   ngOnDestroy() {
@@ -191,6 +233,12 @@ export class PersonsComponent implements OnInit {
     this.departmentService.getDepartments().subscribe({
       next: (depts: any[]) => {
         this.departments = depts;
+        // If adding a new person, auto-select the latest department
+        if (this.selectedPerson && (!this.selectedPerson.DepartmentId || this.selectedPerson.DepartmentId === 0) && Array.isArray(depts) && depts.length > 0) {
+          // Find the department with the highest Id (assuming new department has highest Id)
+          const latestDept = depts.reduce((max, d) => d.Id > max.Id ? d : max, depts[0]);
+          this.selectedPerson.DepartmentId = latestDept.Id;
+        }
         this.cdr.detectChanges();
       },
       error: (err: any) => {
@@ -209,10 +257,13 @@ export class PersonsComponent implements OnInit {
           ...p,
           DOB: p.DOB ? new Date(p.DOB) : null
         }));
-        this.cdr.detectChanges(); // ensure UI updates after async fetch
+        // Default sort by last name ascending
+        this.sortColumn = 'LastName';
+        this.sortDirection = 'asc';
+        this.cdr.detectChanges();
         setTimeout(() => {
           this.cdr.detectChanges();
-        }, 0); // Extra change detection for stubborn UI
+        }, 0);
       },
       error: (err: any) => {
         console.error('Error fetching persons:', err);
@@ -297,12 +348,12 @@ export class PersonsComponent implements OnInit {
       };
 
       if (isEdit) {
-        this.personsService.updatePerson(sanitizedPerson.Id!, payload).subscribe({
+        this.personsService.UpdatePersonAsync(sanitizedPerson.Id!, payload).subscribe({
           next: handleSuccess,
           error: handleError
         });
       } else {
-        this.personsService.addPerson(payload).subscribe({
+        this.personsService.AddPersonAsync(payload).subscribe({
           next: handleSuccess,
           error: handleError
         });
@@ -391,7 +442,7 @@ export class PersonsComponent implements OnInit {
 
   confirmDelete() {
     if (this.selectedPersonToDelete && this.selectedPersonToDelete.id) {
-      this.personsService.deletePerson(this.selectedPersonToDelete.id).subscribe({
+      this.personsService.DeletePersonAsync(this.selectedPersonToDelete.id).subscribe({
         next: () => {
           this.getAllPersons();
           this.showDeleteModal = false;

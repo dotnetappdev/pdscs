@@ -8,14 +8,10 @@ using UKParliament.CodeTest.Web;
 
 namespace UKParliament.CodeTest.Services.Repositories
 {
-    public interface IPersonWriteService<T>
+    public interface IPersonWriteService
     {
-        void SavePerson(Person person);
-
-
-        ApiResponse<Person> AddPerson(Person person);
-        ApiResponse<Person> UpdatePerson(int id, Person person);
-        Task<ApiResponse<Person>> DeletePerson(int id);
-
+        Task<ApiResponse<Person>> AddPersonAsync(Person person);
+        Task<ApiResponse<Person>> UpdatePersonAsync(int id, Person person);
+        Task<ApiResponse<Person>> DeletePersonAsync(int id);
     }
 }

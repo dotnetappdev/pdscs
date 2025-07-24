@@ -47,26 +47,28 @@ The app demonstrates:
 
 ## 🚀 Web Services
 
-### Department API
-- `GET /api/department` — List all departments
-- `POST /api/department` — Add a department (validates name)
-- `PUT /api/department/{id}` — Update a department
-- `DELETE /api/department/{id}` — Delete a department
+### Department API (All methods are async)
+- `GET /api/department` — List all departments (async)
+- `POST /api/department` — Add a department (async, validates name)
+- `PUT /api/department/{id}` — Update a department (async)
+- `DELETE /api/department/{id}` — Delete a department (async)
 
-### Person API
-- `GET /api/person` — List all persons
-- `POST /api/person` — Add a person (validates fields)
-- `PUT /api/person/{id}` — Update a person
-- `DELETE /api/person/{id}` — Delete a person
+### Person API (All methods are async)
+- `GET /api/person` — List all persons (async)
+- `POST /api/person` — Add a person (async, validates fields)
+- `PUT /api/person/{id}` — Update a person (async)
+- `DELETE /api/person/{id}` — Delete a person (async)
 
 ---
 
 ## 🧑‍💻 Main Features & OOP
-- **OOP**: All business logic is encapsulated in services and repositories.
-- **Validation**: FluentValidation is used for both persons and departments. Errors are returned as field-level errors and displayed in the UI.
-- **InMemory DB**: The app uses EF Core's InMemory provider for easy local development and testing. Seed data is loaded on startup.
-- **Accessibility**: The Angular frontend uses semantic HTML, ARIA roles, and color contrast for accessibility. Forms and tables are keyboard-friendly.
-- **SPA**: The Angular app is a single-page application with responsive design.
+**OOP**: All business logic is encapsulated in services and repositories.
+**Validation**: FluentValidation is used for both persons and departments. Errors are returned as field-level errors and displayed in the UI.
+**InMemory DB**: The app uses EF Core's InMemory provider for easy local development and testing. Seed data is loaded on startup.
+**Accessibility**: The Angular frontend uses semantic HTML, ARIA roles, and color contrast for accessibility. Forms and tables are keyboard-friendly.
+**SPA**: The Angular app is a single-page application with responsive design.
+**Async API**: All backend API methods are implemented as async for scalability and performance.
+**Table Sorting**: Departments and persons tables support sorting by name (departments) and by first/last name (persons) with clickable sort arrows (▲/▼).
 
 ---
 

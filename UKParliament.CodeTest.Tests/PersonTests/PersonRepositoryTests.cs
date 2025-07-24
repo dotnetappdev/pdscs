@@ -23,8 +23,8 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var context = new PersonManagerContext(options);
             return context;
         }
-         [Fact]
-        public void GetAll_ReturnsAllPersons()
+        [Fact]
+        public async Task GetAllAsync_ReturnsAllPersons()
         {
             // Arrange
             var context = GetInMemoryContext();
@@ -35,7 +35,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var repo = new PersonReadRepository(context, logger);
 
             // Act
-            var result = repo.GetAll();
+            var result = await repo.GetAllAsync();
 
             // Assert
             Assert.NotNull(result);
@@ -44,7 +44,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
         }
 
         [Fact]
-        public void GetById_WithValidId_ReturnsPerson()
+        public async Task GetByIdAsync_WithValidId_ReturnsPerson()
         {
             // Arrange
             var context = GetInMemoryContext();
@@ -56,7 +56,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var person = context.People.First();
 
             // Act
-            var result = repo.GetById(person.Id);
+            var result = await repo.GetByIdAsync(person.Id);
 
             // Assert
             Assert.NotNull(result);
@@ -64,17 +64,15 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             Assert.Equal(person.LastName, result.LastName);
         }
         [Fact]
-        public void AddPerson_WithValidPerson_ReturnsSuccessAndPerson()
+        public async Task AddPersonAsync_WithValidPerson_ReturnsSuccessAndPerson()
         {
             // Arrange
             var context = GetInMemoryContext();
-            // Seed both departments and people to use sample data
             context.Departments.AddRange(SampleData.GetDepartments());
             context.People.AddRange(SampleData.GetPeople());
             context.SaveChanges();
             var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<PersonWriteRepository>();
             var repo = new PersonWriteRepository(context, logger);
-            // Use a unique name to avoid conflicts with seeded people
             var person = new Person
             {
                 Id = 1000,
@@ -86,7 +84,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             };
 
             // Act
-            var result = repo.AddPerson(person);
+            var result = await repo.AddPersonAsync(person);
 
             // Assert
             Assert.NotNull(result);
@@ -97,7 +95,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
         }
 
         [Fact]
-        public void AddPerson_WithNullPerson_ReturnsBadRequest()
+        public async Task AddPersonAsync_WithNullPerson_ReturnsBadRequest()
         {
             // Arrange
             var context = GetInMemoryContext();
@@ -105,7 +103,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
             var repo = new PersonWriteRepository(context, logger);
 
             // Act
-            var result = repo.AddPerson(null!);
+            var result = await repo.AddPersonAsync(null!);
 
             // Assert
             Assert.NotNull(result);
@@ -114,7 +112,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
         }
 
         [Fact]
-        public async Task DeletePerson_WithValidId_RemovesPerson()
+        public async Task DeletePersonAsync_WithValidId_RemovesPerson()
         {
             // Arrange
             var context = GetInMemoryContext();
@@ -131,13 +129,13 @@ namespace UKParliament.CodeTest.Tests.PersonTests
                 Description = "To be deleted",
                 DOB = new System.DateOnly(1990, 1, 1)
             };
-            var addResult = repo.AddPerson(person);
+            var addResult = await repo.AddPersonAsync(person);
             Assert.True(addResult.Success);
             Assert.NotNull(addResult.Data);
             var id = addResult.Data!.Id;
 
             // Act
-            var deleteResult = await repo.DeletePerson(id);
+            var deleteResult = await repo.DeletePersonAsync(id);
 
             // Assert
             Assert.True(deleteResult.Success);
@@ -146,7 +144,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
         }
 
         [Fact]
-        public void UpdatePerson_WithValidData_UpdatesPerson()
+        public async Task UpdatePersonAsync_WithValidData_UpdatesPerson()
         {
             // Arrange
             var context = GetInMemoryContext();
@@ -162,7 +160,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
                 Description = "To be updated",
                 DOB = new System.DateOnly(1995, 5, 5)
             };
-            var addResult = repo.AddPerson(person);
+            var addResult = await repo.AddPersonAsync(person);
             Assert.True(addResult.Success);
             Assert.NotNull(addResult.Data);
             var id = addResult.Data!.Id;
@@ -177,7 +175,7 @@ namespace UKParliament.CodeTest.Tests.PersonTests
                 Description = "Updated description",
                 DOB = new System.DateOnly(1995, 5, 5)
             };
-            var updateResult = repo.UpdatePerson(id, updatedPerson);
+            var updateResult = await repo.UpdatePersonAsync(id, updatedPerson);
 
             // Assert
             Assert.True(updateResult.Success);

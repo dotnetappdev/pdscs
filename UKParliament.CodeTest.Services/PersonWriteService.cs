@@ -11,19 +11,19 @@ namespace UKParliament.CodeTest.Services
 {
     public class PersonWriteService
     {
-        private readonly IPersonWriteService<Person> _writeRepository;
+        private readonly IPersonWriteService _writeRepository;
         private readonly ILogger _logger;
-        public PersonWriteService(IPersonWriteService<Person> writeRepository, ILogger logger)
+        public PersonWriteService(IPersonWriteService writeRepository, ILogger logger)
         {
             _writeRepository = writeRepository;
             _logger = logger.ForContext<PersonWriteService>();
         }
 
-        public void SavePerson(Person person)
+        public async void SavePerson(Person person)
         {
             try
             {
-                _writeRepository.SavePerson(person);
+                await _writeRepository.AddPersonAsync(person);
             }
             catch (Exception ex)
             {
@@ -32,11 +32,11 @@ namespace UKParliament.CodeTest.Services
             }
         }
 
-        public void DeletePerson(int id)
+        public async void DeletePersonAsync(int id)
         {
             try
             {
-                _writeRepository.DeletePerson(id);
+                await _writeRepository.DeletePersonAsync(id);
             }
             catch (Exception ex)
             {

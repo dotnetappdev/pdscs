@@ -15,12 +15,12 @@ using Serilog;
 [Route("api/person")]
 public class PersonController : ControllerBase
 {
-    private readonly IPersonReadService<Person> _readService;
-    private readonly IPersonWriteService<Person> _writeService;
+    private readonly IPersonReadService _readService;
+    private readonly IPersonWriteService _writeService;
     private readonly PersonMapperBase _mapper;
     private readonly ILogger _logger;
 
-    public PersonController(IPersonReadService<Person> readService, IPersonWriteService<Person> writeService, PersonMapperBase mapper)
+    public PersonController(IPersonReadService readService, IPersonWriteService writeService, PersonMapperBase mapper)
     {
         _readService = readService;
         _writeService = writeService;
@@ -29,7 +29,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult Put(int id, [FromBody] Person person)
+    public async Task<ActionResult> Put(int id, [FromBody] Person person)
     {
         if (!ModelState.IsValid)
         {
@@ -48,7 +48,7 @@ public class PersonController : ControllerBase
             // Otherwise, return field-level errors (FluentValidation)
             return BadRequest(new { message = "Validation failed", errors });
         }
-        var api = _writeService.UpdatePerson(id, person);
+        var api = await _writeService.UpdatePersonAsync(id, person);
         if (api.StatusCode == HttpStatusCode.OK)
         {
             return Ok();
@@ -78,7 +78,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult Post([FromBody] Person person)
+    public async Task<ActionResult> Post([FromBody] Person person)
     {
         if (!ModelState.IsValid)
         {
@@ -97,7 +97,7 @@ public class PersonController : ControllerBase
             // Otherwise, return field-level errors (FluentValidation)
             return BadRequest(new { message = "Validation failed", errors });
         }
-        var api = _writeService.AddPerson(person);
+        var api = await _writeService.AddPersonAsync(person);
         if (api.StatusCode == HttpStatusCode.OK)
         {
             _logger.Information("Person added successfully: {@Person}", person);
@@ -135,9 +135,9 @@ public class PersonController : ControllerBase
 
 
     [HttpGet("{id:int}")]
-    public ActionResult<PersonViewModel> GetById(int id)
+    public async Task<ActionResult<PersonViewModel>> GetById(int id)
     {
-        var person = _readService.GetById(id);
+        var person = await _readService.GetByIdAsync(id);
         if (person == null)
         {
             // Return 404 if not found, avoid null reference
@@ -153,23 +153,23 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var people = _readService.GetAll();
+        var people = await _readService.GetAllAsync();
         var vmList = _mapper.MapList(people);
         return Ok(vmList);
     }
 
     [HttpDelete("{id:int}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var person = _readService.GetById(id);
+        var person = await _readService.GetByIdAsync(id);
         if (person == null)
         {
             // Return 404 if not found, avoid null reference
             return NotFound(new { message = $"Person with id {id} not found." });
         }
-        _writeService.DeletePerson(id);
+        await _writeService.DeletePersonAsync(id);
         return Ok(new { message = $"Person with id {id} deleted successfully." });
     }
 

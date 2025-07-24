@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using UKParliament.CodeTest.Services.Repositories;
 
 namespace UKParliament.CodeTest.Data.Repositories
 {
-    public class PersonReadRepository : IPersonReadService<Person>
+    public class PersonReadRepository : IPersonReadService
     {
         private readonly PersonManagerContext _context;
         private readonly ILogger<PersonReadRepository> _logger;
@@ -18,14 +19,13 @@ namespace UKParliament.CodeTest.Data.Repositories
             _logger = logger;
         }
 
-        public Person? GetById(int id)
+        public async Task<Person?> GetByIdAsync(int id)
         {
             try
             {
-                var person = _context.People.Find(id);
+                var person = await _context.People.FindAsync(id);
                 if (person == null)
                 {
-                    // Return null if not found (nullable reference type)
                     return null;
                 }
                 return person;
@@ -37,11 +37,11 @@ namespace UKParliament.CodeTest.Data.Repositories
             }
         }
 
-        public IEnumerable<Person> GetAll()
+        public async Task<IEnumerable<Person>> GetAllAsync()
         {
             try
             {
-                var test = _context.People.ToList();
+                var test = await _context.People.ToListAsync();
                 _logger.LogInformation("Repository GetAll: {Count} people found", test.Count);
                 return test;
             }
