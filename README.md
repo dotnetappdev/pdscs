@@ -9,15 +9,16 @@
   <img src="https://img.shields.io/badge/FluentValidation-11+-blueviolet" alt="FluentValidation 11+" />
 </p>
 
-<p align="center" style="line-height: 0;">
+<p align="center" style="line-height: 0; margin: 0; padding: 0;">
   <a href="https://github.com/dotnetappdev/pdscs/actions/workflows/frontend-tests.yml" 
-     style="text-decoration: none; display: inline-block;">
+     style="all: unset; display: inline-block;">
     <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/frontend-tests.yml/badge.svg" 
-         alt="Frontend Tests" />
-  </a><a href="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml" 
-     style="text-decoration: none; display: inline-block;">
+         alt="Frontend Tests" style="vertical-align: middle;" />
+  </a>
+  <a href="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml" 
+     style="all: unset; display: inline-block;">
     <img src="https://github.com/dotnetappdev/pdscs/actions/workflows/backend-tests.yml/badge.svg" 
-         alt="Backend Tests" />
+         alt="Backend Tests" style="vertical-align: middle;" />
   </a>
 </p>
 
