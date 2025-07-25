@@ -91,7 +91,7 @@ This project is a modern CRUD web application built with:
 
 - **Person**:
   - `FirstName` and `LastName` are required and must not be empty.
-  - `DepartmentId` is required.
+  - `Description` is required and must not be empty.
   - `DateOfBirth` is required and the person must be at least **18 years old** (calculated from today).
 
 All validation is enforced server-side using FluentValidation. Validation errors are returned as field-level errors and displayed in the UI.
