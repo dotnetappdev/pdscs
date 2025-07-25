@@ -6377,3 +6377,653 @@
 [2025-07-25 05:04:52 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.8858ms
 [2025-07-25 05:04:52 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
 [2025-07-25 05:04:52 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.4462ms
+[2025-07-25 05:41:59 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:41:59 INF] Saved 49 entities to in-memory store.
+[2025-07-25 05:41:59 INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-25 05:41:59 INF] Now listening on: https://localhost:7048
+[2025-07-25 05:41:59 INF] Now listening on: http://localhost:5048
+[2025-07-25 05:41:59 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-25 05:41:59 INF] Hosting environment: Development
+[2025-07-25 05:41:59 INF] Content root path: D:\civilservice\pdscs\UKParliament.CodeTest.Web
+[2025-07-25 05:42:00 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:42:04 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-25 05:42:04 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:42:04 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4339.8332ms
+[2025-07-25 05:42:04 INF] Request starting HTTP/2 GET https://localhost:7048/favicon.ico - null null
+[2025-07-25 05:42:04 INF] The file /favicon.ico was not modified
+[2025-07-25 05:42:04 INF] Request finished HTTP/2 GET https://localhost:7048/favicon.ico - 304 null image/x-icon 10.7823ms
+[2025-07-25 05:42:07 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:42:11 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:42:11 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4072.7458ms
+[2025-07-25 05:42:13 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-25 05:42:14 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:42:14 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-25 05:42:14 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 6.264ms
+[2025-07-25 05:42:14 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:42:14 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:42:14 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:14 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:15 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:42:15 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:42:15 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:42:15 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:42:15 INF] Repository GetAll: 40 people found
+[2025-07-25 05:42:15 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:42:15 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:42:15 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 45.9794ms
+[2025-07-25 05:42:15 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 45.9795ms
+[2025-07-25 05:42:15 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:15 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:15 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 91.1393ms
+[2025-07-25 05:42:15 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 91.3177ms
+[2025-07-25 05:42:52 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:42:52 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:42:52 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:52 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:52 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:42:52 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:42:52 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:42:52 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:42:52 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:42:52 INF] Repository GetAll: 40 people found
+[2025-07-25 05:42:52 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:42:52 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 16.6574ms
+[2025-07-25 05:42:52 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:52 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 18.4899ms
+[2025-07-25 05:42:52 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 16.8091ms
+[2025-07-25 05:42:52 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:42:52 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 18.8982ms
+[2025-07-25 05:44:50 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:44:50 INF] Saved 49 entities to in-memory store.
+[2025-07-25 05:44:50 INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-25 05:44:50 INF] Now listening on: https://localhost:7048
+[2025-07-25 05:44:50 INF] Now listening on: http://localhost:5048
+[2025-07-25 05:44:50 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-25 05:44:50 INF] Hosting environment: Development
+[2025-07-25 05:44:50 INF] Content root path: D:\civilservice\pdscs\UKParliament.CodeTest.Web
+[2025-07-25 05:44:52 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:44:56 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-25 05:44:56 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:44:56 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4304.0851ms
+[2025-07-25 05:44:59 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:45:03 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:45:03 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4077.3493ms
+[2025-07-25 05:45:05 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-25 05:45:06 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:45:06 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-25 05:45:06 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 6.6347ms
+[2025-07-25 05:45:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:45:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:45:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:07 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:45:07 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:45:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:45:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:45:07 INF] Repository GetAll: 40 people found
+[2025-07-25 05:45:07 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:45:07 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:45:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 51.1436ms
+[2025-07-25 05:45:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 51.1436ms
+[2025-07-25 05:45:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 98.9956ms
+[2025-07-25 05:45:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 98.9958ms
+[2025-07-25 05:45:08 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:45:08 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:45:08 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:08 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:08 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:45:08 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:45:08 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:45:08 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:45:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:45:08 INF] Repository GetAll: 40 people found
+[2025-07-25 05:45:08 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:45:08 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 17.3566ms
+[2025-07-25 05:45:08 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:08 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 17.4437ms
+[2025-07-25 05:45:08 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 19.0655ms
+[2025-07-25 05:45:08 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:45:08 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 19.0012ms
+[2025-07-25 05:46:41 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:46:42 INF] Saved 49 entities to in-memory store.
+[2025-07-25 05:46:42 INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-25 05:46:42 INF] Now listening on: https://localhost:7048
+[2025-07-25 05:46:42 INF] Now listening on: http://localhost:5048
+[2025-07-25 05:46:42 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-25 05:46:42 INF] Hosting environment: Development
+[2025-07-25 05:46:42 INF] Content root path: D:\civilservice\pdscs\UKParliament.CodeTest.Web
+[2025-07-25 05:46:43 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:46:47 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-25 05:46:48 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:46:48 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4308.5327ms
+[2025-07-25 05:46:51 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:46:55 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:46:55 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4065.4249ms
+[2025-07-25 05:46:55 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-25 05:46:58 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:46:58 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-25 05:46:58 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 7.0067ms
+[2025-07-25 05:46:58 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:46:58 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:46:58 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:46:58 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:46:58 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:46:58 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:46:58 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:46:58 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:46:58 INF] Repository GetAll: 40 people found
+[2025-07-25 05:46:58 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:46:58 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:46:58 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 44.145ms
+[2025-07-25 05:46:58 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 44.1342ms
+[2025-07-25 05:46:58 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:46:58 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:46:58 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 109.048ms
+[2025-07-25 05:46:58 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 109.0427ms
+[2025-07-25 05:47:02 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:47:02 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:47:02 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:47:02 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:47:02 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:47:02 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:47:02 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:47:02 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:47:02 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:47:02 INF] Repository GetAll: 40 people found
+[2025-07-25 05:47:02 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 15.6665ms
+[2025-07-25 05:47:02 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:47:02 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:47:02 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 17.1529ms
+[2025-07-25 05:47:02 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 16.4682ms
+[2025-07-25 05:47:02 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:47:02 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 18.4088ms
+[2025-07-25 05:52:02 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:52:02 INF] Saved 49 entities to in-memory store.
+[2025-07-25 05:52:02 INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-25 05:52:02 INF] Now listening on: https://localhost:7048
+[2025-07-25 05:52:02 INF] Now listening on: http://localhost:5048
+[2025-07-25 05:52:02 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-25 05:52:02 INF] Hosting environment: Development
+[2025-07-25 05:52:02 INF] Content root path: D:\civilservice\pdscs\UKParliament.CodeTest.Web
+[2025-07-25 05:52:04 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:52:08 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-25 05:52:08 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:52:08 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4312.8009ms
+[2025-07-25 05:52:11 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:52:15 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 05:52:15 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4064.3701ms
+[2025-07-25 05:52:16 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-25 05:52:18 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 05:52:18 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-25 05:52:18 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 5.9698ms
+[2025-07-25 05:52:18 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:52:18 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:52:18 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:52:18 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:52:18 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:52:18 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:52:18 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:52:18 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:52:18 INF] Repository GetAll: 40 people found
+[2025-07-25 05:52:18 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:52:18 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:52:18 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 46.0162ms
+[2025-07-25 05:52:18 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 46.0177ms
+[2025-07-25 05:52:18 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:52:18 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:52:18 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 95.0909ms
+[2025-07-25 05:52:18 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 95.091ms
+[2025-07-25 05:54:33 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 05:54:33 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 05:54:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:54:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:54:33 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 05:54:33 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 05:54:33 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:54:33 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 05:54:33 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:54:33 INF] Repository GetAll: 40 people found
+[2025-07-25 05:54:33 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 05:54:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 20.8892ms
+[2025-07-25 05:54:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 05:54:33 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 26.187ms
+[2025-07-25 05:54:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 21.042ms
+[2025-07-25 05:54:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 05:54:33 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 26.5783ms
+[2025-07-25 06:00:12 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:00:12 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:00:12 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:12 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:12 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:00:12 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:00:12 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:00:12 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:00:12 INF] Repository GetAll: 40 people found
+[2025-07-25 06:00:12 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:00:12 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:00:12 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 2.4185ms
+[2025-07-25 06:00:12 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:12 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 2.476ms
+[2025-07-25 06:00:12 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:12 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 3.9006ms
+[2025-07-25 06:00:12 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 5.0752ms
+[2025-07-25 06:00:18 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:00:18 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:00:18 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:18 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:18 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:00:18 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:00:18 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:00:18 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:00:18 INF] Repository GetAll: 40 people found
+[2025-07-25 06:00:18 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:00:18 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:00:18 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.7236ms
+[2025-07-25 06:00:18 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:18 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.78ms
+[2025-07-25 06:00:18 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:00:18 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.0413ms
+[2025-07-25 06:00:18 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.2783ms
+[2025-07-25 06:19:38 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:19:38 INF] Saved 49 entities to in-memory store.
+[2025-07-25 06:19:38 INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-25 06:19:38 INF] Now listening on: https://localhost:7048
+[2025-07-25 06:19:38 INF] Now listening on: http://localhost:5048
+[2025-07-25 06:19:38 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-25 06:19:38 INF] Hosting environment: Development
+[2025-07-25 06:19:38 INF] Content root path: D:\civilservice\pdscs\UKParliament.CodeTest.Web
+[2025-07-25 06:19:39 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 06:19:44 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-25 06:19:44 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 06:19:44 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4279.6501ms
+[2025-07-25 06:19:44 INF] Request starting HTTP/2 GET https://localhost:7048/favicon.ico - null null
+[2025-07-25 06:19:44 INF] The file /favicon.ico was not modified
+[2025-07-25 06:19:44 INF] Request finished HTTP/2 GET https://localhost:7048/favicon.ico - 304 null image/x-icon 11.5652ms
+[2025-07-25 06:19:47 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 06:19:51 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 06:19:51 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4079.0141ms
+[2025-07-25 06:19:51 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-25 06:19:54 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 06:19:54 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-25 06:19:54 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 5.4999ms
+[2025-07-25 06:19:54 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:19:54 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:19:54 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:54 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:54 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:19:54 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:19:54 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:19:54 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:19:54 INF] Repository GetAll: 40 people found
+[2025-07-25 06:19:54 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:19:54 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:19:54 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 46.3535ms
+[2025-07-25 06:19:54 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 46.3244ms
+[2025-07-25 06:19:54 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:54 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:54 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 89.4224ms
+[2025-07-25 06:19:54 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 89.4857ms
+[2025-07-25 06:19:56 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:19:56 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:19:56 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:56 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:56 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:19:56 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:19:56 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:19:56 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:19:56 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:19:56 INF] Repository GetAll: 40 people found
+[2025-07-25 06:19:56 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:19:56 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 14.8402ms
+[2025-07-25 06:19:56 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:56 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 16.7436ms
+[2025-07-25 06:19:56 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 15.3242ms
+[2025-07-25 06:19:56 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:19:56 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 17.347ms
+[2025-07-25 06:20:06 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/department - application/json 24
+[2025-07-25 06:20:06 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.AddDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:06 INF] Route matched with {action = "AddDepartment", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[UKParliament.CodeTest.Data.Department]] AddDepartment(UKParliament.CodeTest.Data.Department) on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:06 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:20:06 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:20:06 INF] Executing CreatedAtActionResult, writing value of type 'UKParliament.CodeTest.Data.Department'.
+[2025-07-25 06:20:06 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.AddDepartment (UKParliament.CodeTest.Web) in 41.1521ms
+[2025-07-25 06:20:06 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.AddDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:06 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/department - 201 null application/json; charset=utf-8 45.9095ms
+[2025-07-25 06:20:06 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:20:06 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:06 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:06 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:20:06 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:20:06 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.5933ms
+[2025-07-25 06:20:06 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:06 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.0646ms
+[2025-07-25 06:20:08 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:20:08 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:08 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:20:08 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:08 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:08 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:08 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:20:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:20:08 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.595ms
+[2025-07-25 06:20:08 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:08 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.037ms
+[2025-07-25 06:20:08 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:20:08 INF] Repository GetAll: 40 people found
+[2025-07-25 06:20:08 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:20:08 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 1.7433ms
+[2025-07-25 06:20:08 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:08 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.9615ms
+[2025-07-25 06:20:17 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 92
+[2025-07-25 06:20:17 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:17 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:17 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2025-07-25 06:20:17 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 158.941ms
+[2025-07-25 06:20:17 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:17 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/problem+json; charset=utf-8 161.151ms
+[2025-07-25 06:20:44 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 120
+[2025-07-25 06:20:44 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:44 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:44 INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2025-07-25 06:20:44 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 2.6348ms
+[2025-07-25 06:20:44 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:44 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 400 null application/problem+json; charset=utf-8 2.9756ms
+[2025-07-25 06:20:56 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 120
+[2025-07-25 06:20:56 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:56 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:56 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:20:56 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:20:56 INF] Person created successfully: {"Id":41,"FirstName":"Clark","LastName":"Kent","FullName":"Clark Kent","DOB":"1997-01-01","Description":"Fortress of solitude","DepartmentId":10,"$type":"Person"}
+[2025-07-25 06:20:56 INF] Executing StatusCodeResult, setting HTTP status code 200
+[2025-07-25 06:20:56 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 10.8391ms
+[2025-07-25 06:20:56 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:56 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 200 0 null 11.26ms
+[2025-07-25 06:20:56 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:20:56 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:56 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:20:56 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:20:56 INF] Repository GetAll: 41 people found
+[2025-07-25 06:20:56 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:20:56 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.5689ms
+[2025-07-25 06:20:56 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:20:56 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 0.914ms
+[2025-07-25 06:21:07 INF] Request starting HTTP/1.1 PUT https://localhost:44416/api/person/41 - application/json 124
+[2025-07-25 06:21:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Put (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:07 INF] Route matched with {action = "Put", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Put(Int32, UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:07 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:21:07 INF] Executing StatusCodeResult, setting HTTP status code 200
+[2025-07-25 06:21:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Put (UKParliament.CodeTest.Web) in 20.645ms
+[2025-07-25 06:21:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Put (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:07 INF] Request finished HTTP/1.1 PUT https://localhost:44416/api/person/41 - 200 0 null 23.0673ms
+[2025-07-25 06:21:07 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:21:07 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:07 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:07 INF] Repository GetAll: 41 people found
+[2025-07-25 06:21:07 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:07 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.7489ms
+[2025-07-25 06:21:07 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:07 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.1881ms
+[2025-07-25 06:21:13 INF] Request starting HTTP/1.1 PUT https://localhost:44416/api/person/41 - application/json 123
+[2025-07-25 06:21:13 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Put (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:13 INF] Route matched with {action = "Put", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Put(Int32, UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:13 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:13 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:21:13 INF] Executing StatusCodeResult, setting HTTP status code 200
+[2025-07-25 06:21:13 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Put (UKParliament.CodeTest.Web) in 2.9928ms
+[2025-07-25 06:21:13 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Put (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:13 INF] Request finished HTTP/1.1 PUT https://localhost:44416/api/person/41 - 200 0 null 3.3467ms
+[2025-07-25 06:21:13 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:21:13 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:13 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:13 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:13 INF] Repository GetAll: 41 people found
+[2025-07-25 06:21:13 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:13 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.6128ms
+[2025-07-25 06:21:13 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:13 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 0.9742ms
+[2025-07-25 06:21:15 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:21:15 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:21:15 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:15 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:15 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:15 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:15 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:15 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:15 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:15 INF] Repository GetAll: 41 people found
+[2025-07-25 06:21:15 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.5245ms
+[2025-07-25 06:21:15 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:15 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:15 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.0475ms
+[2025-07-25 06:21:15 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.8268ms
+[2025-07-25 06:21:15 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:15 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.2973ms
+[2025-07-25 06:21:27 INF] Request starting HTTP/1.1 PUT https://localhost:44416/api/department/10 - application/json 30
+[2025-07-25 06:21:27 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.UpdateDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:27 INF] Route matched with {action = "UpdateDepartment", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateDepartment(Int32, UKParliament.CodeTest.Data.Department) on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:27 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:27 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:21:27 INF] Executing OkObjectResult, writing value of type 'UKParliament.CodeTest.Data.Department'.
+[2025-07-25 06:21:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.UpdateDepartment (UKParliament.CodeTest.Web) in 5.3588ms
+[2025-07-25 06:21:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.UpdateDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:27 INF] Request finished HTTP/1.1 PUT https://localhost:44416/api/department/10 - 200 null application/json; charset=utf-8 7.2959ms
+[2025-07-25 06:21:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:21:27 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:27 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:27 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:27 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.3862ms
+[2025-07-25 06:21:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 0.6849ms
+[2025-07-25 06:21:31 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:21:31 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:21:31 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:31 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:31 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:31 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:31 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:31 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:31 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.6755ms
+[2025-07-25 06:21:31 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:31 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.0327ms
+[2025-07-25 06:21:31 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:31 INF] Repository GetAll: 41 people found
+[2025-07-25 06:21:31 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:31 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 2.1136ms
+[2025-07-25 06:21:31 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:31 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 2.5413ms
+[2025-07-25 06:21:49 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:21:49 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:49 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:49 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:49 INF] Repository GetAll: 41 people found
+[2025-07-25 06:21:49 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:21:49 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:49 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:49 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:21:49 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 1.037ms
+[2025-07-25 06:21:49 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:49 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:21:49 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.6442ms
+[2025-07-25 06:21:49 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:21:49 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.5176ms
+[2025-07-25 06:21:49 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:21:49 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 0.8168ms
+[2025-07-25 06:22:01 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:22:01 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:22:01 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:22:01 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:22:01 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:22:01 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:22:01 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:22:01 INF] Repository GetAll: 41 people found
+[2025-07-25 06:22:01 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:22:01 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:22:01 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.9336ms
+[2025-07-25 06:22:01 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:22:01 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 1.5188ms
+[2025-07-25 06:22:01 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:22:01 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.7545ms
+[2025-07-25 06:22:01 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:22:01 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.4382ms
+[2025-07-25 06:24:07 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:09 INF] Saved 49 entities to in-memory store.
+[2025-07-25 06:24:09 INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2025-07-25 06:24:09 INF] Now listening on: https://localhost:7048
+[2025-07-25 06:24:09 INF] Now listening on: http://localhost:5048
+[2025-07-25 06:24:09 INF] Application started. Press Ctrl+C to shut down.
+[2025-07-25 06:24:09 INF] Hosting environment: Development
+[2025-07-25 06:24:09 INF] Content root path: D:\civilservice\pdscs\UKParliament.CodeTest.Web
+[2025-07-25 06:24:10 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 06:24:14 INF] No SPA development server running at https://localhost:44416 found.
+[2025-07-25 06:24:15 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 06:24:15 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4282.4359ms
+[2025-07-25 06:24:18 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 06:24:22 INF] SPA proxy is not ready. Returning temporary landing page.
+[2025-07-25 06:24:22 INF] Request finished HTTP/2 GET https://localhost:7048/ - 200 null text/html 4061.0342ms
+[2025-07-25 06:24:25 INF] Request starting HTTP/2 GET https://localhost:7048/ - null null
+[2025-07-25 06:24:25 INF] SPA proxy is ready. Redirecting to https://localhost:44416.
+[2025-07-25 06:24:25 INF] SPA development server running at 'https://localhost:44416'
+[2025-07-25 06:24:25 INF] Request finished HTTP/2 GET https://localhost:7048/ - 302 0 null 12.8518ms
+[2025-07-25 06:24:25 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:24:25 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:24:25 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:25 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:25 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:25 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:25 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:25 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:25 INF] Repository GetAll: 40 people found
+[2025-07-25 06:24:25 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:25 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:25 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 52.2397ms
+[2025-07-25 06:24:25 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:25 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 52.204ms
+[2025-07-25 06:24:25 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:25 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 123.7315ms
+[2025-07-25 06:24:25 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 123.9323ms
+[2025-07-25 06:24:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:24:27 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:24:27 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:27 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:27 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:27 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:27 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:27 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:27 INF] Repository GetAll: 40 people found
+[2025-07-25 06:24:27 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:27 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 15.3935ms
+[2025-07-25 06:24:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:27 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 15.4777ms
+[2025-07-25 06:24:27 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 17.0306ms
+[2025-07-25 06:24:27 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 17.3594ms
+[2025-07-25 06:24:33 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/department - application/json 24
+[2025-07-25 06:24:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.AddDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:33 INF] Route matched with {action = "AddDepartment", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[UKParliament.CodeTest.Data.Department]] AddDepartment(UKParliament.CodeTest.Data.Department) on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:33 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:33 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:24:33 INF] Executing CreatedAtActionResult, writing value of type 'UKParliament.CodeTest.Data.Department'.
+[2025-07-25 06:24:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.AddDepartment (UKParliament.CodeTest.Web) in 40.7987ms
+[2025-07-25 06:24:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.AddDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:33 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/department - 201 null application/json; charset=utf-8 45.5223ms
+[2025-07-25 06:24:33 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:24:33 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:33 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:33 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:33 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:33 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.6177ms
+[2025-07-25 06:24:33 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:33 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.0396ms
+[2025-07-25 06:24:35 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:24:35 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:24:35 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:35 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:35 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:35 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:35 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:35 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:35 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.5713ms
+[2025-07-25 06:24:35 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:35 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 0.8165ms
+[2025-07-25 06:24:35 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:35 INF] Repository GetAll: 40 people found
+[2025-07-25 06:24:35 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:35 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 2.89ms
+[2025-07-25 06:24:35 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:35 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 3.4259ms
+[2025-07-25 06:24:52 INF] Request starting HTTP/1.1 POST https://localhost:44416/api/person - application/json 104
+[2025-07-25 06:24:52 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:52 INF] Route matched with {action = "Post", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(UKParliament.CodeTest.Data.Person) on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:52 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:52 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:24:52 INF] Person created successfully: {"Id":41,"FirstName":"Clark","LastName":"Kent","FullName":"Clark Kent","DOB":"1997-01-01","Description":"test","DepartmentId":10,"$type":"Person"}
+[2025-07-25 06:24:52 INF] Executing StatusCodeResult, setting HTTP status code 200
+[2025-07-25 06:24:52 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web) in 143.6855ms
+[2025-07-25 06:24:52 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.Post (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:52 INF] Request finished HTTP/1.1 POST https://localhost:44416/api/person - 200 0 null 146.2369ms
+[2025-07-25 06:24:52 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:24:52 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:52 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:24:52 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:24:52 INF] Repository GetAll: 41 people found
+[2025-07-25 06:24:52 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:24:52 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.5697ms
+[2025-07-25 06:24:52 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:24:52 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 0.9091ms
+[2025-07-25 06:25:05 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:25:05 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:05 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:25:05 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:25:05 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:05 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:25:05 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:25:05 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:25:05 INF] Repository GetAll: 41 people found
+[2025-07-25 06:25:05 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:25:05 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:25:05 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.3661ms
+[2025-07-25 06:25:05 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:05 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.5669ms
+[2025-07-25 06:25:05 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:05 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 0.5869ms
+[2025-07-25 06:25:05 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 0.9395ms
+[2025-07-25 06:25:10 INF] Request starting HTTP/1.1 DELETE https://localhost:44416/api/department/5 - null 0
+[2025-07-25 06:25:10 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:10 INF] Route matched with {action = "DeleteDepartment", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteDepartment(Int32) on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:25:10 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:25:10 INF] Saved 1 entities to in-memory store.
+[2025-07-25 06:25:10 INF] Executing OkObjectResult, writing value of type 'System.Boolean'.
+[2025-07-25 06:25:10 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web) in 21.8567ms
+[2025-07-25 06:25:10 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.DeleteDepartment (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:10 INF] Request finished HTTP/1.1 DELETE https://localhost:44416/api/department/5 - 200 null application/json; charset=utf-8 24.2079ms
+[2025-07-25 06:25:10 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:25:10 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:10 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:25:10 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:25:10 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:25:10 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.6812ms
+[2025-07-25 06:25:10 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:10 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.1617ms
+[2025-07-25 06:25:13 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/department - null null
+[2025-07-25 06:25:13 INF] Request starting HTTP/1.1 GET https://localhost:44416/api/person - null null
+[2025-07-25 06:25:13 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:13 INF] Executing endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:13 INF] Route matched with {action = "GetDepartments", controller = "Department"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[UKParliament.CodeTest.Data.Department]]] GetDepartments() on controller UKParliament.CodeTest.Web.Controllers.DepartmentController (UKParliament.CodeTest.Web).
+[2025-07-25 06:25:13 INF] Route matched with {action = "GetAll", controller = "Person"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller UKParliament.CodeTest.Web.Controllers.PersonController (UKParliament.CodeTest.Web).
+[2025-07-25 06:25:13 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:25:13 INF] Entity Framework Core 6.0.10 initialized 'PersonManagerContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.10' with options: StoreName=PersonManager 
+[2025-07-25 06:25:13 INF] Repository GetAll: 41 people found
+[2025-07-25 06:25:13 INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[UKParliament.CodeTest.Data.Person, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[UKParliament.CodeTest.Web.ViewModels.PersonViewModel, UKParliament.CodeTest.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:25:13 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[UKParliament.CodeTest.Data.Department, UKParliament.CodeTest.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-07-25 06:25:13 INF] Executed action UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web) in 0.6261ms
+[2025-07-25 06:25:13 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.DepartmentController.GetDepartments (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:13 INF] Executed action UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web) in 0.6429ms
+[2025-07-25 06:25:13 INF] Executed endpoint 'UKParliament.CodeTest.Web.Controllers.PersonController.GetAll (UKParliament.CodeTest.Web)'
+[2025-07-25 06:25:13 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/person - 200 null application/json; charset=utf-8 0.8708ms
+[2025-07-25 06:25:13 INF] Request finished HTTP/1.1 GET https://localhost:44416/api/department - 200 null application/json; charset=utf-8 1.0886ms

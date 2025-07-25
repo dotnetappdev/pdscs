@@ -104,13 +104,10 @@ export class PersonsComponent implements OnInit {
     return [0, 5, 10, 20, 25];
   }
   get pagedPersons(): any[] {
-    // If pageSize equals total persons, show all filtered persons
     if (this.pageSize === this.persons.length) {
-      console.log('pagedPersons (All):', this.filteredPersons); // Debug log
       return this.filteredPersons;
     }
     const start = (this.currentPage - 1) * this.pageSize;
-    console.log('pagedPersons (Paged):', this.filteredPersons.slice(start, start + this.pageSize)); // Debug log
     return this.filteredPersons.slice(start, start + this.pageSize);
   }
   get pageNumbers(): number[] {

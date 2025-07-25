@@ -73,6 +73,27 @@ This project is a modern CRUD web application built with:
 
 ---
 
+
+## ✅ Validation & Security
+
+### Validation Rules
+
+- **Department**:
+  - `Name` is required and must not be empty.
+
+- **Person**:
+  - `FirstName` and `LastName` are required and must not be empty.
+  - `DepartmentId` is required.
+  - `DateOfBirth` is required and the person must be at least **18 years old** (calculated from today).
+
+All validation is enforced server-side using FluentValidation. Validation errors are returned as field-level errors and displayed in the UI.
+
+### Security
+
+- All user input is validated and sanitized.
+- The application is protected against SQL injection by using Entity Framework Core (parameterized queries) and additional input sanitization helpers.
+
+---
 ## 🧑‍💻 Main Features & OOP
 **OOP**: All business logic is encapsulated in services and repositories.
 **Validation**: FluentValidation is used for both persons and departments. Errors are returned as field-level errors and displayed in the UI.

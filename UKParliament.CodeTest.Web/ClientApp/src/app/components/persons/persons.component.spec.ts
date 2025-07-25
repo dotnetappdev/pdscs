@@ -1,7 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { PersonsComponent } from './persons.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-toast',
+  template: ''
+})
+class MockToastComponent {
+  @Input() message: string = '';
+  @Input() show: boolean = false;
+}
 describe('PersonsComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, FormsModule],
+      declarations: [PersonsComponent, MockToastComponent],
+    }).compileComponents();
+  });
   it('updates a person and reflects the change in the table', async () => {
     // Arrange
     const fixture = TestBed.createComponent(PersonsComponent);
@@ -17,6 +34,7 @@ describe('PersonsComponent', () => {
       Description: 'HR Specialist'
     };
     component.persons = [person];
+    component.pageSize = 1; // Show all test data on one page
     fixture.detectChanges();
 
     // Act: update the person
@@ -26,6 +44,7 @@ describe('PersonsComponent', () => {
       Description: 'HR Manager'
     };
     component.persons = [updatedPerson];
+    component.pageSize = 1;
     fixture.detectChanges();
 
     // Assert
@@ -62,10 +81,12 @@ describe('PersonsComponent', () => {
       Description: 'Software Developer'
     };
     component.persons = [person1, person2];
+    component.pageSize = 2;
     fixture.detectChanges();
 
     // Act: simulate delete by manually removing from array
     component.persons = component.persons.filter(p => p.Id !== person1.Id);
+    component.pageSize = 1;
     fixture.detectChanges();
 
     // Assert
@@ -76,12 +97,6 @@ describe('PersonsComponent', () => {
     expect(rows[0].textContent).not.toContain('Matt');
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [PersonsComponent],
-    }).compileComponents();
-  });
 
   it('does not render a row for a person (Julian Bashir) who is not present in the persons array', async () => {
     // Arrange: Only Matt Smith is in the list, Julian Bashir should not be found
@@ -98,6 +113,7 @@ describe('PersonsComponent', () => {
       Description: 'HR Specialist'
     };
     component.persons = [testPerson];
+    component.pageSize = 1;
     fixture.detectChanges();
 
     // Act: query the DOM for the data grid row
@@ -128,7 +144,10 @@ describe('PersonsComponent', () => {
       FullName: 'Matt Smith',
       Description: 'HR Specialist'
     };
+
     component.persons = [testPerson];
+    component.pageSize = 1;
+    component.isMobileView = false; // Ensure Department column is present
     fixture.detectChanges();
 
     // Act: query the DOM for the data grid row
@@ -148,12 +167,17 @@ describe('PersonsComponent', () => {
     const headerCells = compiled.querySelectorAll('table thead th');
     let deptColIndex = -1;
     headerCells.forEach((th, idx) => {
-      if (th.textContent?.trim() === 'Department') {
+      if (th.textContent?.trim().startsWith('Department')) {
         deptColIndex = idx;
       }
     });
+    if (deptColIndex === -1) {
+      // Log all header cell texts for debugging
+      const headerTexts = Array.from(headerCells).map(th => th.textContent?.trim());
+      fail(`Department column not found. Headers: ${headerTexts.join(', ')}`);
+    }
     const cells = row?.querySelectorAll('td');
-    expect(deptColIndex).toBeGreaterThan(-1);
-    expect(cells?.[deptColIndex].textContent).toContain('HR');
+    expect(cells && cells[deptColIndex]).toBeTruthy(); // Ensure the cell exists
+    expect(cells?.[deptColIndex]?.textContent).toContain('HR');
   });
 });
