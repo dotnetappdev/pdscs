@@ -1,6 +1,13 @@
 
 # Release Notes
 
+## v1.0.2 (July 25, 2025)
+
+### Improvements
+- Version bump to 1.0.2 for documentation and validation updates.
+
+---
+
 ## v1.0.1 (July 25, 2025)
 
 ### Improvements

@@ -67,6 +67,7 @@ This project is a modern CRUD web application built with:
 
 ## 🚀 Web Services
 
+
 ### Department API (All methods are async)
 - `GET /api/department` — List all departments (async)
 - `POST /api/department` — Add a department (async, validates name)
@@ -79,15 +80,7 @@ This project is a modern CRUD web application built with:
 - `PUT /api/person/{id}` — Update a person (async)
 - `DELETE /api/person/{id}` — Delete a person (async)
 
----
 
-
-## ✅ Validation & Security
-
-### Validation Rules
-
-- **Department**:
-  - `Name` is required and must not be empty.
 
 - **Person**:
   - `FirstName` and `LastName` are required and must not be empty.
