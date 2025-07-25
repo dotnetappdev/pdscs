@@ -142,6 +142,9 @@ These improvements were applied to both the persons and departments components, 
 ---
 
 ## 📝 How to Run
+
+### ⚠️ Setup Note: Directory Creation & SSL Dev Certs
+If you encounter issues with missing folders or SSL development certificates during setup, see [README.setup-note.md](./README.setup-note.md) for a code snippet added to `aspnetcore.js` that ensures required directories are created automatically. This can help resolve common setup errors, especially on first run or after cloning the repo.
 1. **Restore & Build:**
    ```sh
    dotnet restore

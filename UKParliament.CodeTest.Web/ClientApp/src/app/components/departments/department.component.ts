@@ -11,6 +11,10 @@ import { PersonViewModel } from '../../models/person-view-model';
   styleUrls: ['./department.component.scss']
 })
 export class DepartmentComponent implements OnInit {
+  onDepartmentNameFilterChange(): void {
+    this.filteredDepartments = this.filterDepartments();
+    this.currentPage = 1;
+  }
   isMobileView: boolean = false;
   pageSize: number = 5; // Default page size
   currentPage: number = 1;
@@ -49,27 +53,10 @@ export class DepartmentComponent implements OnInit {
   toastMessage: string = '';
   showToast: boolean = false;
 
-  deleteDepartment(): void {
-    if (!this.selectedDepartment) {
-      console.error('deleteDepartment called but no selectedDepartment is set!');
-      this.deleteError = 'No department selected for deletion.';
-      return;
-    }
-    this.departmentService.deleteDepartment(this.selectedDepartment.Id).subscribe({
-      next: () => {
-        this.departments = this.departments.filter(d => d.Id !== this.selectedDepartment!.Id);
-        this.showDeleteModal = false;
-        this.selectedDepartment = null;
-        this.deleteError = '';
-        this.showToastMessage('Department deleted successfully!');
-      },
-      error: (err: any) => {
-        this.deleteError = 'Failed to delete department.';
-      }
-    });
-  }
 
-  // ...existing code...
+
+
+  showPersonsPanel: boolean = false;
 
   showToastMessage(message: string): void {
     this.toastMessage = message;
@@ -84,6 +71,7 @@ export class DepartmentComponent implements OnInit {
   departments: Department[] = [];
   persons: PersonViewModel[] = [];
   selectedDepartment: Department | null = null;
+  deleteDepartmentTarget: Department | null = null;
   showDeleteModal = false;
   showPersonsModal = false;
   personsInDepartment: PersonViewModel[] = [];
@@ -105,6 +93,21 @@ export class DepartmentComponent implements OnInit {
     this.filteredDepartments = this.departments;
     this.onResize();
     window.addEventListener('resize', this.onResize.bind(this));
+  }
+
+  loadDepartments(): void {
+    this.departmentService.getDepartments().subscribe((data: Department[]) => {
+      this.departments = data;
+      this.filteredDepartments = this.filterDepartments();
+    });
+  }
+
+  filterDepartments(): Department[] {
+    if (!this.departmentNameFilter.trim()) {
+      return [...this.departments];
+    }
+    const filter = this.departmentNameFilter.trim().toLowerCase();
+    return this.departments.filter(d => d.Name.toLowerCase().includes(filter));
   }
 
   onAdd(): void {
@@ -173,28 +176,25 @@ export class DepartmentComponent implements OnInit {
     this.errorMessage = '';
   }
 
-  loadDepartments(): void {
-    this.departmentService.getDepartments().subscribe((data: Department[]) => {
-      this.departments = data.sort((a, b) => {
-        if (this.sortDirection === 'asc') {
-          return a.Name.localeCompare(b.Name);
-        } else {
-          return b.Name.localeCompare(a.Name);
-        }
-      });
-      this.onDepartmentNameFilterChange();
-    });
-  }
-
-  onDepartmentNameFilterChange(): void {
-    const filter = this.departmentNameFilter.trim().toLowerCase();
-    if (!filter) {
-      this.filteredDepartments = this.departments;
-    } else {
-      this.filteredDepartments = this.departments.filter(d => d.Name.toLowerCase().includes(filter));
+  deleteDepartment(): void {
+    if (!this.deleteDepartmentTarget) {
+      console.error('deleteDepartment called but no deleteDepartmentTarget is set!');
+      this.deleteError = 'No department selected for deletion.';
+      return;
     }
-    this.currentPage = 1;
-  // removed extra closing brace here
+    this.departmentService.deleteDepartment(this.deleteDepartmentTarget.Id).subscribe({
+      next: () => {
+        this.loadDepartments();
+        this.showDeleteModal = false;
+        this.deleteDepartmentTarget = null;
+        this.deleteError = '';
+        this.showToastMessage('Department deleted successfully!');
+        this.currentPage = 1;
+      },
+      error: (err: any) => {
+        this.deleteError = 'Failed to delete department.';
+      }
+    });
   }
 
   toggleSortDirection(): void {
@@ -216,14 +216,14 @@ export class DepartmentComponent implements OnInit {
 
   confirmDelete(department?: Department): void {
     if (department) {
-      this.selectedDepartment = department;
+      this.deleteDepartmentTarget = department;
     }
     this.deleteError = '';
     this.showDeleteModal = true;
   }
 
   cancelDelete(): void {
-    this.selectedDepartment = null;
+    this.deleteDepartmentTarget = null;
     this.showDeleteModal = false;
     this.deleteError = '';
   }
@@ -232,12 +232,14 @@ export class DepartmentComponent implements OnInit {
 
   viewPersons(department: Department): void {
     this.personsInDepartment = this.persons.filter(p => p.DepartmentId === department.Id);
-    this.showPersonsModal = true;
+    this.showPersonsPanel = true;
+    this.selectedDepartment = department;
   }
 
-  closePersonsModal(): void {
-    this.showPersonsModal = false;
+  closePersonsPanel(): void {
+    this.showPersonsPanel = false;
     this.personsInDepartment = [];
+    this.selectedDepartment = null;
   }
   ngOnDestroy() {
     window.removeEventListener('resize', this.onResize.bind(this));

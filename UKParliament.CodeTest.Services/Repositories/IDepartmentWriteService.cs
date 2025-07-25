@@ -12,8 +12,8 @@ namespace UKParliament.CodeTest.Services.Repositories
     {
         void SaveDepartment(Department dept);
         void Delete(int id);
-        ApiResponse<Department> AddDepartment(Department department);
-        ApiResponse<Department> UpdateDepartment(int id, Department updatedDepartment);
+        Task<ApiResponse<Department>> AddDepartment(Department department);
+        Task<ApiResponse<Department>> UpdateDepartment(int id, Department updatedDepartment);
 
         Task<ApiResponse<Department>> DeleteDepartment(int id);
 

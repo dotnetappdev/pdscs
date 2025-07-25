@@ -5,61 +5,56 @@
 
 <!-- Persons Table -->
 <main aria-labelledby="persons-list-heading" class="persons-main-layout">
-  <h1 id="main-heading" tabindex="0" aria-label="Persons Management" role="heading" aria-level="1" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Persons Management</h1>
+  <h1 id="main-heading" tabindex="0" aria-label="Persons Management" role="heading" aria-level="1" class="visually-hidden">Persons Management</h1>
   <div class="persons-table-form-wrapper">
     <div class="persons-table-container">
 
-      <div id="persons-table-caption" role="note" aria-live="polite" tabindex="0" style="font-size:1.05rem; font-weight:600; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; margin-bottom:0.25rem; border-radius:4px;">List of persons with first name, last name, date of birth, department, and actions</div>
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem; gap:0.5rem;">
-        <button type="button" (click)="onAdd()" class="ukp-btn ukp-btn-add" style="font-size:0.95rem;" aria-label="Add Person">Add Person</button>
-        <button type="button" (click)="clearFilters()" class="ukp-btn ukp-btn-cancel"
-          [ngStyle]="isMobileView ? {'font-size':'0.82rem','padding':'0.12rem 0.5rem'} : {'font-size':'0.95rem','padding':'0.18rem 0.8rem'}">
+      <div id="persons-table-caption" role="note" aria-live="polite" tabindex="0" class="table-caption">List of persons with first name, last name, date of birth, department, and actions</div>
+      <div class="table-header-bar">
+        <button type="button" (click)="onAdd()" class="ukp-btn ukp-btn-add add-person-btn" aria-label="Add Person">Add Person</button>
+        <button type="button" (click)="clearFilters()" class="ukp-btn ukp-btn-cancel clear-filters-btn" [ngClass]="{'mobile': isMobileView}">
           Clear Filters
         </button>
       </div>
       <!-- Only keep the main data table with filters in the header -->
-      <table class="table table-responsive" aria-describedby="persons-list-heading persons-table-caption" style="font-size: 0.95rem; min-width:900px; width:100%;" role="table">
+      <table class="table table-responsive persons-table" aria-describedby="persons-list-heading persons-table-caption" role="table">
         <thead role="rowgroup">
           <tr role="row">
             <th *ngIf="isMobileView" scope="col" aria-label="Actions" id="actions-header">Actions</th>
-            <th scope="col" aria-label="First Name" id="first-name-header" (click)="setSort('FirstName')" style="cursor:pointer; vertical-align:top;">
+            <th scope="col" aria-label="First Name" id="first-name-header" (click)="setSort('FirstName')" class="sortable align-top">
               <span>First Name</span>
-              <span style="font-size:1rem; margin-left:0.25rem;" *ngIf="sortColumn === 'FirstName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
-              <div style="margin-top:0.18rem;">
-                <input id="fullNameFilter" type="text" [(ngModel)]="searchText" (ngModelChange)="onSearchChange()" placeholder="Search by name..." aria-label="Search by name"
-                  [ngStyle]="isMobileView ? {'font-size':'0.85rem','padding':'0.08rem 0.18rem'} : {'font-size':'0.97rem','padding':'0.13rem 0.3rem'}"
-                  style="width:100%; border-radius:4px; border:1px solid #ccc; box-sizing:border-box; margin-top:0.1rem;" />
+              <span class="sort-arrow" *ngIf="sortColumn === 'FirstName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+              <div class="filter-input-wrapper">
+                <input id="fullNameFilter" type="text" [(ngModel)]="searchText" (ngModelChange)="onSearchChange()" placeholder="Search by name..." aria-label="Search by name" class="filter-input" [ngClass]="{'mobile': isMobileView}" />
               </div>
             </th>
-            <th scope="col" aria-label="Last Name" id="last-name-header" (click)="setSort('LastName')" style="cursor:pointer;">
+            <th scope="col" aria-label="Last Name" id="last-name-header" (click)="setSort('LastName')" class="sortable">
               <span>Last Name</span>
-              <span style="font-size:1rem; margin-left:0.25rem;" *ngIf="sortColumn === 'LastName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+              <span class="sort-arrow" *ngIf="sortColumn === 'LastName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
             </th>
             <th scope="col" aria-label="Date of Birth" id="dob-header">Date of Birth</th>
-            <th *ngIf="!isMobileView" scope="col" aria-label="Department" id="department-header" style="vertical-align:top;">
+            <th *ngIf="!isMobileView" scope="col" aria-label="Department" id="department-header" class="align-top">
               <span>Department</span>
-              <div style="margin-top:0.18rem;">
-                <select [(ngModel)]="selectedDepartmentFilter" (ngModelChange)="onDepartmentFilterChange($event)" aria-label="Filter by department"
-                  [ngStyle]="isMobileView ? {'font-size':'0.85rem','padding':'0.08rem 0.18rem'} : {'font-size':'0.97rem','padding':'0.13rem 0.3rem'}"
-                  style="width:100%; border-radius:4px; border:1px solid #ccc; box-sizing:border-box;">
+              <div class="filter-input-wrapper">
+                <select [(ngModel)]="selectedDepartmentFilter" (ngModelChange)="onDepartmentFilterChange($event)" aria-label="Filter by department" class="filter-select" [ngClass]="{'mobile': isMobileView}">
                   <option [ngValue]="null">All Departments</option>
                   <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
                 </select>
               </div>
             </th>
-              <th *ngIf="!isMobileView" scope="col" aria-label="Actions" id="actions-header-desktop" style="text-align:left; vertical-align:top;">
+              <th *ngIf="!isMobileView" scope="col" aria-label="Actions" id="actions-header-desktop" class="align-top text-left">
                 <span>Actions</span>
               </th>
           </tr>
         </thead>
         <tbody role="rowgroup">
           <tr *ngIf="pagedPersons.length === 0">
-            <td [attr.colspan]="isMobileView ? 5 : 6" style="text-align:center; color:#888; padding:1.2rem 0; font-size:1rem;">No persons found.</td>
+            <td [attr.colspan]="isMobileView ? 5 : 6" class="no-persons-row">No persons found.</td>
           </tr>
           <tr *ngFor="let person of pagedPersons; let i = index" role="row">
             <td *ngIf="isMobileView" role="cell" headers="actions-header">
-              <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit" [attr.aria-label]="'Edit ' + person.fullName" style="font-size:0.85rem; padding:0.25rem 0.5rem; min-width:unset;">Edit</button>
-              <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete" [attr.aria-label]="'Delete ' + person.fullName" style="font-size:0.85rem; padding:0.25rem 0.5rem; min-width:unset;">Delete</button>
+              <button type="button" (click)="onEdit(person)" class="ukp-btn ukp-btn-edit table-action-btn mobile" [attr.aria-label]="'Edit ' + person.fullName">Edit</button>
+              <button type="button" (click)="onDelete(person)" class="ukp-btn ukp-btn-delete table-action-btn mobile" [attr.aria-label]="'Delete ' + person.fullName">Delete</button>
             </td>
             <td role="cell" headers="first-name-header">{{ person.FirstName }}</td>
             <td role="cell" headers="last-name-header">{{ person.LastName }}</td>
@@ -79,97 +74,97 @@
       </table>
       <!-- Pagination Controls (below table) -->
       <div class="pagination-bar clearfix">
-        <div [ngStyle]="isMobileView ? {'display':'flex','align-items':'center','gap':'0.5rem','justify-content':'flex-start','margin-bottom':'0.5rem'} : {'display':'flex','align-items':'center','gap':'0.5rem','float':'left'}">
-          <select [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" style="font-size:0.95rem; padding:0.25rem 0.5rem; width: 100px;" aria-label="Select page size">
+        <div class="pagination-bar-left" [ngClass]="{'mobile': isMobileView}">
+          <select [(ngModel)]="pageSize" (ngModelChange)="onPageSizeChange($event)" class="pagination-size-select" aria-label="Select page size">
             <option *ngFor="let size of pageSizeOptions" [value]="size === 0 ? persons.length : size">{{ size === 0 ? 'All' : size }}</option>
           </select>
-          <span style="font-size:0.95rem; color:#333;">Total: {{ filteredPersons.length }}</span>
+          <span class="pagination-total">Total: {{ filteredPersons.length }}</span>
         </div>
-        <div [ngStyle]="isMobileView ? {'display':'flex','align-items':'center','gap':'0.5rem','justify-content':'flex-start','margin-bottom':'0.5rem'} : {'display':'flex','align-items':'center','gap':'1rem','justify-content':'center'}">
+        <div class="pagination-bar-center" [ngClass]="{'mobile': isMobileView}">
           <button type="button" (click)="goToPage(currentPage - 1)" [disabled]="pageNumbers.length === 1 || currentPage === 1" aria-label="Go to previous page">Previous</button>
-          <span style="display: flex; gap: 0.25rem;">
-            <button *ngFor="let page of pageNumbers" type="button" (click)="goToPage(page)" [disabled]="pageNumbers.length === 1 || page === currentPage" [ngStyle]="{ 'font-weight': page === currentPage ? 'bold' : 'normal', 'background': page === currentPage ? '#eee' : 'inherit' }" [attr.aria-label]="'Go to page ' + page">{{ page }}</button>
+          <span class="pagination-pages">
+            <button *ngFor="let page of pageNumbers" type="button" (click)="goToPage(page)" [disabled]="pageNumbers.length === 1 || page === currentPage" class="pagination-page-btn" [ngClass]="{'active': page === currentPage}" [attr.aria-label]="'Go to page ' + page">{{ page }}</button>
           </span>
           <button type="button" (click)="goToPage(currentPage + 1)" [disabled]="pageNumbers.length === 1 || currentPage === pageNumbers.length" aria-label="Go to next page">Next</button>
         </div>
-        <div style="clear: both;"></div>
+        <div class="pagination-bar-clear"></div>
       </div>
       <!-- Add Person button moved above table -->
     </div>
     <!-- Desktop/iPad form floats right -->
     <div *ngIf="selectedPerson && !isMobileView" class="persons-form-container">
-      <div style="display:flex; align-items:center; justify-content:space-between;">
-        <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px; margin:0;" tabindex="0" role="heading" aria-level="3" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
-        <button type="button" (click)="onCancelEdit()" aria-label="Close form" style="background:none; border:none; color:#c00; font-size:1.7rem; font-weight:bold; cursor:pointer; line-height:1; margin-right:0.25rem; margin-top:0.25rem;" title="Close">
+      <div class="form-header-bar">
+        <h3 class="form-title" tabindex="0" role="heading" aria-level="3" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
+        <button type="button" (click)="onCancelEdit()" aria-label="Close form" class="form-close-btn" title="Close">
           &times;
         </button>
       </div>
       <form (ngSubmit)="onSave()" #editForm="ngForm" aria-label="Person details form">
         <!-- ...existing code for form fields... -->
-        <div style="margin-bottom: 1.5rem;">
-          <label for="FirstName" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
-            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="FirstName" [ngClass]="{'label-error': fieldErrors['firstName']}" [attr.aria-label]="'First Name'" tabindex="0">
+            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" (input)="onInputChange('firstName')" />
+          <input id="FirstName" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName'], 'form-input': true}" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" (input)="onInputChange('firstName')" />
           <div *ngIf="fieldErrors['firstName']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="LastName" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
-            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="LastName" [ngClass]="{'label-error': fieldErrors['lastName']}" [attr.aria-label]="'Last Name'" tabindex="0">
+            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" (input)="onInputChange('lastName')" />
+          <input id="LastName" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName'], 'form-input': true}" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" (input)="onInputChange('lastName')" />
           <div *ngIf="fieldErrors['lastName']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="dob" [ngStyle]="{'color': fieldErrors['dob'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Date of Birth'" tabindex="0">
-            Date of Birth <span style="font-size:0.95rem; color:#666;">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="dob" [ngClass]="{'label-error': fieldErrors['dob']}" [attr.aria-label]="'Date of Birth'" tabindex="0">
+            Date of Birth <span class="date-hint">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
+          <input id="dob" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required [ngClass]="{'field-error': fieldErrors['dob'], 'form-input': true}" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
           <div *ngIf="fieldErrors['dob']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['dob'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="departmentId" [ngStyle]="{'color': fieldErrors['departmentId'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Department'" tabindex="0">
-            Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="departmentId" [ngClass]="{'label-error': fieldErrors['departmentId']}" [attr.aria-label]="'Department'" tabindex="0">
+            Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.DepartmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
+          <select id="departmentId" name="departmentId" [(ngModel)]="selectedPerson.DepartmentId" required [ngClass]="{'field-error': fieldErrors['departmentId'], 'form-input': true}" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
             <option [ngValue]="null" disabled selected>Please select department...</option>
             <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
           </select>
           <div *ngIf="fieldErrors['departmentId']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['departmentId'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="description" [ngStyle]="{'color': fieldErrors['description'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Description'" tabindex="0">
-            Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="description" [ngClass]="{'label-error': fieldErrors['description']}" [attr.aria-label]="'Description'" tabindex="0">
+            Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <textarea id="description" name="description" [(ngModel)]="selectedPerson.Description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
-          <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.Description?.length || 0 }}/1000</div>
+          <textarea id="description" name="description" [(ngModel)]="selectedPerson.Description" rows="4" [ngClass]="{'field-error': fieldErrors['description'], 'form-input': true}" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
+          <div class="description-length">{{ selectedPerson.Description?.length || 0 }}/1000</div>
           <div *ngIf="fieldErrors['description']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['description'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-top:2rem;">
-          <div style="width:100%; color:#c00; font-size:0.95rem; margin-bottom:1rem; text-align:left; display:block;">Note: <span style="color:#c00;">*</span> means required</div>
-          <div style="display:flex; gap:1rem;">
-            <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem;" aria-label="Save person details">Save</button>
-            <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem;" aria-label="Cancel editing">Cancel</button>
+        <div class="form-footer">
+          <div class="form-note">Note: <span class="required-asterisk">*</span> means required</div>
+          <div class="form-actions">
+            <button type="submit" class="ukp-btn ukp-btn-save form-action-btn" aria-label="Save person details">Save</button>
+            <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel form-action-btn" aria-label="Cancel editing">Cancel</button>
           </div>
         </div>
       </form>
@@ -177,79 +172,79 @@
 
     <!-- Mobile form: always below table, only on mobile -->
     <div *ngIf="selectedPerson && isMobileView" class="persons-form-container-mobile">
-      <h3 style="font-size:1.1rem; color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px;" tabindex="0" role="heading" aria-level="3" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
+      <h3 class="form-title" tabindex="0" role="heading" aria-level="3" [attr.aria-label]="selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person'">{{ selectedPerson?.id || selectedPerson?.Id ? 'Edit Person' : 'Add Person' }}</h3>
       <form (ngSubmit)="onSave()" #editFormMobile="ngForm" aria-label="Person details form">
         <!-- ...existing code for form fields (repeat as above)... -->
-        <div style="margin-bottom: 1.5rem;">
-          <label for="FirstNameMobile" [ngStyle]="{'color': fieldErrors['firstName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'First Name'" tabindex="0">
-            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="FirstNameMobile" [ngClass]="{'label-error': fieldErrors['firstName']}" [attr.aria-label]="'First Name'" tabindex="0">
+            First Name<span *ngIf="fieldErrors['firstName'] && fieldErrors['firstName'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <input id="FirstNameMobile" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" (input)="onInputChange('firstName')" />
+          <input id="FirstNameMobile" name="FirstName" [(ngModel)]="selectedPerson.FirstName" required [ngClass]="{'field-error': fieldErrors['firstName'], 'form-input': true}" aria-required="true" [attr.aria-label]="'First Name'" tabindex="0" (input)="onInputChange('firstName')" />
           <div *ngIf="fieldErrors['firstName']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['firstName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="LastNameMobile" [ngStyle]="{'color': fieldErrors['lastName'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Last Name'" tabindex="0">
-            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="LastNameMobile" [ngClass]="{'label-error': fieldErrors['lastName']}" [attr.aria-label]="'Last Name'" tabindex="0">
+            Last Name<span *ngIf="fieldErrors['lastName'] && fieldErrors['lastName'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <input id="LastNameMobile" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" (input)="onInputChange('lastName')" />
+          <input id="LastNameMobile" name="LastName" [(ngModel)]="selectedPerson.LastName" required [ngClass]="{'field-error': fieldErrors['lastName'], 'form-input': true}" aria-required="true" [attr.aria-label]="'Last Name'" tabindex="0" (input)="onInputChange('lastName')" />
           <div *ngIf="fieldErrors['lastName']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['lastName'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="dobMobile" [ngStyle]="{'color': fieldErrors['dob'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Date of Birth'" tabindex="0">
-            Date of Birth <span style="font-size:0.95rem; color:#666;">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="dobMobile" [ngClass]="{'label-error': fieldErrors['dob']}" [attr.aria-label]="'Date of Birth'" tabindex="0">
+            Date of Birth <span class="date-hint">(dd/mm/yyyy)</span><span *ngIf="fieldErrors['dob'] && fieldErrors['dob'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <input id="dobMobile" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required [ngClass]="{'field-error': fieldErrors['dob']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
+          <input id="dobMobile" name="dob" type="date" [(ngModel)]="selectedPerson.DOB" required [ngClass]="{'field-error': fieldErrors['dob'], 'form-input': true}" aria-required="true" [attr.aria-label]="'Date of Birth'" tabindex="0" />
           <div *ngIf="fieldErrors['dob']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['dob'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="departmentIdMobile" [ngStyle]="{'color': fieldErrors['departmentId'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Department'" tabindex="0">
-            Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="departmentIdMobile" [ngClass]="{'label-error': fieldErrors['departmentId']}" [attr.aria-label]="'Department'" tabindex="0">
+            Department<span *ngIf="fieldErrors['departmentId'] && fieldErrors['departmentId'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <select id="departmentIdMobile" name="departmentId" [(ngModel)]="selectedPerson.DepartmentId" required [ngClass]="{'field-error': fieldErrors['departmentId']}" style="width:100%; font-size:1rem; margin-bottom:0.25rem;" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
+          <select id="departmentIdMobile" name="departmentId" [(ngModel)]="selectedPerson.DepartmentId" required [ngClass]="{'field-error': fieldErrors['departmentId'], 'form-input': true}" aria-required="true" [attr.aria-label]="'Select department'" tabindex="0">
             <option [ngValue]="null" disabled selected>Please select department...</option>
             <option *ngFor="let dept of departments" [ngValue]="dept.Id">{{ dept.Name }}</option>
           </select>
           <div *ngIf="fieldErrors['departmentId']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['departmentId'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-bottom: 1.5rem;">
-          <label for="descriptionMobile" [ngStyle]="{'color': fieldErrors['description'] ? '#c00' : '#373151', 'font-size':'1rem', 'font-weight':'500'}" [attr.aria-label]="'Description'" tabindex="0">
-            Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" style="color:#c00;">*</span>
+        <div class="form-group">
+          <label for="descriptionMobile" [ngClass]="{'label-error': fieldErrors['description']}" [attr.aria-label]="'Description'" tabindex="0">
+            Description<span *ngIf="fieldErrors['description'] && fieldErrors['description'].split(' ')[0] === '*'" class="required-asterisk">*</span>
           </label>
-          <textarea id="descriptionMobile" name="description" [(ngModel)]="selectedPerson.Description" rows="4" [ngClass]="{'field-error': fieldErrors['description']}" style="width:100%; font-size:1rem; resize:vertical; margin-bottom:0.25rem;" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
-          <div style="font-size:0.92rem; color:#666; margin-bottom:0.25rem; text-align:right;">{{ selectedPerson.Description?.length || 0 }}/1000</div>
+          <textarea id="descriptionMobile" name="description" [(ngModel)]="selectedPerson.Description" rows="4" [ngClass]="{'field-error': fieldErrors['description'], 'form-input': true}" placeholder="Enter description..." maxlength="1000" (input)="onInputChange('description')" aria-required="true" [attr.aria-label]="'Description'" tabindex="0"></textarea>
+          <div class="description-length">{{ selectedPerson.Description?.length || 0 }}/1000</div>
           <div *ngIf="fieldErrors['description']">
             <ng-container *ngFor="let err of getErrorMessages(fieldErrors['description'])">
-              <span *ngIf="err && err.length" class="error" style="color:#c00; font-size:0.95rem; margin-bottom:0.5rem; display:block;">{{ err }}</span>
+              <span *ngIf="err && err.length" class="error error-message">{{ err }}</span>
             </ng-container>
           </div>
         </div>
-        <div style="margin-top:2rem;">
-          <div style="width:100%; color:#c00; font-size:0.95rem; margin-bottom:1rem; text-align:left; display:block;">Note: <span style="color:#c00;">*</span> means required</div>
-          <div style="display:flex; gap:1rem;">
-            <button type="submit" class="ukp-btn ukp-btn-save" style="font-size:1rem; padding:0.5rem 1.5rem;" aria-label="Save person details">Save</button>
-            <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel" style="font-size:1rem; padding:0.5rem 1.5rem;" aria-label="Cancel editing">Cancel</button>
+        <div class="form-footer">
+          <div class="form-note">Note: <span class="required-asterisk">*</span> means required</div>
+          <div class="form-actions">
+            <button type="submit" class="ukp-btn ukp-btn-save form-action-btn" aria-label="Save person details">Save</button>
+            <button type="button" (click)="onCancelEdit()" class="ukp-btn ukp-btn-cancel form-action-btn" aria-label="Cancel editing">Cancel</button>
           </div>
         </div>
       </form>
     </div>
     <ng-template #noData>
-      <p role="note" aria-live="polite" tabindex="0" style="color:#222; background:#f8f8fa; padding:0.5rem 0.75rem; border-radius:4px;">No persons available.</p>
+      <p role="note" aria-live="polite" tabindex="0" class="no-persons-available">No persons available.</p>
     </ng-template>
   <!-- End persons table section -->
 </div> <!-- close persons-table-form-wrapper -->

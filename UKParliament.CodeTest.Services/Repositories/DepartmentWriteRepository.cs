@@ -10,7 +10,9 @@ using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Web;
 
 namespace UKParliament.CodeTest.Services.Repositories
-{
+{ 
+       
+
     public class DepartmentWriteRepository : IDepartmentWriteService<Department>
     {
         private readonly PersonManagerContext _context;
@@ -20,7 +22,15 @@ namespace UKParliament.CodeTest.Services.Repositories
             _context = context;
             _logger = logger;
         }
-
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var department = await _context.Departments.FindAsync(id);
+            if (department == null)
+                return false;
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
         public void SaveDepartment(Department dept)
         {
@@ -53,7 +63,7 @@ namespace UKParliament.CodeTest.Services.Repositories
             }
         }
 
-        public ApiResponse<Department> AddDepartment(Department department)
+        public async Task<ApiResponse<Department>> AddDepartment(Department department)
         {
             try
             {
@@ -87,7 +97,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                     };
                 }
                 _context.Departments.Add(department);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return ApiResponse<Department>.SuccessResponse(
                     department,
@@ -105,7 +115,7 @@ namespace UKParliament.CodeTest.Services.Repositories
             }
         }
 
-        public ApiResponse<Department> UpdateDepartment(int id, Department updatedDepartment)
+        public async Task<ApiResponse<Department>> UpdateDepartment(int id, Department updatedDepartment)
         {
             try
             {
@@ -144,7 +154,7 @@ namespace UKParliament.CodeTest.Services.Repositories
                 // Safely copy values from updatedPerson to the tracked entity
                 _context.Entry(recordToUpdate).CurrentValues.SetValues(updatedDepartment);
 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return ApiResponse<Department>.SuccessResponse(
                     recordToUpdate,

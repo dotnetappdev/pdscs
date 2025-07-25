@@ -1,3 +1,521 @@
+// Persons panel close button row (bottom of persons list)
+.persons-panel-close-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+// Save button: green for department edit form
+// Save button: blue (same as edit button)
+.ukp-department-save {
+  padding: 0.35rem 1.2rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #373151;
+  color: #fff;
+  margin-right: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 6px rgba(55,49,81,0.08);
+}
+.ukp-department-save:disabled,
+.ukp-department-save[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ukp-department-save:hover:not(:disabled) {
+  background: #4b3c7d;
+}
+
+// Cancel button: orange for strong contrast
+.ukp-department-cancel {
+  padding: 0.35rem 1.2rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ff9800;
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 6px rgba(255,152,0,0.08);
+}
+.ukp-department-cancel:hover:not(:disabled) {
+  background: #f57c00;
+}
+.department-actions-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.view-persons-row {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.no-persons-label[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.departments-table {
+  min-width: 700px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.department-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.department-actions .ukp-btn-edit,
+.department-actions .ukp-btn-delete,
+.department-actions .ukp-btn-view,
+.department-actions .no-persons-label,
+.ukp-btn-add {
+  min-width: 160px;
+  max-width: 200px;
+  width: 180px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  display: inline-block;
+  text-align: center;
+  padding: 8px;
+}
+.department-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+// Prevent column size change for View Persons/No Persons
+.view-persons-cell {
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
+}
+// --- Department Action Buttons: Match Persons Button Styles ---
+.ukp-department-edit,
+.ukp-department-delete,
+.ukp-department-view,
+.ukp-department-nopersons {
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+// Edit button: purple (match persons)
+.ukp-department-edit {
+  background: #373151;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+.ukp-department-edit:disabled,
+.ukp-department-edit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ukp-department-edit:hover:not(:disabled) {
+  background: #4b3c7d;
+}
+
+// Delete button: red, grayed out when disabled (match persons)
+.ukp-department-delete {
+  background: #b80000;
+  color: #fff;
+}
+.ukp-department-delete:disabled,
+.ukp-department-delete[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ukp-department-delete:hover:not(:disabled) {
+  background: #7a0000;
+}
+
+// View Persons: purple (match persons edit)
+.ukp-department-view {
+  background: #373151;
+  color: #fff;
+}
+.ukp-department-view:disabled,
+.ukp-department-view[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ukp-department-view:hover:not(:disabled) {
+  background: #4b3c7d;
+}
+
+// No Persons: purple, but grayed out (match persons view disabled)
+.ukp-department-nopersons {
+  background: #373151;
+  color: #fff;
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.department-form-title {
+  font-size: 1.1rem;
+  color: #222;
+  background: #f8f8fa;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin: -1.2rem 0 0.5rem 0;
+  position: relative;
+  top: -0.5rem;
+}
+.department-form-close {
+  background: none;
+  border: none;
+  color: #c00;
+  font-size: 1.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+}
+.department-form-group {
+  margin-bottom: 1.5rem;
+}
+.department-form-label-error {
+  color: #c00;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.department-form-label-required {
+  color: #c00;
+}
+.department-form-label-error:not(.department-form-label-required) {
+  color: #c00;
+}
+.department-form-input {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+.department-form-error {
+  color: #c00;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.department-form-error-note {
+  font-weight: normal;
+  color: red;
+}
+// Department form panel (desktop)
+// Department form panel (desktop)
+// Department form panel (desktop)
+// Department form panel (desktop)
+// Department form panel (desktop)
+// Department form panel (desktop)
+.department-form-panel {
+  flex: 1 1 300px;
+  min-width: 300px;
+  max-width: 400px;
+  border-left: 1px solid #ccc;
+  padding-left: 2rem;
+  font-size: 0.95rem;
+  background: #f8f8fa;
+  margin-top: 150px;
+}
+@media (max-width: 900px) {
+  .department-form-panel {
+    border-left: none;
+    border-top: 1px solid #ccc;
+    padding-left: 0;
+    padding-top: 1.5rem;
+    max-width: 100%;
+    margin-top: 0;
+  }
+}
+/* Main container styles */
+.departments-main {
+  min-height: calc(100vh - 120px);
+  margin-top: 0;
+  position: relative;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.error-message {
+  color: #c00;
+  margin-bottom: 1rem;
+}
+
+.departments-table-filter-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.departments-table-thead {
+  background: #f8f8fa;
+}
+
+.departments-table-th-name {
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 2px solid #e0c7d1;
+  border-right: 1px solid #ccc;
+  color: #373151;
+  font-weight: 600;
+  width: 1%;
+  min-width: 120px;
+  max-width: 180px;
+  white-space: nowrap;
+}
+.departments-table-sort-arrow {
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+.departments-table-th-actions {
+  padding: 0.5rem 0.25rem;
+  border-bottom: 2px solid #e0c7d1;
+  border-right: 1px solid #ccc;
+  color: #373151;
+  font-weight: 600;
+  width: 3%;
+  min-width: 300px;
+  max-width: 340px;
+  text-align: left;
+  white-space: nowrap;
+}
+.departments-table-filter-cell {
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid #e0c7d1;
+  border-right: 1px solid #ccc;
+  background: #fafafd;
+}
+.departments-table-filter-input {
+  font-size: 0.97rem;
+  padding: 0.13rem 0.3rem;
+  width: 100%;
+  max-width: 180px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.departments-table-filter-empty {
+  background: #fafafd;
+}
+.departments-table-no-data {
+  text-align: center;
+  color: #888;
+  padding: 1.2rem 0;
+  font-size: 1rem;
+}
+.departments-table-row {
+  border-bottom: 1px solid #e0c7d1;
+}
+.departments-table-td-name {
+  padding: 0.5rem 0.5rem;
+  border-bottom: 1px solid #e0c7d1;
+  border-right: 1px solid #ccc;
+  width: 1%;
+  min-width: 120px;
+  max-width: 180px;
+  white-space: nowrap;
+}
+.departments-table-td-actions {
+  padding: 0.25rem 0.1rem;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  width: 1%;
+  min-width: 280px;
+  max-width: 300px;
+  border-bottom: 1px solid #e0c7d1;
+  white-space: nowrap;
+}
+.department-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-bar {
+  margin-top: 0.5rem;
+}
+.pagination-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: flex-start;
+}
+.pagination-bar-inner.mobile-view {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.pagination-bar-select {
+  display: inline-block;
+}
+.pagination-bar-select-input {
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+  width: 100px;
+}
+.pagination-bar-total {
+  font-size: 0.95rem;
+  color: #333;
+  margin-left: 0.5rem;
+}
+.pagination-bar-controls {
+  display: inline-block;
+}
+.pagination-bar-controls.mobile-margin {
+  margin-top: 0.5rem;
+}
+.pagination-bar-pages {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+.pagination-bar-pages .active-page {
+  font-weight: bold;
+  background: #eee;
+}
+
+.departments-table-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.department-form-panel {
+  /* ...existing styles... */
+  padding-top: 3.5rem;
+}
+/* Heading for Departments List */
+.departments-list-heading {
+  font-size: 1.5rem;
+  color: #222;
+  background: #f8f8fa;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  max-width: 220px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Add Department button row */
+.add-department-btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: auto;
+  margin-bottom: 1rem;
+}
+/* Table panel beside department form */
+.departments-table-panel {
+  flex: 1 1 0;
+  min-width: 320px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.departments-table {
+  font-size: 0.95rem;
+  min-width: 320px;
+  max-width: 480px;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(44,42,41,0.08);
+  margin-left: 0;
+  border: 1px solid #ccc;
+}
+/* Department form panel beside table */
+
+
+
+.departments-table-form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .departments-table-form-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+.department-form-panel {
+  min-width: 300px;
+  max-width: 400px;
+  background: #f8f8fa;
+  border-left: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(44,42,41,0.08);
+  /* Remove margin-left and align-self, let gap handle spacing */
+}
+
+@media (max-width: 900px) {
+  .departments-table-form-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .department-form-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-left: none;
+    box-shadow: none;
+  }
+}
+
+/* (This block is redundant with the above media query and can be omitted for clarity) */
+/* Add Department button: match action button size */
+.ukp-btn-add {
+  font-size: 0.82rem;
+  padding: 0.18rem 0.4rem;
+  min-width: 48px;
+  min-height: 28px;
+  width: auto;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
 /* Responsive actions row for department buttons */
 .department-actions {
   display: flex;
@@ -45,22 +563,32 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
+
+/* Add margin-top to both edit form and persons list panels */
+/* Margin for both edit form and persons list in department */
+.ukp-margin-top {
+  margin-top: 105px !important;
 }
-th, td {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  text-align: left;
+
+/* Make the close button in persons list red and right-aligned */
+.ukp-persons-close-red {
+  color: #d32f2f !important;
+  font-weight: bold;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  align-self: flex-end;
+  transition: color 0.2s;
 }
-.error {
-  color: #c00;
-  margin-bottom: 1rem;
+
+.ukp-persons-close-red:hover {
+  color: #b71c1c !important;
 }
-button {
-  font-size: 0.95rem;
-  padding: 0.25rem 0.75rem;
-  margin-right: 0.5rem;
+
+/* Margin for both edit form and persons list in department */
+.ukp-margin-top {
+  margin-top: 150px !important;
 }
-form {
-  margin-top: 1rem;
 }

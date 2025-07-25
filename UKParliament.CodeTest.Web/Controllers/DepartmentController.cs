@@ -8,16 +8,16 @@ namespace UKParliament.CodeTest.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DepartmentController : ControllerBase
-    {
-        private readonly IDepartmentReadRepository _readRepository;
-        private readonly IDepartmentWriteRepository _writeRepository;
+public class DepartmentController : ControllerBase
+{
+    private readonly IDepartmentReadRepository _readRepository;
+    private readonly IDepartmentWriteRepository _writeRepository;
 
-        public DepartmentController(IDepartmentReadRepository readRepository, IDepartmentWriteRepository writeRepository)
-        {
-            _readRepository = readRepository;
-            _writeRepository = writeRepository;
-        }
+    public DepartmentController(IDepartmentReadRepository readRepository, IDepartmentWriteRepository writeRepository)
+    {
+        _readRepository = readRepository;
+        _writeRepository = writeRepository;
+    }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
@@ -71,6 +71,7 @@ namespace UKParliament.CodeTest.Web.Controllers
         public async Task<IActionResult> DeleteDepartment(int id)
         {
             var deleted = await _writeRepository.DeleteAsync(id);
+                return Ok(deleted);
             if (!deleted)
                 return NotFound();
             return NoContent();
