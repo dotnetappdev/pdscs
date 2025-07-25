@@ -1,4 +1,17 @@
+
 # Release Notes
+
+## v1.0.1 (July 25, 2025)
+
+### Improvements
+- Updated validation rules in documentation:
+  - `Description` is now required for Person.
+  - Removed `DepartmentId` as a required field in documentation.
+  - Clarified age validation (Date of Birth must make person at least 18).
+- Added explicit note in README about SQL injection protection and input sanitization.
+- README and documentation improvements for clarity and accuracy.
+
+---
 
 ## v1.0.0 (Initial Release)
 

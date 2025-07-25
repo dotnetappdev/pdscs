@@ -8,7 +8,10 @@ I am writing to formally confirm the completion of the take-home technical asses
 Senior Developer position. The project has been implemented in strict accordance with 
 the requirements and guidelines provided.
 
+
 Github [url](https://github.com/dotnetappdev/pdscs)
+
+Please note: A comprehensive README and detailed release notes are available in the repository to assist with setup, usage, and review.
 
 Note ** only use this branch **
 Branch Name : ![alt text](image.png)
