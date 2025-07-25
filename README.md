@@ -97,11 +97,17 @@ All validation is enforced server-side using FluentValidation. Validation errors
 ---
 ## 🧑‍💻 Main Features & OOP
 **OOP**: All business logic is encapsulated in services and repositories.
+
 **Validation**: FluentValidation is used for both persons and departments. Errors are returned as field-level errors and displayed in the UI.
+
 **InMemory DB**: The app uses EF Core's InMemory provider for easy local development and testing. Seed data is loaded on startup.
+
 **Accessibility**: The Angular frontend uses semantic HTML, ARIA roles, and color contrast for accessibility. Forms and tables are keyboard-friendly.
+
 **SPA**: The Angular app is a single-page application with responsive design.
+
 **Async API**: All backend API methods are implemented as async for scalability and performance.
+
 **Table Sorting**: Departments and persons tables support sorting by name (departments) and by first/last name (persons) with clickable sort arrows (▲/▼).
 
 ---
