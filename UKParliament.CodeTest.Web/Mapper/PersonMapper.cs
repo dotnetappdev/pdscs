@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using UKParliament.CodeTest.Data;
 using UKParliament.CodeTest.Web.Mapper;
 using UKParliament.CodeTest.Web.ViewModels;
-using UKParliament.CodeTest.Services.Repositories;
+using UKParliament.CodeTest.Services;
 
 namespace UKParliament.CodeTest.Web.Mapper
 {
     public class PersonMapper : PersonMapperBase
     {
-        private readonly IDepartmentReadRepository _departmentService;
+        private readonly IDepartmentReadService _departmentService;
 
-        public PersonMapper(IDepartmentReadRepository departmentService)
+        public PersonMapper(IDepartmentReadService departmentService)
         {
             _departmentService = departmentService;
         }

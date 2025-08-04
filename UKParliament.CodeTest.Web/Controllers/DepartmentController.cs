@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UKParliament.CodeTest.Data;
-using UKParliament.CodeTest.Services.Repositories;
+using UKParliament.CodeTest.Services;
+using UKParliament.CodeTest.Web.Middleware;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,45 +11,36 @@ namespace UKParliament.CodeTest.Web.Controllers
     [Route("api/[controller]")]
 public class DepartmentController : ControllerBase
 {
-    private readonly IDepartmentReadRepository _readRepository;
-    private readonly IDepartmentWriteRepository _writeRepository;
+    private readonly IDepartmentReadService _readService;
+    private readonly IDepartmentWriteService _writeService;
 
-    public DepartmentController(IDepartmentReadRepository readRepository, IDepartmentWriteRepository writeRepository)
+    public DepartmentController(IDepartmentReadService readService, IDepartmentWriteService writeService)
     {
-        _readRepository = readRepository;
-        _writeRepository = writeRepository;
+        _readService = readService;
+        _writeService = writeService;
     }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
         {
-            var departments = await _readRepository.GetAllAsync();
+            var departments = await _readService.GetAllAsync();
             return Ok(departments);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Department>> GetDepartment(int id)
         {
-            var department = await _readRepository.GetByIdAsync(id);
+            var department = await _readService.GetByIdAsync(id);
             if (department == null)
                 return NotFound();
             return Ok(department);
         }
 
         [HttpPost]
+        [ValidationActionFilter]
         public async Task<ActionResult<Department>> AddDepartment([FromBody] Department department)
         {
-            // Validate using DepartmentValidator
-            var validator = new UKParliament.CodeTest.Services.Validation.DepartmentValidator();
-            var validationResult = validator.Validate(department);
-            if (!validationResult.IsValid)
-            {
-                var fieldErrors = validationResult.Errors
-                    .GroupBy(e => e.PropertyName)
-                    .ToDictionary(g => g.Key, g => g.First().ErrorMessage);
-                return BadRequest(new { fieldErrors });
-            }
-            var created = await _writeRepository.AddAsync(department);
+            var created = await _writeService.AddAsync(department);
             if (created == null)
             {
                 return BadRequest(new { message = "Failed to create department." });
@@ -61,7 +53,7 @@ public class DepartmentController : ControllerBase
         {
             if (id != department.Id)
                 return BadRequest();
-            var updated = await _writeRepository.UpdateAsync(department);
+            var updated = await _writeService.UpdateAsync(department);
             if (updated == null)
                 return NotFound();
             return Ok(updated);
@@ -70,7 +62,7 @@ public class DepartmentController : ControllerBase
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDepartment(int id)
         {
-            var deleted = await _writeRepository.DeleteAsync(id);
+            var deleted = await _writeService.DeleteAsync(id);
             if (!deleted)
                 return NotFound();
             return NoContent();

@@ -7,7 +7,7 @@ using Serilog;
 
 namespace UKParliament.CodeTest.Services
 {
-    public class DepartmentReadService : IDepartmentReadRepository
+    public class DepartmentReadService : IDepartmentReadService
     {
         private readonly PersonManagerContext _context;
         private readonly ILogger _logger;
@@ -31,14 +31,12 @@ namespace UKParliament.CodeTest.Services
             }
         }
 
-        public async Task<Department> GetByIdAsync(int id)
+        public async Task<Department?> GetByIdAsync(int id)
         {
             try
             {
                 var record = await _context.Departments.FindAsync(id);
-                if (record == null)
-                    throw new KeyNotFoundException($"Department with id {id} not found.");
-                return record;
+                return record; // Return null if not found instead of throwing
             }
             catch (Exception ex)
             {
