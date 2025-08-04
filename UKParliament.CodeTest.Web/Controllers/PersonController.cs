@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using UKParliament.CodeTest.Data;
@@ -6,6 +6,7 @@ using UKParliament.CodeTest.Services;
 using UKParliament.CodeTest.Services.Repositories;
 using UKParliament.CodeTest.Web.Mapper;
 using UKParliament.CodeTest.Web.ViewModels;
+using UKParliament.CodeTest.Web.Middleware;
 
 namespace UKParliament.CodeTest.Web.Controllers;
 using Serilog;
@@ -29,25 +30,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [ValidationActionFilter]
     public async Task<ActionResult> Put(int id, [FromBody] Person person)
     {
-        if (!ModelState.IsValid)
-        {
-            var errors = ModelState
-                .Where(x => x.Value?.Errors != null && x.Value.Errors.Count > 0)
-                .ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value?.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
-                );
-            // If errors only contain keys like "person" or "$", it's a binding error, not FluentValidation
-            var onlyBindingErrors = errors.Keys.All(k => k == "person" || k.StartsWith("$"));
-            if (onlyBindingErrors)
-            {
-                return BadRequest(new { message = "Model binding failed", errors });
-            }
-            // Otherwise, return field-level errors (FluentValidation)
-            return BadRequest(new { message = "Validation failed", errors });
-        }
         var api = await _writeService.UpdatePersonAsync(id, person);
         if (api.StatusCode == HttpStatusCode.OK)
         {
@@ -78,25 +63,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
+    [ValidationActionFilter]
     public async Task<ActionResult> Post([FromBody] Person person)
     {
-        if (!ModelState.IsValid)
-        {
-            var errors = ModelState
-                .Where(x => x.Value?.Errors != null && x.Value.Errors.Count > 0)
-                .ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value?.Errors?.Select(e => e.ErrorMessage).ToArray() ?? new string[0]
-                );
-            // If errors only contain keys like "person" or "$", it's a binding error, not FluentValidation
-            var onlyBindingErrors = errors.Keys.All(k => k == "person" || k.StartsWith("$"));
-            if (onlyBindingErrors)
-            {
-                return BadRequest(new { message = "Model binding failed", errors });
-            }
-            // Otherwise, return field-level errors (FluentValidation)
-            return BadRequest(new { message = "Validation failed", errors });
-        }
         var api = await _writeService.AddPersonAsync(person);
         if (api.StatusCode == HttpStatusCode.OK)
         {

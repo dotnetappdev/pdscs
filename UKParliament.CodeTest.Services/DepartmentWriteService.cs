@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace UKParliament.CodeTest.Services
 {
-    public class DepartmentWriteService : IDepartmentWriteRepository
+    public class DepartmentWriteService : IDepartmentWriteService
     {
         private readonly PersonManagerContext _context;
         private readonly ILogger<DepartmentWriteService> _logger;
