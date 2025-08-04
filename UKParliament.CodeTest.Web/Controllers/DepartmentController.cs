@@ -71,7 +71,6 @@ public class DepartmentController : ControllerBase
         public async Task<IActionResult> DeleteDepartment(int id)
         {
             var deleted = await _writeRepository.DeleteAsync(id);
-                return Ok(deleted);
             if (!deleted)
                 return NotFound();
             return NoContent();

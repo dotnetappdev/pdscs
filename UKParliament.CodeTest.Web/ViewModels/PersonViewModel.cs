@@ -9,8 +9,8 @@ public class PersonViewModel
     public string? LastName { get; set; }
     public string? FullName { get; set; }
 
-        // Show only the date part as string (yyyy-MM-dd)
-        public string? DOB { get; set; }
+    // Use DateOnly for date of birth (better type safety)
+    public DateOnly? DOB { get; set; }
 
     [MaxLength(1000)]
     public string? Description { get; set; }

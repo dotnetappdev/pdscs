@@ -19,7 +19,7 @@ namespace UKParliament.CodeTest.Services
             _logger = logger.ForContext<PersonWriteService>();
         }
 
-        public async void SavePerson(Person person)
+        public async Task SavePerson(Person person)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace UKParliament.CodeTest.Services
             }
         }
 
-        public async void DeletePersonAsync(int id)
+        public async Task DeletePersonAsync(int id)
         {
             try
             {
